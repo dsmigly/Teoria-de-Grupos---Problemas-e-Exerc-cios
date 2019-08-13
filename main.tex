@@ -1,0 +1,2148 @@
+%http://math.mit.edu/~drew/
+%https://math.stackexchange.com/questions/93689/software-for-galois-theory
+%SetClassGroupBounds("GRH"); 
+%K := QuadraticField(9);
+%ClassNumber(K);
+
+%https://en.wikipedia.org/wiki/List_of_triangle_inequalities
+
+\documentclass[12pt, a4paper]{article}
+\usepackage[bottom=2cm,top=3cm,left=3cm,right=2cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{CJKutf8}
+\usepackage{mathtext}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage[T1]{fontenc}
+\usepackage{blindtext}
+\usepackage{tasks}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{commath}
+\usepackage{ wasysym }
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtext}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage[T1]{fontenc}
+\usepackage{blindtext}
+\usepackage{tasks}
+\usepackage{setspace}
+\usepackage{amsmath}
+%\usepackage{geometry}
+\usepackage{amsthm}
+%\usepackage{amsfonts}
+%\usepackage{lipsum}
+\usepackage{amssymb}
+\usepackage{CJKutf8} %Pacote para escrever em japonês \begin{CJK}{UTF8}{min} \end{CJK}
+\usepackage[portuguese]{babel}
+\usepackage{multicol}
+% \usepackage{colorspace}
+\usepackage{graphicx, color}
+\newcommand{\mmc}{{\rm mmc}}
+\newcommand{\mdc}{{\rm mdc}}
+\newcommand{\sen}{{\rm sen}}
+\newcommand{\tg}{{\rm tg}}
+\newcommand{\cotg}{{\rm cotg}}
+\newcommand{\cossec}{{\rm cossec}}
+\newcommand{\arctg}{{\rm arctg}}
+\newcommand{\arcsen}{{\rm arcsen}}
+\newcommand{\negrito}[1]{\mbox{\boldmath{$#1$}}} 
+\usepackage{pifont}
+\newcommand{\heart}{\ensuremath\heartsuit}
+\newcommand{\diamonde}{\ensuremath\diamondsuit}
+\newtheorem{defi}{Definição}
+\newtheorem{teo}{Teorema}
+\newtheorem{propo}{Proposição}
+\newtheorem{dem}{Demonstração}
+\newtheorem{coro}{Corolário}
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
+\DeclareMathSymbol{\vardiamond}{\mathalpha}{extraup}{87}
+\setlength{\parindent}{0pt}
+\usepackage[framemethod=TikZ]{mdframed}
+%\usepackage{lipsum}
+\mdfdefinestyle{MyFrame}{%
+    linecolor=blue,
+    outerlinewidth=2pt,
+    roundcorner=20pt,
+    innertopmargin=\baselineskip,
+    innerbottommargin=\baselineskip,
+    innerrightmargin=20pt,
+    innerleftmargin=20pt,
+    backgroundcolor=white!50!white}
+    
+%\mdfdefinestyle{Solução}{%
+%    linecolor=blue,
+%    outerlinewidth=1pt,
+%    roundcorner=8pt,
+%    innertopmargin=4pt%\baselineskip,
+%    innerbottommargin=0pt%\baselineskip,
+%    innerrightmargin=20pt,
+%    innerleftmargin=20pt,
+%    backgroundcolor=white!50!white}
+    
+    
+    \mdfdefinestyle{DAS}{%
+    linecolor=blue,
+    outerlinewidth=2pt,
+    roundcorner=20pt,
+    innertopmargin=\baselineskip,
+    innerbottommargin=\baselineskip,
+    innerrightmargin=20pt,
+    innerleftmargin=20pt,
+    backgroundcolor=white!50!green}
+% \definespotcolor{mygreen}{PANTONE 7716 C}{.83, 0, .00, .51}
+% \definespotcolor{tuti}{}{0.6, 0, 1, .508}
+\title{Teoria de Grupos}
+\author{Douglas de Araujo Smigly}
+\date{26 de maio de 2018}
+\begin{document}
+\definecolor{Floresta}{rgb}{0.13,0.54,0.13}
+\maketitle
+\begin{center}
+\large\textbf{\textcolor{Floresta}{Problemas e exercícios resolvidos}}\\
+\end{center}
+\section{Questões}
+\subsection{\textcolor{Floresta}{Grupos}}
+\textcolor{blue}{\bf(1)}\ref{1} Prove que o par $(G, \star)$ é um grupo em cada um dos casos seguintes:
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] $G = \mathbb{Z}_8$ e $\star \colon G \times G \to G,$ dada por:
+\[
+\star(\overline{a}, \overline{b}) = \overline{a} + \overline{b} = \overline{a+b}
+\]
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] $G = S^{1} = \{ z \in \mathbb{C} : \abs{z} = 1 \}$ e $\star$ o produto usual de números complexos.
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] $G = S_3 =\langle \sigma, \tau | \sigma^3 = \tau^2 = 1, \tau \sigma = \sigma^2 \tau \rangle$ e $\star$ a operação de composição. $S_3$ é chamado \textbf{grupo de permutações em 3 elementos.}
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] $G = D_4 =\langle \sigma, \tau | \sigma^4 = \tau^2 = 1, \tau \sigma = \sigma^3 \tau \rangle$ e $\star$ a operação de composição. $D_4$ é chamado \textbf{grupo diedral de ordem 8.}
+\task[\textcolor{Floresta}{$\negrito{(e)} $}] $G = V_4 = \langle a,b | a^2 = b^2 = (ab)^2 = 1 \rangle$ e $\star$ a operação de multiplicação. $V_4$ é chamado \textbf{grupo de Klein.}
+\task[\textcolor{Floresta}{$\negrito{(f)} $}] $G = Q_8 = \left\{ \pm \left( \begin{array}{cc} 1 & 0 \\ 0 & 1 \end{array} \right), \pm \left( \begin{array}{cc} 0 & 1 \\ -1 & 0 \end{array}\right), \pm \left( \begin{array}{cc} 0 & i \\ i & 0 \end{array}\right), \pm \left( \begin{array}{cc} i & 0 \\ 0 & -i \end{array}\right) \right\}$ e $\star$ a multiplicação de matrizes. $Q_8$ é chamado \textbf{grupo dos Quatérnios.}
+%http://www.math.niu.edu/~beachy/abstract_algebra/guide/section/33soln.pdf
+\task[\textcolor{Floresta}{$\negrito{(g)} $}] $G = GL_2(\mathbb{R}) = \{ A \in \mathcal{M}_n(\mathbb{R}) : \det(A) \neq 0 \}$ e $\star$ a multiplicação usual de matrizes. Em geral, $GL_n(F)$ é chamado \textbf{grupo linear gerl de ordem $n$ sobre $F.$}
+\task[\textcolor{Floresta}{$\negrito{(h)} $}] $G = SL_2(\mathbb{R}) = \{ A \in \mathcal{M}_n(\mathbb{R}) : \det(A)= 1 \}$ e $\star$ a multiplicação usual de matrizes. Em geral, $SL_n(F)$ é chamado \textbf{grupo linear especial de ordem $n$ sobre $F.$}
+\task[\textcolor{Floresta}{$\negrito{(i)} $}] $G = O_2(\mathbb{R}) = \{ A \in \mathcal{M}_n(\mathbb{R}) : AA^T = A^TA = I \}$ e $\star$ a multiplicação usual de matrizes. Em geral, $O_n(F)$ é chamado \textbf{grupo ortogonal de ordem $n$ sobre $F.$}
+\task[\textcolor{Floresta}{$\negrito{(j)} $}] $G = He(\mathbb{Z}_3) = \left\{ \left( \begin{array}{ccc} 1 & a & c \\ 0 & 1 & b \\ 0 & 0 & 1 \end{array} \right) : a,b,c \in \mathbb{Z}_3 \right\}$ e $\star$ o produto usual de matrizes. $ He(\mathbb{Z}_3)$ é chamado \textbf{grupo de Heisenberg módulo $3$.}
+\end{tasks}
+\textcolor{blue}{\bf(2)}\label{2} Seja $G$ um grupo. Mostre que se $(ab)^2 = a^2b^2,$ para quaisquer $a,b \in G,$ então $G$ é abeliano.
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(3)}\label{3} Vamos tentar generalizar a questão 1.
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Seja $G$ um grupo no qual $(ab)^i = a^ib^i,$ para três inteiros consecutivos $i$ e para quaisquer $a,b in G.$ Mostre que $G$ é abeliano.
+
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Vale o mesmo resultado se $(ab)^i = a^ib^i,$ para apenas dois inteiros consecutivos $i?$ Prove ou dê contraexemplo.
+\end{tasks}
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(4)}\label{4} Seja $G$ um conjunto não vazio com uma operação binária associativa. 
+
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que as seguintes condições são equivalentes:
+\begin{itemize}
+\item[\textbf{(i)}] $G$ é um grupo;
+\item[\textbf{(ii)}] Para todos $a,b \in G,$ as equações $bx = a$ e $yb = a$  têm pelo menos uma solução em $G.$
+\item[\textbf{(iii)}] Existe $e \in G$ tal que $ae = a,$ para todo $a \in G$ e para todo $a \in G,$ existe $b \in G$ tal que $ab = e$ (isto é, "unidade à direita" e inverso à direita).
+\end{itemize}
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Considere $G = S_3,$ com a operação binária de composição correspondente e $H = \mathbb{Z}_3,$ com a multiplicação usual. 
+\begin{itemize}
+\item[\textbf{(i)}] Resolva as equações $bx = a$ e $yb = a,$ para todos $a,b \in G.$
+\item[\textbf{(ii)}] Resolva as equações $bx = a$ e $yb = a,$ para todos $a,b \in H.$
+\item[\textbf{(iii)}] Conclua que $(S_3, \circ)$ é grupo, mas $(\mathbb{Z}_3, \cdot)$ não o é.
+\end{itemize}
+\end{tasks} 
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(5)}\label{5} Considere um grupo $G$. Dizemos que um elemento $a \in G$ é idempotente se, $a^2 = e.$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Seja $G$ um grupo tal que $a^2 = e,$ para todo $a \in G.$ Mostre que $G$ é abeliano.
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] O mesmo resultado é válido se $G$ é um grupo tal que $a^3 = e,$ para todo $a \in G?$ Prove ou dê contraexemplo.
+\end{tasks}
+\textcolor{blue}{\bf(6)}\label{6} Seja $G$ um grupo tal que $(ab)^2 = (ba)^2,$ para todos $a,b \in G$ e suponha que $x = e$ é o único elemento de $G$ tal que $x^2 = e.$ Mostre que $G$ é abeliano. 
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(7)}\label{7} Sejam $m,n$ inteiros positivos tais que $\mdc(m,n) = 1$ (ou seja, $m$ e $n$ são primos entre si). Seja $G$ um grupo em que todas as potências $m$-ésimas comutem entre si e todas as potências $n$-ésimas comutem entre si. Mostre que $G$ é abeliano.
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(8)}\label{8} Seja $G$ um grupo finito de ordem $n,$ onde $n$ é um inteiro positivo. Seja $r$ um inteiro positivo tal que $\mdc(r,n)=1.$ Mostre que todo elemento $g \in G$ pode ser escrito na forma $g = x^r,$ para algum $x \in G.$%homomorfismo1 pg21 
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(9)}\label{ex1} Verifique se cada grupo abaixo é cíclico:%homomorfismo1 pg21 
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] $\mathbb{Z}_7$ com a operação de adição.
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] $S_3$ com a operação de composição.
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] $V_4 = \langle a,b | a^2 = b^2 = (ab)^2 = e \rangle$ (Grupo de Klein)
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] $\mathbb{Z}^{*}_{11}$ com a operação de multiplicação.
+\end{tasks}
+\textcolor{blue}{\bf(10)}\label{ex2} Considere o grupo $(\mathbb{Z}_8, +).$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Verifique que $G$ é cíclico.
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Verifique que $\overline{3}$ e $\overline{5}$ geram $G,$ ou seja, $\langle \overline{3}, \overline{5} \rangle = \mathbb{Z}_8.$ Isso é uma contradição com o fato de $G$ ser cíclico? Justifique.
+\end{tasks}
+\newpage
+\subsection{\textcolor{Floresta}{Subgrupos}}
+\textcolor{blue}{\bf(1)}\label{9} Em cada caso, verifique se o conjunto $H$ é subgrupo do grupo $G$ dado em cada um dos itens a seguir:
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] $G = \mathbb{Q}(\sqrt{2}, i)$ com a multiplicação usual, e $H  = \mathbb{Q}(\sqrt{2}).$
+\end{tasks}
+\textcolor{blue}{\bf(2)}\label{10} Seja $G$ um grupo e seja $S$ um subconjunto de $G.$ Mostre que $S$ é um subgrupo de $G$ se e somente se $S \neq \emptyset$ e, para todos $a,b \in G,$ se $a,b \in S,$ então $ab^{-1} \in S.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(3)}\label{11} Seja $G = S_4.$ Mostre que 
+\[
+V = \{ id, (1 2)(3 4), (1 3)(2 4), (1 4)(2 3)\}
+\]
+é subgrupo de $G.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(4)}\label{12} Seja $G$ um grupo e seja $\{H_i : i \in I \}$ uma família de subgrupos de $G.$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que $\bigcap\limits_{i \in I} H_i$ é um subgrupo de $G.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] É verdade que $\bigcup\limits_{i \in I} H_i$ sempre é um subgrupo de $G?$ Prove ou dê contraexemplo.
+\end{tasks}
+\textcolor{blue}{\bf(5)}\label{13} Seja $G$ um grupo e sejam $H$ e $K$ subgrupos de $G.$ Mostre que $H \cup K$ é um subgrupo de $G$ se e somente se $H \subseteq K$ ou $K \subseteq H.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(6)}\label{14} Seja $G$ um grupo e $H$ um  subconjunto bnão vazio finito de $G$ tal que $HH = H.$ Prove que $H$ é um subgrupo de $G$. E se $H$ não for finito?
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(7)}\label{15} Seja $G$ um grupo. Dados $H$ um subgrupo de $G$ e $a \in G,$ mostre que $aHa^{-1} = \{aha^{ -1} : h \in H \}$ é um subgrupo de $G.$
+
+Se $H$ é finito, qual a ordem de $aHa^{-1}?$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(8)}\label{16} Seja $a$ um elemento de um grupo $G.$ O normalizador de $a$ em $G$ é dado por
+\[
+N(a) = \{ x \in G : xa = ax \}
+\]
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Determine o normalizador de $\sigma$ em $S_3 = \{1, \sigma, \sigma^2, \tau, \sigma \tau, \sigma^2 \tau \}.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Determine o normalizador de $j$ em $Q_8 = \{1, -1, i, -i, j, -j, k,-k \}.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Prove que $N(a)$ é um subgrupo de $G$ para todo $a \in G.$
+\end{tasks}
+\textcolor{blue}{\bf(9)}\label{17} Seja $G$ um grupo e seja $H$ um subgrupo de $G.$ Considere
+\[
+\mathcal{C}_G(H) = \{x \in G : xh = hx, \forall h in H \}
+\]
+$\mathcal{C}_G(H)$ é chamado centralizador de $H$ em $G.$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Seja $S_3 = \{1, \sigma, \sigma^2, \tau, \sigma \tau, \sigma^2 \tau \},$ e considere $H = \{1, \sigma, \sigma^2 \}.$ 
+\begin{itemize}
+\item Encontre $N(a),$ para todo $a \in H.$
+%\[N(1) = S_3, N(\sigma) = H, N(\sigma^2) = \{1, \sigma, \sigma^2\} \] 
+\item Calcule $\mathcal{C}_{S_3}(H).$
+%\[ \mathcal{C}_{S_3}(H) = H\]
+\item Verifique que $\mathcal{C}_{S_3}(H) = \bigcap\limits_{h \in H} N(h).$
+\end{itemize}
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Prove que $\mathcal{C}_{G}(H) = \bigcap\limits_{h \in H} N(h),$ para todo grupo $G$ e $H$ subgrupo de $G.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Mostre que $\mathcal{C}_G(H)$ é subgrupo de $G.$
+\end{tasks}
+\textcolor{blue}{\bf(10)}\label{18} O centro de um grupo $G$ é definido como sendo o conjunto
+\[
+\mathcal{Z}(G) = \{ z \in G : zx = xz, \forall x \in G \}
+\]
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Calcule $\mathcal{Z}(S_3).$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Calcule $\mathcal{Z}(Q_8).$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Verifique que $\mathcal{Z}(G) = \mathcal{C}_G(G).$
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] Prove que $\mathcal{Z}(G)$ é subgrupo de $G.$
+\end{tasks}
+
+\textcolor{blue}{\bf(11)}\label{19} Seja $G$ um grupo. Define-se a ordem de $a \in G$ como sendo o menor inteiro positivo $n$ tal que $a^n = e,$ se esse número existir (casos contrário, dizemos que $a$ ordem de $a$ é infinita). Denotamos a ordem de $a$ por $o(a).$ Mostre que se $a \in G$ tem ordem finita, esse número coincide com a ordem do subgrupo de $G$ gerado por $a.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(12)}\label{20} Seja $G$ um grupo de ordem par. Mostre que $G$ contém um elemento de ordem $2.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(13)}\label{21} Mostre que se $G$ é um grupo de ordem par, então existe um número ímpar de elementos de ordem $2.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(14)}\label{22} Seja $a$ um elemento de um grupo tal que $a^n = e.$ Mostre que $o(a) \mid n.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(15)}\label{23} Seja $G$ um grupo e sejam $a,b \in G.$ Mostre que $ab$ e $ba$ têm a mesma ordem.
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(16)}\label{24} Seja $G$ um grupo e seja $a \in G$ um elemento de ordem $n.$ Se $n = km,$ mostre que $a^k$ tem ordem $m.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(17)}\label{ex3}  Seja $g$ um elemento de um grupo $G$ tal que $g^{45} = e.$ Quais são os possíveis valores para as ordens de $G?$
+%Como $g^{45} = e,$ ordem de $g$ deve ser um divisor de $45.$ Como 
+%\[
+%D(45) = \{1,3,5,9,15,45 \},
+%\]
+%as possíveis ordens de $g$ são $1,3,5,9,15$ e $45.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(18)}\label{25} Seja $G$ um grupo e seja $a \in G$  um elemento de ordem $n$. Seja  $m$ um inteiro positivo tal que $\mdc(m,n) = 1.$ Mostre que $o(a^m) = n.$ O que ocorre se $\mdc(m,n) > 1?$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(19)}\label{26} Seja $n \in \mathbb{N}^{*}.$ Definimos:
+\[
+\varphi(n) = \abs{\{ m \in \mathbb{N}^{*} : \mdc(m,n) = 1 \}}
+\]
+$\varphi$ é a chamada \textbf{função $\varphi$ de Euler} ou \textbf{função totiente de Euler}.
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Encontre $\varphi(24),\varphi(35)$ e $\varphi(97).$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Verifique que $\varphi(p) = p-1,$ onde $p$ é um número primo.
+\task[\textcolor{Floresta}{$\negrito{(c)} $}]  Mostre que o número de geradores de um grupo cíclico de ordem $n$ é $\varphi(n).$
+\end{tasks}
+Na verdade, temos que 
+\[
+\varphi(n) = n \prod\limits_{\substack{p \mbox{ primo} \\ p \mid n }} \left(1 - \frac{1}{p} \right) 
+\]
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(20)}\label{27} Vamos mostrar nesse exercício que o grupo das matrizes inversíveis $4 \times 4$ com entradas inteiras $GL_4(\mathbb{Z})$ admite um elemento de ordem $12.$%https://pdfs.semanticscholar.org/d72f/50b01413336e0c2b4f01859b5c39e01d7ad1.pdf
+%https://pdfs.semanticscholar.org/d72f/50b01413336e0c2b4f01859b5c39e01d7ad1.pdf
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] O $m$-ésimo \textbf{polinômio ciclotômico} $\varphi_n(x)$ é definido como 
+\[
+\varphi_n(x) = \prod\limits_{\xi \in mu_m(\mathbb{C}} (x - \xi),
+\]
+onde $\mu_m(\mathbb{C}) = \langle e^{\frac{2 \pi i}{m}} \rangle = \{1, e^{\frac{2 \pi i}{m}}, \ldots, e^{\frac{2 \pi i (m-1)}{m}} \}$ é o conjunto das raízes $m$-ésimas da unidade (isto é, as raízes, em $\mathbb{C},$ da equação $x^m - 1 = 0$). Mostre que $\varphi_{12}(x) = x^{4} - x^2 + 1.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Dado um polinômio mônico $p(x) = x^k + a_{k-1}p^{k-1} + \ldots + a_1x + a_0,$ dizemos que a \textbf{matriz companheira} $C$ de $p(x)$ é a matriz
+\[
+C = \left(\begin{array}{cccccc}
+0 & 0 & 0 & \cdots & 0 &-a_0 \\
+1 & 0 & 0 & \cdots & 0 &-a_1 \\
+0 & 1 & 0 & \cdots & 0 &-a_2 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & 0 & \cdots & 1 &-a_{k-1} 
+\end{array}\right)
+\]
+\begin{itemize}
+\item[\textbf{(i)}] Escreva a matriz companheira de $\varphi_{12}(x).$
+\item[\textbf{(ii)}] Seja $A$ a matriz companheira de $\varphi_m(x).$ Mostre que $A^m = I.$ Pode-se mostrar que não existe natural positivo $k < m,$ tal que $A^k = I,$ ou seja, a ordem de $A$ é $m.$
+\end{itemize}
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Considere a matriz
+\[
+B = \left(\begin{array}{cccc}
+1 & 2 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 4 & 1 & 0\\
+0 & 0 & 3 & 1\\
+\end{array}\right)
+\]
+
+\begin{itemize}
+\item[\textbf{(i)}] Verifique que $B$ é inversível, e sua inversa possui todas as entradas inteiras.
+\item[\textbf{(ii)}] Dada $C$ a matriz companheira de $\varphi_{12}(x),$ mostre que é possível obter a partir de $C$ a matriz $B$ por meio de operações elementares nas linhas e colunas.
+\item[\textbf{(iii)}] Qual é a ordem de $A = BCB^{-1}?$
+\end{itemize}
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] Conclua que 
+\[
+A =  \left(\begin{array}{cccc}
+2 & -16 & 3 & -1\\
+1 & -2 & 0 & 0\\
+4 & 5 & -3 & 1\\
+0 & 35 & -8 & 3\\
+\end{array}\right)
+\]
+é um elemento de ordem $12$ de $GL_4(\mathbb{Z})$. Na verdade, $12$ é a maior ordem finita possível para um elemento de $GL_4(\mathbb{Z}).$ As possíveis ordens para elementos desse grupo que possuem ordem finita são $2,3,4,5,6,8,10$ e $12.$
+\end{tasks}
+\textcolor{blue}{\bf(21)}\label{28} Mostre que todo subgrupo de um grupo cíclico é cíclico.
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(22)}\label{29} Sejam $G$ um grupo e sejam $a,b \in G.$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que $o(a) = o(b^{-1}ab).$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Se $G$ possui apenas um elemento $a$ de ordem $n,$ mostre que $a \in \mathcal{Z}(G)$ e que $n = 1$ ou $n = 2.$ 
+\end{tasks}
+\textcolor{blue}{\bf(23)}\label{30} Seja $G = \mathcal{M}_2(\mathbb{Z}),$ munido da multiplicação usual de matrizes. Considere
+\[
+A = \left( \begin{array}{cc} 1 & -1 \\ 0 & -1 \end{array} \right) \quad \mbox{ e } \quad B = \left( \begin{array}{cc} 1 & 0 \\ 0 & -1 \end{array} \right) 
+\]
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Verifique que $o(A) = o(B) = 2.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Verifique que $o(AB) = \infty.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Conclua que se $G$ não é abeliano, existem elementos $a, b \in G,$ tais que $o(a), o(b) < \infty,$ mas $o(ab) = \infty.$
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] Encontre outros exemplos de grupos não abelianos e elementos que satisfazem essa condição.
+\end{tasks}
+\textcolor{blue}{\bf(24)}\label{31} Seja $G$ um grupo não trivial. 
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Encontre todos os subgrupos de $G = (\mathbb{Z}_7, +).$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Prove que se $G$ só possui como subgrupos os subgrupos triviais, então $G$ é um grupo cíclico finito cuja ordem é um número primo.%Pag 10 - Livro Agozzini
+\end{tasks}
+\textcolor{blue}{\bf(25)}\label{32} Seja $G = S^{1} = \{ z \in \mathbb{C} : \abs{z} = 1 \}.$ Para cada $n \ge 1,$ consideremos o conjunto
+\[
+\mu_n(\mathbb{C}) = \langle e^{\frac{2 \pi i}{n}} \rangle = \{1, e^{\frac{2 \pi i}{n}}, \ldots, e^{\frac{2 \pi i (n-1)}{n}} \}
+\]
+formado pelas raízes $n$-ésimas da unidade (isto é, as raízes, em $\mathbb{C},$ da equação $x^n - 1 = 0$).
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Encontre $\mu_3(\mathbb{C})$ e $\mu_5(\mathbb{C}).$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Mostre que $\mu_n(\mathbb{C})$ é subgrupo de $S^1.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Conclua que existem grupos infinitos que possuem subgrupos cíclicos finitos de todas as ordens.
+\end{tasks}
+\textcolor{blue}{\bf(26)}\label{ex4} Seja $G = \langle g \rangle$ um grupo cíclico de ordem $n,$ e tome $m < n.$ Prove que $\langle g^m \rangle$ tem ordem $\frac{n}{\mdc(m,n)}.$
+%http://sites.millersville.edu/bikenaga/abstract-algebra-1/cyclic-groups/cyclic-groups.pdf
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(27)}\label{ex5} Encontre a ordem do elemento $g$ no grupo $G$ dado em cada item abaixo:
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] $g = a^{32}$ e $G = \{1, a, a^2, a^3, \ldots, a^{36}, a^{37} \}.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] $g = 18$ e $G = \mathbb{Z}_{30}.$
+\end{tasks}
+\textcolor{blue}{\bf(28)}\label{ex6} Encontre todos os elementos de ordem $101$ em $\mathbb{Z}_{2020}.$ %http://sites.millersville.edu/bikenaga/abstract-algebra-1/cyclic-groups/cyclic-groups.pdf
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(29)}\label{ex7} No grupo $G = \mathcal{U}(\mathbb{Z}_{36}),$ considere
+\[
+H = \{ \overline{x} | x \equiv 1\pmod{4} \} \quad \mbox{e} \quad K = \{ \overline{y} | y \equiv 1\pmod{4} \}.
+\]
+Mostre que $H$ e $K$ são subgrupos de $G,$ e encontre o grupo $HK.$
+%http://www.math.niu.edu/~beachy/abstract_algebra/guide/section/33soln.pdf
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(30)}\label{ex8} Seja $K$ um corpo, e tome $H$ o subconjunto de $GL_2(K)$ formado por todas as matrizes triangulares superiores invertíveis. Mostre que $H$ é um subgrupo de $GL_2(K).$
+%http://www.math.niu.edu/~beachy/abstract_algebra/guide/section/33soln.pdf - ex 23
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(31)}\label{ex8} Seja $p$ um número primo.
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Prove que $GL_2(\mathbb{Z}_p)$ possui exatamente $(p^2 - 1)(p^2 - p)$ elementos.
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Mostre que o subgrupo de $GL_n(\mathbb{Z}_p)$ consistindo de todas as matrizes triangulares superiores invertíveis possui ordem $(p - 1)^2p.$
+\end{tasks}
+%http://www.math.niu.edu/~beachy/abstract_algebra/guide/section/33soln.pdf - ex 24
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(32)}\label{ex9} Seja $G$ o subgrupo de $GL_2(\mathbb{R})$ definido por
+\[
+G = \left\{ \left[ \begin{array}{cc} m & b \\ 0 & 1 \end{array}   \right] \big|  m \neq 0 \right\}
+\]
+Sejam $A = \left[ \begin{array}{cc} 1 & 1 \\ 0 & 1 \end{array} \right]$ e $B = \left[ \begin{array}{cc} -1 & 0 \\ 0 & 1 \end{array} \right].$ Encontre os centralizadores $C(A)$ e $C(B)$, e mostre que $C(A) \cap C(B) = \mathcal{Z}(G),$ onde$\mathcal{Z}(G)$ é o centro de $G.$
+%http://www.math.niu.edu/~beachy/abstract_algebra/guide/section/33soln.pdf - ex 26
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(33)}\label{ex9} Seja $H$ o seguinte subconjunto de $GL_2(\mathbb{Z}_5):$
+\[
+H = \left\{ \left[ \begin{array}{cc} m & b \\ 0 & 1 \end{array}   \right] \in GL_2(\mathbb{Z}_5) \big|  m,b \in \mathbb{Z}_5, m = \pm 1 \right\}
+\]
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Prove que $H$ é um subgrupo de $G.$ 
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Mostre que se $A = \left( \begin{array}{cc} 1 & 1 \\ 0 & 1 \end{array} \right)$ e $B = \left( \begin{array}{cc} -1 & 0 \\ 0 & 1 \end{array} \right),$ então $BA = A^{-1}B.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Mostre que todo elemento de $H$ pode ser escrito unicamente na forma $A^iB^j,$ onde $0 \le i < 5$ e $0 \le j < 2.$ 
+\end{tasks}
+\textcolor{blue}{\bf(34)}\label{ex10} Sejam $H$ e $K$ subgrupos de um grupo $G.$ Prove que $HK$ é um subgrupo de $G$ se e somente se $KH \subset HK.$
+%http://www.math.niu.edu/~beachy/abstract_algebra/guide/section/33soln.pdf - ex 30
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(35)}\label{ex11} Considere o seguinte subonjunto de $\mathbb{Z}:$
+\[
+H = \{ 30x + 42y + 70z | x,y,z \in \mathbb{Z} \}
+\]
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Prove que $H$ é um subgrupo de $\mathbb{Z}.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Encontre um gerador para $H.$
+\end{tasks}
+%http://sites.millersville.edu/bikenaga/abstract-algebra-1/cyclic-groups/cyclic-groups.pdf -pg3
+\newpage
+\subsection{\textcolor{Floresta}{Classes laterais e Teorema de Lagrange}}
+\textcolor{blue}{\bf(1)}\label{33} Em cada caso seguinte, para $G$ grupo e $H$ subgrupo de $G,$ determine $[G : H].$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] $G = \mathbb{Z}$ o grupo aditivo dos números inteiros e $H = \langle m \rangle$ o subgrupo dos múltiplos do inteiro $m \ge 2.$ %Pag 13 - agozzini[g:h] = m
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] $G = \mathbb{Z}_{12}$ o grupo aditivo dos inteiros módulo $12$ e $H = \langle 4 \rangle = \{\overline{0},\overline{4},\overline{8}\}.$%https://math.stackexchange.com/questions/2701128/what-is-the-index-of-a-subgroup-h-in-a-group-g
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] $G = D_n = \langle \sigma, \tau | \sigma^n = \tau^2 = 1, \tau \sigma \tau^{-1} = \sigma^{-1} \rangle,$ e $H = \langle \sigma^d, \sigma^r \tau \rangle,$ onde $d \mid n$ e $0 \le r < d.$%https://groupprops.subwiki.org/wiki/Subgroup_structure_of_dihedral_groups
+\end{tasks}
+\textcolor{blue}{\bf(2)}\label{34} Seja $G$ um grupo e sejam $H$ e $K$ subgrupos de $G$ cujas ordens são relativamente primas. Mostre que $H \cap K = \{ e \}.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(3)}\label{35} Seja $G$ um grupo e sejam $a,b \in G$ tais que $ab=ba.$ Se $a$ tem ordem $m,$ $b$ tem ordem $n$ e $\mdc(m,n) = 1,$ mostre que a ordem de $ab$ é $mn.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(4)}\label{36} Seja $G$ um grupo abeliano que contém um elemento de ordem $n$ e um de ordem $m.$ Mostre que $G$ contém um elemento de ordem $\mmc(m,n).$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(5)}\label{37} Seja $G$ umm grupo e sejam $H$ e $K$ dois subgrupos de índice finito em $G.$ Mostre que $H \cap K$ é um subgrupo de índice finito em $G.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(6)}\label{38} Seja $G$ um grupo e sejam $H \le G,$ e $K \le H.$ Mostre que $K$ tem índice fiito em $G$ se e somente se $H$ tem índice finito em $G$ e $K$ tem índice finito em $H.$ Neste caso, mostre que \[[G:K] = [G : H][H : K].\]
+\newpage
+\subsection{\textcolor{Floresta}{Subgrupos normais e quocientes}}
+\textcolor{blue}{\bf(1)}\label{39} Determine se $H$ é um subgrupo normal de $G$ em cada caso seguinte:
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] $G = \mathbb{Z}_8$ e $H = \langle \overline{2} \rangle.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] $G = S_3$  e $H = S_2.$ %Não https://groupprops.subwiki.org/wiki/S2_in_S3
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] $G = M_{16} = \langle a,x \mid a^8 = x^2 = e, xax^{-1} = a^5 \rangle$ e $H = \{e, x, a^4, a^4x \}$%Não
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] $G = 2O = \langle a,b, c |a^4 = b^3 = c^2 = abc \rangle$ (grupo octaedral binário) e $H = \langle aca^{-3}, c \rangle.$%https://people.maths.bris.ac.uk/~matyd/GroupNames/1/CSU(2,3).html %https://en.wikipedia.org/wiki/Binary_octahedral_group
+\task[\textcolor{Floresta}{$\negrito{(e)} $}] $G = \mathbb{Z}_2 \times D_4,$ e $H = \mathbb{Z}_2 \times \langle \sigma \rangle.$
+\task[\textcolor{Floresta}{$\negrito{(f)} $}] $G = \mathbb{Z}_2 \times D_4,$ e $H = \mathbb{Z}_2 \times \langle \tau \rangle.$
+\task[\textcolor{Floresta}{$\negrito{(g)} $}] $G = SL_2(\mathbb{Z}_3),$ grupo das matrizes $2 \times 2$ com entradas em $\mathbb{Z}_3$ e determinante $1,$ e $H = \left\{ \left(\begin{array}{cc} \overline{1} & \overline{0}\\
+\overline{0} & \overline{1}
+\end{array} \right), 
+\left(\begin{array}{cc} \overline{1} & \overline{1}\\
+\overline{0} & \overline{1}
+\end{array} \right) ,
+\left(\begin{array}{cc} \overline{1} & \overline{2}\\
+\overline{0} & \overline{1}
+\end{array} \right) \right\}$
+%https://people.maths.bris.ac.uk/~matyd/GroupNames/1/SL(2,3).html
+\task[\textcolor{Floresta}{$\negrito{(h)} $}]$G = SL_2(\mathbb{Z}_3),$ grupo das matrizes $2 \times 2$ com entradas em $\mathbb{Z}_3$ e determinante $1,$ e $H = \langle A,B | A^4 = I, B^2 = A^2, BAB^{-1} = A^{-1} \rangle,$ onde $A = \left(\begin{array}{cc} \overline{0} & \overline{2}\\\overline{1} & \overline{0}\end{array} \right)$ e $B = \left(\begin{array}{cc} \overline{2} & \overline{1}\\\overline{1} & \overline{1}\end{array} \right).$
+\end{tasks}%H é o comutador de $G,$ e portanto é normal em $G.$https://people.maths.bris.ac.uk/~matyd/GroupNames/1/SL(2,3).html %https://people.maths.bris.ac.uk/~matyd/GroupNames/1/Q8.html $H =\left\{ \left(\begin{array}{cc} 1 & 0\\0 & 1\end{array} \right), \left(\begin{array}{cc} 0 & 2\\1 & 0\end{array} \right) ,\left(\begin{array}{cc} 2 & 0\\0 & 2\end{array} \right),\left(\begin{array}{cc} 0 & 1\\2 & 0\end{array} \right),\left(\begin{array}{cc} 2 & 1\\1 & 1\end{array} \right),\left(\begin{array}{cc} 2 & 2\\2 & 1\end{array} \right),\left(\begin{array}{cc} 1 & 2\\2 & 2\end{array} \right),\left(\begin{array}{cc} 1 & 1\\1 & 2\end{array} \right)\right\}$
+
+\textcolor{blue}{\bf(2)}\label{40} Seja $H$ um subgrupo de índice $2$ em um grupo $G.$ Mostre que $H$ é normal em $G.$ 
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(3)}\label{41} Sejam $N_1, N_2$ subgrupos normais de um grupo $G.$ Mostre que $N_1 \cap N_2$ é normal em $G.$ Mais geralmente, mostre que se $\{N_i : i \in I \}$ é uma família de subgrupos normais de $G$ então $\bigcap\limits_{i \in I} N_i$ é um subgrupo normal de $G.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(4)}\label{42} Neste exercício vamos construir um grupo não abeliano, contendo $8$ elementos, cujos subgrupos são todos normais. Considere o seguinte subconjunto de $\mathcal{M}_2(\mathbb{C}):$
+\[
+Q_8 = \{Id,-Id, I, -I, J, -J, K, -K\},
+\]
+em que
+\[
+Id = \left[\begin{array}{cc} 1 & 0 \\ 0 & 1 \end{array}\right], \quad I = \left[\begin{array}{cc} 0 & 1 \\ -1 & 0 \end{array}\right],  \quad J = \left[\begin{array}{cc} 0 & i \\ i & 0 \end{array}\right], \quad K = \left[\begin{array}{cc} i & 0 \\ 0 & -i \end{array}\right] 
+\]
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Verifique as seguintes identidades abaixo:
+\begin{itemize}
+\item $I^2 = J^2 = K^2 = -Id$
+\item $IJ = K = -JI;$
+\item $IK = -J = KI;$
+\item $JK = I = -KJ.$
+\end{itemize}
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Mostre que $Q_8$ com o produto usual de matrizes é um grupo não abeliano de ordem $8.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Encontre $I^{-1}, J^{-1}$ e $K^{-1}.$
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] Calcule as ordens de todos os elementos de $Q_8.$
+\task[\textcolor{Floresta}{$\negrito{(e)} $}] Liste todos os subgrupos de $Q_8.$
+\task[\textcolor{Floresta}{$\negrito{(f)} $}] Mostre que todos os subgrupos de $Q_8$ são normais.
+\task[\textcolor{Floresta}{$\negrito{(g)} $}] Determine o centro $\mathcal{Z}(Q_8)$ de $Q_8.$
+\end{tasks}
+\textcolor{blue}{\bf(5)}\label{43} Seja $GL_n(\mathbb{R})$ o grupo das matrizes de ordem $n$ inversíveis em $\mathbb{R},$ com a multiplicação usual. Mostre que
+\[
+SL_n(\mathbb{R}) = \{ A \in GL_n(\mathbb{R}) : \det A = 1 \}
+\]
+é um subgrupo normal de $GL_n(\mathbb{R}).$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(6)}\label{44} Seja $H$ um subgrupo de um grupo $G$ tal que o produto de duas classes laterais à direita de $H$ em $G$ é sempre uma classe lateral à direita de $H$ em $G.$ Mostre que $H$ é normal em $G.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(7)}\label{45} Seja $N$ um subgrupo normal de um grupo $G$ e seja $H$ um subgrupo de $G.$ Mostre que $NH$ é um subgrupo de $G.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(8)}\label{46}  Sejam $M$ e $N$ subgrupos normais de um grupo $G.$ Mostre que $MN$ também é normal em $G.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(9)}\label{47} Seja $N$ um subgrupo normal de um grupo $G$ tal que $[G : N] = m.$ Mostre que $a^m \in N,$ para todo $a \in G.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(10)}\label{48} Seja $G$ um grupo e seja $H$ um subgrupo de $G.$ O \textbf{normalizador} de $H$ em $G$ é definido por
+\[
+N_G(H) = \{g \in G : gHg^{-1} = H \}
+\]
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Encontre o normalizador de $H = \{1, b \}$ em $G = M_4(2) = \langle a,b | a^8 = b^2 = 1, bab = a^5 \rangle.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Encontre o normalizador de $H = \langle a \rangle$ em $G = M_4(2) = \langle a,b | a^8 = b^2 = 1, bab = a^5 \rangle.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Mostre que $N_G(H)$ é um subgrupo de $G.$ 
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] Mostre que $H$ é um subgrupo normal de $N_G(H).$ 
+\task[\textcolor{Floresta}{$\negrito{(e)} $}] Prove que se $H$ é um subgrupo normal de um subgrupo $K$ de $G,$ então $K \subseteq N_G(H).$
+\task[\textcolor{Floresta}{$\negrito{(f)} $}] Mostre que $H$ é normal em $G$ se e somente se $N_G(H) = G.$
+\end{tasks}
+\textcolor{blue}{\bf(11)}\label{49} Seja $G$ um grupo. Para $a,b \in G,$ definimos o \textbf{comutador} de $a$ e $b$ por
+\[
+[a,b] = aba^{-1}b^{-1}
+\]
+Denote por $G^{\prime}$ o subgrupo de $G$ gerado pelo conjunto $\{[a,b] : a,b \in G \}.$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Encontre $(D_5)^{\prime},$ $(S_3)^{\prime}$ e $(\mathbb{Z}_4)^{\prime}.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Mostre que $G^{\prime}$ é normal em $G.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Mostre que $G/G^{\prime}$ é abeliano.
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] Seja $N$ um subgrupo normal de $G.$ Mostre que se $G/N$ é abeliano, então $G^{\prime} \subseteq N.$
+\task[\textcolor{Floresta}{$\negrito{(e)} $}] Mostre que se $H$ é um subgrupo de $G$ tal que $G^{\prime} \subseteq H$ então $H$ é normal em $G.$
+\end{tasks}
+O subgrupo $G^{\prime}$ de $G$ definido acima chama-se subgrupo \textbf{derivado} (ou \textbf{comutador}) de $G.$ 
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(12)}\label{50} Seja $H$ um subgrupo de um grupo finito $G$ e suponha que $H$ seja o único subgrupo de $G$ de ordem $\abs{H}.$ Mostre que $H$ é normal em $G.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(13)}\label{51}  Se  $N$ e $M$ são subgrupos normais de um grupo $G$ e $N \cap M = \{e\},$ mostre que $nm = mn,$ $\forall n \in N, \forall m \in M.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(14)}\label{52} Seja 
+\[
+G = \left\{ \left(\begin{array}{cc} a & b \\ 0 & c \end{array}\right): a,b,c \in \mathbb{R}, ac \neq 0 \right\}
+\]
+e seja $N = \left\{ \left(\begin{array}{cc} 1 & b \\ 0 & 1 \end{array}\right) : b \in \mathbb{R} \right\}.$ Mostre que
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] $N$ é um subgrupo normal de $G.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] $G/N$ é abeliano.
+\end{tasks}
+\textcolor{blue}{\bf(15)}\label{53} Seja $G$ um grupo com centro $\mathcal{Z}(G).$ Mostre que se $G/\mathcal{Z}(G)$ é cíclico, então $G$ é abeliano. A recíproca é verdadeira? Prove ou dê contra-exemplo.
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(16)}\label{54} Seja $G$ um grupo finito e $H$ um subgrupo normal em $G$ tal que $\mdc(G, [G:H]) = 1.$ Prove que $H$ é o único subgrupo de $G$ de ordem igual a $\abs{H}.$ 
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(17)}\label{55} Seja $G$ um grupo de ordem $n^2$ com $n+1$ subgrupos de ordem $n$ tais que a intersecção de quaisquer dois desses subgrupos seja $\{e \},$ para $n \ge 2.$ 
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que $G$ é abeliano.
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Prove que $\mathbb{Z}_2 \times \mathbb{Z}_2$ e $\mathbb{Z}_3 \times \mathbb{Z}_3$ são grupos abelianos.
+\end{tasks}
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(18)}\label{56} Considere o grupo $G = \mathbb{Z}_q^n = \underbrace{\mathbb{Z}_q \times \mathbb{Z}_q \times \ldots \times \mathbb{Z}_q}_{n \mbox{ vezes}},$ com $q$ primo. Então, a quantidade de subgrupos de ordem $k$ de $\mathbb{Z}_q^n$ é dada por
+\[
+\binom{n}{k}_q = \frac{(q^n - 1) \cdot \ldots \cdot (q - 1)}{(q^k - 1) \cdot \ldots \cdot (q - 1) \cdot (q^{n-k}-1) \cdot \ldots \cdot (q - 1)},
+\]
+onde as expressões $\binom{n}{k}_q$ são chamadas de coeficientes gaussianos e possuem propriedades similares aos coeficientes binomiais. 
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Liste todos os subgrupos próprios de $\mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_2.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Use a fórmula acima para verificar a quantidade de subgrupos de $\mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_2.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Mostre que a quantidade de subgrupos de $\mathbb{Z}_q^n$ é
+\begin{itemize}
+    \item[\textbf{(i)}] $q+3,$ se $n =2;$%\[\sum\limits_{k=0}^2 \binom{2}{k}_q  \]
+    \item[\textbf{(ii)}] $2(q^2+q+2),$ se $n =3;$%\[\sum\limits_{k=0}^3 \binom{3}{k}_q  \]
+    \item[\textbf{(iii)}] $2(q^6+q^5+3q^4+3q^3+3q^2 +2q+3),$ se $n =5.$%\[\sum\limits_{k=0}^5 \binom{5}{k}_q  \]
+\end{itemize}
+\end{tasks}
+\newpage
+\subsection{\textcolor{Floresta}{Homomorfismos e isomorfismos}}
+\textcolor{blue}{\bf(1)}\label{57} Em cada um dos casos abaixo, verifique se a função $\varphi \colon G \to G$ é um homomorfismo de grupos. Nos casos em que são homomorfismos, determine os núcleos e imagens deles.
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] $G = \mathbb{R}^{*} = \{ x \in \mathbb{R} : x \neq 0 \}$ com operação dada pelo produto usual de números reais e $\varphi(x) = x^2,$ para todo $x \in G.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] $G = \mathbb{R}^{*}$ e $\varphi(x) = 2^x,$ para todo $x \in G.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] $G = \mathbb{R},$ com operação dada pela soma usual de números reais e $\varphi(x) = x + 1,$ para todo $x \in G.$
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] $G = \mathbb{R}$ e $\varphi(x) = 13x,$ para todo $x \in G.$
+\task[\textcolor{Floresta}{$\negrito{(e)} $}] $G$ é um grupo abeliano qualquer e $\varphi(x) = x^5,$ para todo $x \in G.$
+\end{tasks}
+
+\textcolor{blue}{\bf(2)}\label{58} Encontre um grupo que seja isomorfo a $G/H$ para cada caso abaixo:
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] $G = \mathbb{Z}_{18}$ e $H = \langle \overline{3} \rangle.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] $G = S_3$ e $H = \langle \sigma \rangle.$%https://people.maths.bris.ac.uk/~matyd/GroupNames/1/S3.html
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] $G = D_{12} = \langle \sigma, \tau |\sigma^{12} = \tau^2 = 1, \tau \sigma \tau^{ -1} = \sigma^{-1} \rangle$ e $H = \langle \sigma^3 \rangle.$%https://people.maths.bris.ac.uk/~matyd/GroupNames/1/D12.html
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] $G = C_4 \circ D_4 = \langle a,b,c | a^4 = c^2 = 1, b^2 = a^2, ab = ba, ac=ca, cbc = a^2b \rangle$ e $H = \langle c \rangle$.%https://people.maths.bris.ac.uk/~matyd/GroupNames/1/C4oD4.html
+\task[\textcolor{Floresta}{$\negrito{(e)} $}] $G = \mathbb{Z}_3 \times S_3$ e $H = G^{\prime}.$
+%https://people.maths.bris.ac.uk/~matyd/GroupNames/1/C3xS3.html
+\task[\textcolor{Floresta}{$\negrito{(f)} $}] $G = \mathbb{Z}$ e $H = n \mathbb{Z} = \{nz : z \in \mathbb{Z} \}$
+\task[\textcolor{Floresta}{$\negrito{(g)} $}] $G  = GL_n(\mathbb{R})$ e $H = SL_n(\mathbb{R})$%ago pg 22
+\task[\textcolor{Floresta}{$\negrito{(h)} $}] $G  = \mathbb{R}$ e $H = \mathbb{Z}$%ago pg 22
+\task[\textcolor{Floresta}{$\negrito{(i)} $}] $G  = \mathbb{C}$ e $H = \mathbb{R}$%ago pg 22
+\end{tasks}
+\textcolor{blue}{\bf(3)}\label{59} Seja $f \colon G_1 \to G_2$ um homomorfismo de grupos. Mostre que $f(x) = f(y)$ se e somente se $xy^{-1} \in \ker(f).$ Conclua que $f$ é injetora se e somente se $ker(f) = \{e \}.$
+\newline\newline
+\textcolor{blue}{\bf(4)}\label{60} Seja $f \colon G_1 \to G_2$ um homomorfismo de grupos. Prove que:
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Se $H \le G_1,$ então
+\[
+f(H) = \{f(h) : h \in H \}
+\]
+é subgrupo de $G_2.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Se $K \le G_2,$ então
+\[
+f^{-1}(K) = \{ x \in G_1 : f(x) \in K \}
+\]
+é subgrupo de $G_1.$
+\end{tasks}
+\textcolor{blue}{\bf(5)}\label{61} Sejam $G_1, G_2$ e $G_3$ grupos e sejam $\varphi \colon G_1 \to G_2$ e $\psi \colon G_2 \to G_3$ homomorfismos.
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que a função composta $\psi \circ \varphi \colon G_1 \to G_3$ é um homomorfismo.
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Mostre que se $\varphi$ e $\psi$ forem isomorfismos, então $\psi \colon \varphi$ também será um isomorfismo.
+\end{tasks}
+\textcolor{blue}{\bf(6)}\label{62} Sejam $\zeta = e^{2 \pi i \sqrt{2}} \in \mathbb{C}^{*}$ e $H = \langle \zeta \rangle.$ 
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que $H$ é um subgrupo cíclico infinito.
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Considere a função:
+\[
+\fullfunction{\varphi}{\mathbb{C}^{*}/H}{\mathbb{R}^{*}_{+}}{zH}{\varphi(zH) = \abs{z}}
+\]
+\begin{itemize}
+    \item[\textbf{(i)}] Mostre que $\varphi$ é um homomorfismo de grupos.
+    \item[\textbf{(ii)}] Determine o núcleo e a imagem de $\varphi.$
+\end{itemize}
+\end{tasks}
+\textcolor{blue}{\bf(7)}\label{63} Seja $G$ um grupo. Por \textbf{automorfismo} de $G,$ entende-se um isomorfismo de $G$ em $G.$ Seja $\mbox{Aut}(G)$ o conjunto de todos os automorfismos de $G.$ 
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que $\mbox{Aut}(G)$ é um grupo com a operação binária dada pela composição de funções.
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Seja $g \in G$ e defina
+\[
+\fullfunction{\varphi_g}{G}{G}{a}{\varphi(a) = gag^{-1}}
+\]
+Mostre que $\varphi_g \in \mbox{Aut}(G),$ para todo $g \in G.$ O automorfismo $\varphi_g$ chama-se \textbf{automorfismo interno} definido por $g.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Seja $\mbox{Inn}(G)$ o subconjunto de $\mbox{Aut}(G)$ formado por todos os automorfismos internos de $G.$ Mostre que $\mbox{Inn}(G)$ é um subgrupo normal de $\mbox{Aut}(G).$ 
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] Mostre que $\mbox{Inn}(G) \cong G/ \mathcal{Z}(G).$ (Sugestão: considere o homomorfismo $\phi \colon G \to \mbox{Aut}(G)$ dado por $\phi(g) = \varphi_g$)
+\task[\textcolor{Floresta}{$\negrito{(e)} $}] Determine o grupo de automorfismos de um grupo cíclico de ordem finita.
+\task[\textcolor{Floresta}{$\negrito{(f)} $}] Determine o grupo de automorfismos de um grupo cíclico de ordem infinita.
+\task[\textcolor{Floresta}{$\negrito{(g)} $}] Determine o grupo de automorfismos de $S_3.$
+\end{tasks}
+
+\textcolor{blue}{\bf(8)} \label{ex5} Prove que o grupo de Heisenberg módulo 2, dado por
+\[He(\mathbb{Z}_2) = \left\{ \left( \begin{array}{ccc} 1 & a & c \\ 0 & 1 & b \\ 0 & 0 & 1 \end{array} \right) : a,b,c \in \mathbb{Z}_2 \right\},\]
+é isomorfo ao grupo diedral $D_4.$
+\newpage
+\subsection{\textcolor{Floresta}{Grupos de Permutações}}
+\textcolor{blue}{\bf(1)}\label{64} Podemos descrever o grupo $S_n$ com dois geradores, $\sigma$ e $\tau,$ onde temos
+\[
+S_n = \langle \sigma, \tau |\sigma^n = \tau^2 = 1, \tau \sigma  = \sigma^{n-1} \tau \rangle
+\]
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Descreva os elementos de $S_3.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Encontre $0 \le m, n \le 4$ tais que $\sigma^{2020}\tau^{2019}\sigma^{2018}\tau^{2017}\sigma^{2016} = \sigma^n \tau^m \in S_5.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Escreva os elementos de $S_4$ e suas respectivas ordens baseado na representação dada acima.
+\end{tasks}
+\textcolor{blue}{\bf(2)}\label{65} Seja $H$ um subgrupo de $S_n.$ Mostre que $H \subseteq A_n$ ou $[H : H \cap A_n] = 2.$
+\newline\newline
+\textcolor{blue}{\bf(3)}\label{66} Podemos representar um $n$-ciclo por $\sigma = (i_1, i_2, \ldots, i_n).$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Qual é a ordem de um $n$-ciclo?
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Qual é a ordem de um produto de $r$ ciclos disjuntos de ordens $n_1, n_2, \ldots, n_r?$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Para quais inteiros positivos $m$ um $m$-ciclo é uma permutação par?
+\end{tasks}
+\textcolor{blue}{\bf(4)}\label{67} Seja $p$ um número primo.Mostre que todo elemento de ordem $p$ em $S_p$ é um $p$-ciclo. Mostre que $S_p$ não possui elemento de ordem $kp,$ para $k \ge 2.$ 
+\newline
+\newline
+\textcolor{blue}{\bf(5)}\label{68} Sejam $t$ e $n$ inteiros positivos e $p$ um primo. Mostre que o grupo $S_n$ possui elementos de ordem $p^t$ se, e somente se, $n \ge p^t.$
+\newline\newline
+%https://artofproblemsolving.com/community/c6h473647p2651848
+\textcolor{blue}{\bf(6)}\label{69} Mostre que as possíveis ordens dos elementos do grupo $S_7$ são $1,2,3,4,5,6,7,10$ e $12.$
+
+A título de curiosidade, vale a pena citar o seguinte Teorema de Landau sobre o crescimento assintótico das ordens em elementos de $S_n:$
+\begin{teo}[Landau]
+Se $\mathcal{G}(n)$ é a maior ordem possível para um elemento de $S_n,$ então
+\[
+\lim\limits_{n \to \infty} \frac{\ln \mathcal{G}(n)}{\sqrt{n \ln n}} = 1
+\]
+\end{teo}
+\textcolor{white}{oi}\newline
+\textcolor{blue}{\bf(7)}\label{70} Vamos ver como se comportam os geradores de $S_n.$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que $S_n$ é gerado por $\left(\begin{array}{cc} 1 & 2 \end{array}\right),\left(\begin{array}{cc} 1 & 3 \end{array}\right),$ $\ldots, \left(\begin{array}{cc} 1 & n-1 \end{array}, \begin{array}{cc} 1 & n \end{array}\right).$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Mostre que $S_n$ é gerado por $\left(\begin{array}{cc} 1 & 2 \end{array}\right)$ e $\left(\begin{array}{cccc} 1 & 2 & \cdots & n \end{array}\right)$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Mostre que $A_n$ é gerado pelos $3$-ciclos de $S_n,$ se $n \ge 3.$
+\end{tasks}
+\textcolor{blue}{\bf(8)}\label{71} Seja $G$ um subgrupo de $S_5$ gerado pelo ciclo $\left(\begin{array}{ccccc} 1 & 2 & 3& 4 &5 \end{array}\right)$ e pelo elemento $\left(\begin{array}{cc} 1 & 5 \end{array}\right)\left(\begin{array}{cc} 2 & 4 \end{array}\right).$ Prove que $G \cong D_5,$ onde $D_5$ é o grupo diedral de ordem $10.$%https://math.stackexchange.com/questions/340937/let-g-be-the-subgroup-of-s-5-generated-by-the-cycle-12345-and-the-elemen?rq=1
+\newline
+\newline
+\textcolor{blue}{\bf(9)}\label{72} Seja $\varphi \colon D_4 \to C_{24}$ um homomorfismo. Mostre que para todo $\alpha \in D_4,$ temos que $\varphi(\alpha^2) = e.$
+%https://math.stackexchange.com/questions/2326207/let-f-d-4-rightarrow-c-24-be-a-homomorphism-show-that-for-all-a-in-d-4?rq=1
+\newline
+\newline
+\textcolor{blue}{\bf(10)}\label{73} Seja $\sigma \in S_n$ o $r$-ciclo $\begin{array}{cccc} i_1 & i_2 & \ldots & i_r \end{array}$ e seja $\alpha \in S_n.$ 
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que
+\[
+\alpha \sigma \alpha^{-1} = \left(\begin{array}{cccc} \alpha(i_1) & \alpha(i_2) & \ldots & \alpha(i_r) \end{array}\right).\]
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Se $\sigma, \tau$ são dois $r$-ciclos, mostre que existe $\alpha \in S_n$ tal que $\alpha \sigma \alpha^{-1} = \tau.$ 
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Prove que duas permutações são conjugadas se e somente se elas têm a mesma estrutura cíclica.
+\end{tasks}
+\textcolor{blue}{\bf(11)}\label{74} Mostre que $A_4$ não contém subgrupos de ordem $6$ (e portanto, não vale a recíproca do Teorema de Lagrange).
+\newline
+\newline
+\textcolor{blue}{\bf(12)}\label{75} Uma matriz de permutação é uma matriz obtida a partir da matriz identidade $n \times n$ permutando-se suas colunas. Denote por $P_n$ o conjunto de todas as matrizes de permutação $n \times n.$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que $P_n$ forma um grupo com a multiplicação usual de matrizes.
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Mostre que a função
+\[
+\fullfunction{\theta}{S_n}{P_n}{\sigma}{\theta(\sigma)},
+\]
+em que $\theta(\sigma)$ denota a mattriz cuja $i$-ésima coluna coincide com a $\sigma(i)$-ésima coluna da matriz identidade, é um isomorfismo.
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Prove que $\mbox{sgn}(\sigma) = \det(\theta(\sigma)).$
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] Ficou confuso sobre o que esta questão quer dizer? Considere as matrizes
+\[
+\sigma = \left[ \begin{array}{ccc}0 & 0 & 1 \\ 1 & 0 & 0 \\ 0 & 1 & 0 \end{array}\right] \quad \mbox{e} \quad \tau = \left[ \begin{array}{ccc}0 & 1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 1 \end{array}\right]
+\]
+Verifique $\sigma^3 = \tau^2 = I_3,$ onde $I_3$ denota a matriz identidade $3 \times 3,$ e verifique que $\sigma$ e $\tau$ satisfazem as condições da presentação de $S_3$ apresentada na questão 1. Ou seja, temos uma representação matricial para o grupo de permutações $S_3.$
+\end{tasks}
+\textcolor{blue}{\bf(13)}\label{76} Mostre que $D_n$ é isomorfo ao subgrupo de $S_n$ gerado pelas permutações
+\[
+\left( \begin{array}{cccccc}
+1 & 2 & 3 &\cdots & n-1 & n \\
+2 & 3 & 4 &\cdots & n & 1
+\end{array}\right) \quad \mbox{e} \quad \left( \begin{array}{cccccc}
+1 & 2 & 3 & \cdots & n-1 & n \\
+1 & n & n-1 & \cdots & 3 & 2
+\end{array}\right)
+\]
+\textcolor{blue}{\bf(14)}\label{77} Determine todos os subgrupos normais de $S_4.$
+\newline
+\newline
+\textcolor{blue}{\bf(15)}\label{78}  Ecnontre um grupo $G$ que contenha subgrupos $H$ e $K$ tais que $K$ seja normal em $H,$ $H$ seja normal em $G,$ mas $K$ não seja normal em $G.$
+\newline
+\newline
+\textcolor{blue}{\bf(16)}\label{79} Seja $n = 3$ ou $n \ge 5.$ Mostre que $\{ e \},$ $A_n$ e $S_n$ são os únicos subgrupos normais de $S_n.$ (em particular, $A_n$ é o único subgrupo de $S_n$ de índice $2.$)
+\newline
+\newline
+\textcolor{blue}{\bf(17)}\label{80} Prove que o número de subgrupos de $D_n$ é $\sigma(n) + \tau(n),$ onde $\tau(n)$ representa a quantidade de divisores positivos de $n$ e $\sigma(n)$ representa a soma dos divisores de $n.$
+%https://math.stackexchange.com/questions/779351/prove-that-the-number-of-subgroups-in-d-n-tau-n-sigma-n?rq=1
+\subsection{\textcolor{Floresta}{Produto Direto}}
+\textcolor{blue}{\bf(1)}\label{81} Para cada produto direto discriminado abaixo, assinale a alternativa que apresenta um grupo isomorfo correspondente:
+\begin{itemize}
+\item[\textcolor{Floresta}{$\negrito{(a)} $}] $\mathbb{Z}_2 \times \mathbb{Z}_2$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](4)
+\task[\textcolor{violet}{$\negrito{(\alpha)} $}] $\mathbb{Z}_2$
+\task[\textcolor{violet}{$\negrito{(\beta)} $}] $\mathbb{Z}_4$
+\task[\textcolor{violet}{$\negrito{(\gamma)} $}] $V_4$  %= \langle a,b | a^2 = b^2 = (ab)^2 = e \rangle.$
+\task[\textcolor{violet}{$\negrito{(\delta)} $}] $S_3$
+\end{tasks}
+
+\item[\textcolor{Floresta}{$\negrito{(b)} $}] $\mathbb{Z}_2 \times S_3$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](4)
+\task[\textcolor{violet}{$\negrito{(\alpha)} $}] $\mathbb{Z}_{12}$
+\task[\textcolor{violet}{$\negrito{(\beta)} $}] $D_6$
+\task[\textcolor{violet}{$\negrito{(\gamma)} $}] $A_4$ 
+\task[\textcolor{violet}{$\negrito{(\delta)} $}] $GL_2(\mathbb{Z}_2)$
+\end{tasks}
+\item[\textcolor{Floresta}{$\negrito{(c)} $}] $S_3 \times D_4$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](4)
+\task[\textcolor{violet}{$\negrito{(\alpha)} $}] $\mbox{Aut}(D_{12})$
+\task[\textcolor{violet}{$\negrito{(\beta)} $}] $D_{24}$
+\task[\textcolor{violet}{$\negrito{(\gamma)} $}] $\mathbb{Z}_{48}$ 
+\task[\textcolor{violet}{$\negrito{(\delta)} $}] $GL_2(\mathbb{Z}_3)$
+\end{tasks}
+\item[\textcolor{Floresta}{$\negrito{(d)} $}] $\mathbb{Z}_3 \times \mathbb{Z}_9$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](4)
+\task[\textcolor{violet}{$\negrito{(\alpha)} $}] $\mathbb{Z}_{27}$
+\task[\textcolor{violet}{$\negrito{(\beta)} $}] $He(\mathbb{Z}_3)$
+%https://en.wikipedia.org/wiki/Heisenberg_group#Discrete_Heisenberg_group
+\task[\textcolor{violet}{$\negrito{(\gamma)} $}] $\mathbb{Z}_{9}$ 
+\task[\textcolor{violet}{$\negrito{(\delta)} $}] $\mathbb{Z}_{3}$
+\end{tasks}
+\end{itemize}
+
+\textcolor{blue}{\bf(2)}\label{82} Sejam $G_1, G_2, G_3$ grupos. Mostre que $G_1 \times G_2 \cong G_2 \times G_1$ e que $G_1 \times (G_2 \times G_3) \cong (G_1 \times G_2) \times G_3.$
+\newline
+\newline
+\textcolor{blue}{\bf(3)}\label{83} Sejam $G_1, \ldots, G_n$ grupos e seja $a = (a_1, \ldots, a_n)$ um elemento do produto direto $G_1 \times \ldots \times G_n.$ Suponha que, para cada $i = 1, \ldots, n,$ o elemento $a_i$ tenha ordem finita $r_i$ no grupo $G_i.$ Mostre que a ordem de $a$ em $G$ é igual a $\mmc(r_1, \ldots, r_n).$
+\newline\newline
+\textcolor{blue}{\bf(4)}\label{84} Considere
+\[
+\mathcal{S}_k = \prod\limits_{i=2}^k S_i
+\]
+Encontre a ordem do elemento $a = \left(\sigma \tau^2 \sigma^{0}, \sigma^2 \tau^3 \sigma^{-1}, \sigma^2 \tau^4 \sigma^{-2}, \ldots, \sigma^{\left\lfloor \frac{k+1}{2}\right\rfloor} \tau^k \sigma^{-\left\lfloor \frac{k-1}{2}\right\rfloor}\right) \in \mathcal{S}_k.$
+\newline\newline
+\textcolor{blue}{\bf(5)}\label{85} \begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Seja $G$ um grupo e sejam $H$ e $K$ subgrupos normais de $G$ tais que $HK = G$ e $H \cap K = \{e_G \}.$ Mostre que $G \cong H \times K.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Sejam $G_1$ e $G_2$ dois grupos e seja $G = G_1 \times G_2$ o produto direto deles. Considere os seguintes subconjuntos de $G:$
+\[
+H = \{ (a_1, e_2) : a_1 \in G_1 \} \quad \mbox{e} \quad K = \{(e_1, a_2) : a_2 \in G_2 \}
+\]
+onde $e_i$ denota o elemento identidade do grupo $G_i.$ Mostre que $H$ e $K$ são subgrupos normais de $G$ tais que $HK = G$ e $H \cap K = \{e_G \}.$
+\end{tasks}
+\textcolor{blue}{\bf(6)}\label{86} Sejam $G_1, G_2$ grupos, seja $N_1$ um subgrupo normal de $G_1$ e seja $N_2$ um subgrupo normal de $G_2.$ Mostre que $N_1 \times N_2$ é um subgrupo normal de $G_1 \times G_2$ e que
+\[
+\frac{G_1 \times G_2}{N_1 \times N_2} \cong \frac{G_1}{N_1} \times \frac{G_2}{N_2}
+\]
+\newline\newline
+\textcolor{blue}{\bf(7)}\label{87} Seja $G$ um grupo e sejam $H_1, \ldots, H_n$ subgrupos normais de $G$ tais que $G = H_1\ldots H_n$ e $H_i \cap H_1 \ldots H_{i-1} = \{e \},$ para todo $i = 2, \ldots, n.$ Mostre que $G$ é isomorfo ao produto direto de $H_1, \ldots, H_n.$ Dizemos, neste caso, que $G$ é produto direto interno de $H_1, \ldots, H_n.$
+\newline\newline
+\textcolor{blue}{\bf(8)}\label{88} Seja $G$ um grupo e sejam $H_1, \ldots, H_n$ subgrupos de $G.$ Mostre que $G$ é produto direto interno de $H_1, \ldots, H_n$ se, e somente se
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] $h_ih_j = h_jh_i, \ \forall \ h_i \in H_i$ e $h_j \in H_j,$ com $i \neq j,$ e
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Todo elemento de $g \in G$ se escreve de maneira única na forma
+\[
+g = h_1 \cdots h_n,
+\]
+com $h_i \in H_i,$ $i = 1, \ldots, n.$ 
+\end{tasks}
+\textcolor{blue}{\bf(9)}\label{89} Para todo $n \ge 1,$ denotaremos por $C_n$ o grupo cíclico de ordem $n.$ Mostre que $C_n \times C_m$ é cíclico se e somente se $\mdc(m,n) = 1$ e que, neste caso, $C_n \times C_m \cong C_{mn}.$
+\newline\newline
+\textcolor{blue}{\bf(10)}\label{90} Verifique que $C_4 \times C_6 \cong C_{12}.$ De fato, $C_m \times C_n \cong C_{\mmc(m,n)}.$
+\newline\newline
+\textcolor{blue}{\bf(11)}\label{91} Dizemos que um grupo $G$ é o produto semidireto (interno) de $N$ por $H$ se $G$ contém subgrupos $N$ e $H$ tais que
+\begin{itemize}
+    \item[\textbf{(i)}] $N \lhd G;$
+     \item[\textbf{(ii)}] $NH = G;$
+      \item[\textbf{(iii)}] $N \cap H = \{ e \}.$
+\end{itemize}
+Resolva cada um dos itens abaixo:
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que se $G$ é o produto semidireto interno de $N$ por $H,$ então os elementos de $G$ podem ser expressos de maneira única na forma $nh,$ com $n \in N$ e $h \in H.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Seja $G$ um produto semidireto de $N$ por $H.$ Mostre que
+\[
+\fullfunction{\theta}{H}{\mbox{Aut}(N)}{h}{\theta_h},
+\]
+com $\theta_h(n) = hnh^{-1}, \ \forall n \in N,$ é um homomorfismo.
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Sejam $N$ e $H$ dois grupos e seja $\theta \colon H \to \mbox{Aut}(N)$ um homomorfismo. Defina a seguinte operação binária no conjunto $N \times K = \{ (n,k) : n \in N, h \in H \}:$
+\[
+(n_1, h_1) \cdot (n_2,h_2) = (n_1 \theta_{h_1}(n_2), h_1h_2)
+\]
+Mostre que $N \times H$ com essa operação binária forma um grupo, chamado produto semidireto (externo) de $N$ por $H$ e denotado por $N \rtimes_{\theta} H.$
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] Mostre que
+\[
+N^{*} = \{ (n,e) \in N \rtimes_{\theta} H : n \in N \}
+\]
+é um subgrupo normal de $N \rtimes_{\theta} H$ e que $N \rtimes_{\theta} H$ é o produto semidireto interno de $N^{*}$ por  \[
+H^{*} = \{ (e,h) \in N \rtimes_{\theta} H : h \in H \}
+\]
+\task[\textcolor{Floresta}{$\negrito{(e)} $}] Mostre que se $G$ é o produto semidireto interno de $N$ por $H,$ então $G \cong N \rtimes_{\theta} H,$ onde $\theta$ é o homomorfismo do item (b).
+\task[\textcolor{Floresta}{$\negrito{(f)} $}] Mostre que o grupo diedral $D_n$ é um produto semidireto de um grupo cíclico de ordem $n$ por um grupo cíclico de ordem $2.$
+\end{tasks}
+\textcolor{blue}{\bf(12)}\label{92} Prove que $S_3 \cong \mathbb{Z}_3 \rtimes_{\theta} \mathbb{Z}_2,$ onde 
+\[
+\fullfunction{\theta}{\mathbb{Z}_2}{\mbox{Aut}(\mathbb{Z}_3)}{x}{\theta_x},
+\]
+onde $\theta_{\overline{0}} = 1_{\mathbb{Z}_3}$ e $\theta_{\overline{1}} = (x \mapsto -x).$
+\newpage
+\subsection{\textcolor{Floresta}{Grupos Abelianos Finitos}}
+
+\textcolor{blue}{\bf(1)}\label{93} Descreva todos os grupos abelianos de ordem $2^3 \cdot 3^4 \cdot 5.$
+\newline\newline
+
+\textcolor{blue}{\bf(2)}\label{94} Mostre que um grupo abeliano finito não é cíclico se e somente se ele contiver um subgrupo isomorfo a $\mathbb{Z}_p \times \mathbb{Z}_p$ para algum primo $p$ positivo.
+\newline\newline
+\textcolor{blue}{\bf(3)}\label{95} Verifique que $\mathbb{Z}_6 \times \mathbb{Z}_2$ é um grupo abeliano finito que não é cíclico.
+\newline\newline
+\textcolor{blue}{\bf(4)}\label{96}  Mostre que $D_{91}$, com ordem $182,$ não contém subgrupos cíclicos de ordem $14.$
+%https://math.stackexchange.com/questions/1222221/show-that-dihedral-group-of-order-182-doesnt-contain-cyclic-subgroup-of-order-1?rq=1
+% O grupo diedral $D_{n}$ contém um subgrupo $C_n$ de ordem $n$. Todos os outros elementos são involuções, isto é, possuem ordem $2.$ Portanto, qualquer subgrupo cíclico de $D_{n}$ ou é de ordem $2$ ou de ordem dividindo $n$. Logo, como $14$ não divide $91,$ segue que $D_{91}$ não possui subgrupos cíclicos de ordem $14.$
+\newline\newline
+\textcolor{blue}{\bf(5)}\label{97} Mostre que se a ordem de um grupo abeliano não for divisível por um quadrado então o grupo é cíclico.
+\newline\newline
+\textcolor{blue}{\bf(6)}\label{98} Sejam $G_1, G_2, G_3$ grupos abelianos finitos. Mostre que, se
+\[
+G_1 \times G_2 \cong G_1 \times G_3,
+\]
+então $G_2 \cong G_3.$
+\newline\newline
+\textcolor{blue}{\bf(7)}\label{99} Seja $G$ um grupo e $\mathcal{Z}(G)$ o centro de $G.$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que se $G / \mathcal{Z}(G)$ for cíclico, então $G$ será abeliano.
+
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Mostre que se $G$ tem ordem $p^2,$ onde $p$ é um número primo, então $G$ é abeliano.
+
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Suponha que $G$ não seja abeliano e que $\abs{G} = p^3,$ onde $p$ é um número primo. Mostre que $\mathcal{Z}(G) = G^{\prime}$ e que $G / \mathcal{Z}(G) \cong C_p \times C_p,$ onde $C_p$ denota o grupo cíclico de ordem $p.$
+ \end{tasks}
+ \newpage
+ \subsection{\textcolor{Floresta}{Ações de Grupo}}
+ \textcolor{blue}{\bf(1)}\label{100} Seja $G$ um grupo de ordem $p^k,$ onde $p$ é um número primo e $k > 0.$ Mostre que se $H$ é um subgrupo de ordem $p^{k-1},$ então $H$ é normal em $G.$
+ \newline\newline
+\textcolor{blue}{\bf(2)}\label{101} Seja $G$ um $p$-grupo finito, onde $p$ é um número primo positivo. Seja $H$ um subgrupo normal de $G$ tal que $H \neq \{ e \}.$ Mostre que $H \cap \mathcal{Z}(G) \neq \{ e \}.$
+ \newline\newline
+\textcolor{blue}{\bf(3)}\label{102} Seja $G$ um grupo agindo num conjunto $X.$ Dizemos que a ação de $G$ em $X$ é \emph{livre} se $\mbox{Stab}(x) = \{ e_G \},$ para todo $x \in X.$ Mostre que se a ação de $G$ em $X$ é livre, então $\abs{\mathcal{O}(x)} = \abs{G},$ para todo $x \in X.$
+ \newline\newline
+\textcolor{blue}{\bf(4)}\label{103} Seja $G$ um grupo que age em um conjunto $S.$ Para cada $g \in G,$ considere o seguinte subconjunto de $S:$
+\[
+S^g = \{ x \in S \colon g \cdot x = x \}
+\]
+Mostre que o número de órbitas distintas da ação de $G$ em $S$ é dado por
+\[
+\frac{1}{\abs{G}} \sum\limits_{g \in G} \abs{S^g}.
+\]
+
+\newpage
+
+\section{Soluções}
+\subsection{\textcolor{Floresta}{Grupos}}
+\textcolor{blue}{\bf(1)} Prove que o par $(G, \star)$ é um grupo em cada um dos casos seguintes:
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] $G = \mathbb{Z}_8$ e $\star \colon G \times G \to G,$ dada por:
+\[
+\star(\overline{a}, \overline{b}) = \overline{a} + \overline{b} = \overline{a+b}
+\]
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] $G = S^{1} = \{ z \in \mathbb{C} : \abs{z} = 1 \}$ e $\star$ o produto usual de números complexos.
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] $G = S_3 =\langle \sigma, \tau | \sigma^3 = \tau^2 = 1, \tau \sigma = \sigma^2 \tau \rangle$ e $\star$ a operação de composição. $S_3$ é chamado \textbf{grupo de permutações em 3 elementos.}
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] $G = D_4 =\langle \sigma, \tau | \sigma^4 = \tau^2 = 1, \tau \sigma = \sigma^3 \tau \rangle$ e $\star$ a operação de composição. $D_4$ é chamado \textbf{grupo diedral de ordem 8.}
+\task[\textcolor{Floresta}{$\negrito{(e)} $}] $G = V_4 = \langle a,b | a^2 = b^2 = (ab)^2 = 1 \rangle$ e $\star$ a operação de multiplicação. $V_4$ é chamado \textbf{grupo de Klein.}
+\task[\textcolor{Floresta}{$\negrito{(f)} $}] $G = Q_8 = \left\{ \pm \left( \begin{array}{cc} 1 & 0 \\ 0 & 1 \end{array} \right), \pm \left( \begin{array}{cc} 0 & 1 \\ -1 & 0 \end{array}\right), \pm \left( \begin{array}{cc} 0 & i \\ i & 0 \end{array}\right), \pm \left( \begin{array}{cc} i & 0 \\ 0 & -i \end{array}\right) \right\}$ e $\star$ a multiplicação de matrizes. $Q_8$ é chamado \textbf{grupo dos Quatérnios.}
+%http://www.math.niu.edu/~beachy/abstract_algebra/guide/section/33soln.pdf
+\task[\textcolor{Floresta}{$\negrito{(g)} $}] $G = GL_2(\mathbb{R}) = \{ A \in \mathcal{M}_n(\mathbb{R}) : \det(A) \neq 0 \}$ e $\star$ a multiplicação usual de matrizes. Em geral, $GL_n(F)$ é chamado \textbf{grupo linear gerl de ordem $n$ sobre $F.$}
+\task[\textcolor{Floresta}{$\negrito{(h)} $}] $G = SL_2(\mathbb{R}) = \{ A \in \mathcal{M}_n(\mathbb{R}) : \det(A)= 1 \}$ e $\star$ a multiplicação usual de matrizes. Em geral, $SL_n(F)$ é chamado \textbf{grupo linear especial de ordem $n$ sobre $F.$}
+\task[\textcolor{Floresta}{$\negrito{(i)} $}] $G = O_2(\mathbb{R}) = \{ A \in \mathcal{M}_n(\mathbb{R}) : AA^T = A^TA = I \}$ e $\star$ a multiplicação usual de matrizes. Em geral, $O_n(F)$ é chamado \textbf{grupo ortogonal de ordem $n$ sobre $F.$}
+\task[\textcolor{Floresta}{$\negrito{(j)} $}] $G = He(\mathbb{Z}_3) = \left\{ \left( \begin{array}{ccc} 1 & a & c \\ 0 & 1 & b \\ 0 & 0 & 1 \end{array} \right) : a,b,c \in \mathbb{Z}_3 \right\}$ e $\star$ o produto usual de matrizes. $ He(\mathbb{Z}_3)$ é chamado \textbf{grupo de Heisenberg módulo $3$.}
+\end{tasks}
+
+\textbf{\textcolor{red}{Solução:}} 
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Para $a,b,c \in \mathbb{Z},$ temos que
+\[
+(\overline{a} + \overline{b}) + \overline{c} = \overline{a+b} + \overline{c} = \overline{a+b+c} = \overline{a} + \overline{b+c} = \overline{a} + (\overline{b} + \overline{c})
+\]
+Logo, a operação é associativa. $\overline{0}$ é a identidade de $\mathbb{Z}_8,$ pois 
+\[
+\overline{a} + \overline{0} = \overline{a + 0} = \overline{a} = \overline{0 + a} = \overline{0} + \overline{a}, \forall \overline{a} \in \mathbb{Z}_8
+\]
+Além disso, $\overline{-a}$ é o oposto de $\overline{a},$ pois
+\[
+\overline{a} + \overline{-a} = \overline{a+(-a)} = \overline{0} = \overline{(-a)+a} = \overline{-a} + \overline{a}, \forall \overline{a} \in \mathbb{Z}_8.
+\]
+Portanto, $(\mathbb{Z}_8, +)$ é um grupo.
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Primeiramente, precisamos verificar se $S^1$ é fechado pelo produto usual em $\mathbb{C},$ ou seja, se $zw \in S^1$ para todo $z, w \in S^1.$ Sejam $z = a + bi$ e $w = c + di,$ com $a^2 + b^2 = c^2 + d^2 = 1.$ Então:
+\[
+z \cdot w = (a+bi)(c+di) =  
+\]
+\end{tasks}
+\textcolor{blue}{\bf(2)}\label{2} Seja $G$ um grupo. Mostre que se $(ab)^2 = a^2b^2,$ para quaisquer $a,b \in G,$ então $G$ é abeliano.
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(3)}\label{3} Vamos tentar generalizar a questão 1.
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Seja $G$ um grupo no qual $(ab)^i = a^ib^i,$ para três inteiros consecutivos $i$ e para quaisquer $a,b in G.$ Mostre que $G$ é abeliano.
+
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Vale o mesmo resultado se $(ab)^i = a^ib^i,$ para apenas dois inteiros consecutivos $i?$ Prove ou dê contraexemplo.
+\end{tasks}
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(4)}\label{4} Seja $G$ um conjunto não vazio com uma operação binária associativa. 
+
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que as seguintes condições são equivalentes:
+\begin{itemize}
+\item[\textbf{(i)}] $G$ é um grupo;
+\item[\textbf{(ii)}] Para todos $a,b \in G,$ as equações $bx = a$ e $yb = a$  têm pelo menos uma solução em $G.$
+\item[\textbf{(iii)}] Existe $e \in G$ tal que $ae = a,$ para todo $a \in G$ e para todo $a \in G,$ existe $b \in G$ tal que $ab = e$ (isto é, "unidade à direita" e inverso à direita).
+\end{itemize}
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Considere $G = S_3,$ com a operação binária de composição correspondente e $H = \mathbb{Z}_3,$ com a multiplicação usual. 
+\begin{itemize}
+\item[\textbf{(i)}] Resolva as equações $bx = a$ e $yb = a,$ para todos $a,b \in G.$
+\item[\textbf{(ii)}] Resolva as equações $bx = a$ e $yb = a,$ para todos $a,b \in H.$
+\item[\textbf{(iii)}] Conclua que $(S_3, \circ)$ é grupo, mas $(\mathbb{Z}_3, \cdot)$ não o é.
+\end{itemize}
+\end{tasks} 
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(5)}\label{5} Considere um grupo $G$. Dizemos que um elemento $a \in G$ é idempotente se, $a^2 = e.$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Seja $G$ um grupo tal que $a^2 = e,$ para todo $a \in G.$ Mostre que $G$ é abeliano.
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] O mesmo resultado é válido se $G$ é um grupo tal que $a^3 = e,$ para todo $a \in G?$ Prove ou dê contraexemplo.
+\end{tasks}
+\textcolor{blue}{\bf(6)}\label{6} Seja $G$ um grupo tal que $(ab)^2 = (ba)^2,$ para todos $a,b \in G$ e suponha que $x = e$ é o único elemento de $G$ tal que $x^2 = e.$ Mostre que $G$ é abeliano. 
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(7)}\label{7} Sejam $m,n$ inteiros positivos tais que $\mdc(m,n) = 1$ (ou seja, $m$ e $n$ são primos entre si). Seja $G$ um grupo em que todas as potências $m$-ésimas comutem entre si e todas as potências $n$-ésimas comutem entre si. Mostre que $G$ é abeliano.
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(8)}\label{8} Seja $G$ um grupo finito de ordem $n,$ onde $n$ é um inteiro positivo. Seja $r$ um inteiro positivo tal que $\mdc(r,n)=1.$ Mostre que todo elemento $g \in G$ pode ser escrito na forma $g = x^r,$ para algum $x \in G.$%homomorfismo1 pg21 
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(9)}\label{ex1} Verifique se cada grupo abaixo é cíclico:%homomorfismo1 pg21 
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] $\mathbb{Z}_7$ com a operação de adição.
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] $S_3$ com a operação de composição.
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] $V_4 = \langle a,b | a^2 = b^2 = (ab)^2 = e \rangle$ (Grupo de Klein)
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] $\mathbb{Z}^{*}_{11}$ com a operação de multiplicação.
+\end{tasks}
+\textcolor{blue}{\bf(10)}\label{ex2} Considere o grupo $(\mathbb{Z}_8, +).$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Verifique que $G$ é cíclico.
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Verifique que $\overline{3}$ e $\overline{5}$ geram $G,$ ou seja, $\langle \overline{3}, \overline{5} \rangle = \mathbb{Z}_8.$ Isso é uma contradição com o fato de $G$ ser cíclico? Justifique.
+\end{tasks}
+\newpage
+\subsection{\textcolor{Floresta}{Subgrupos}}
+\textcolor{blue}{\bf(1)}\label{9} Em cada caso, verifique se o conjunto $H$ é subgrupo do grupo $G$ dado em cada um dos itens a seguir:
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] $G = \mathbb{Q}(\sqrt{2}, i)$ com a multiplicação usual, e $H  = \mathbb{Q}(\sqrt{2}).$
+\end{tasks}
+\textcolor{blue}{\bf(2)}\label{10} Seja $G$ um grupo e seja $S$ um subconjunto de $G.$ Mostre que $S$ é um subgrupo de $G$ se e somente se $S \neq \emptyset$ e, para todos $a,b \in G,$ se $a,b \in S,$ então $ab^{-1} \in S.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(3)}\label{11} Seja $G = S_4.$ Mostre que 
+\[
+V = \{ id, (1 2)(3 4), (1 3)(2 4), (1 4)(2 3)\}
+\]
+é subgrupo de $G.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(4)}\label{12} Seja $G$ um grupo e seja $\{H_i : i \in I \}$ uma família de subgrupos de $G.$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que $\bigcap\limits_{i \in I} H_i$ é um subgrupo de $G.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] É verdade que $\bigcup\limits_{i \in I} H_i$ sempre é um subgrupo de $G?$ Prove ou dê contraexemplo.
+\end{tasks}
+\textcolor{blue}{\bf(5)}\label{13} Seja $G$ um grupo e sejam $H$ e $K$ subgrupos de $G.$ Mostre que $H \cup K$ é um subgrupo de $G$ se e somente se $H \subseteq K$ ou $K \subseteq H.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(6)}\label{14} Seja $G$ um grupo e $H$ um  subconjunto bnão vazio finito de $G$ tal que $HH = H.$ Prove que $H$ é um subgrupo de $G$. E se $H$ não for finito?
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(7)}\label{15} Seja $G$ um grupo. Dados $H$ um subgrupo de $G$ e $a \in G,$ mostre que $aHa^{-1} = \{aha^{ -1} : h \in H \}$ é um subgrupo de $G.$
+
+Se $H$ é finito, qual a ordem de $aHa^{-1}?$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(8)}\label{16} Seja $a$ um elemento de um grupo $G.$ O normalizador de $a$ em $G$ é dado por
+\[
+N(a) = \{ x \in G : xa = ax \}
+\]
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Determine o normalizador de $\sigma$ em $S_3 = \{1, \sigma, \sigma^2, \tau, \sigma \tau, \sigma^2 \tau \}.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Determine o normalizador de $j$ em $Q_8 = \{1, -1, i, -i, j, -j, k,-k \}.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Prove que $N(a)$ é um subgrupo de $G$ para todo $a \in G.$
+\end{tasks}
+\textcolor{blue}{\bf(9)}\label{17} Seja $G$ um grupo e seja $H$ um subgrupo de $G.$ Considere
+\[
+\mathcal{C}_G(H) = \{x \in G : xh = hx, \forall h in H \}
+\]
+$\mathcal{C}_G(H)$ é chamado centralizador de $H$ em $G.$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Seja $S_3 = \{1, \sigma, \sigma^2, \tau, \sigma \tau, \sigma^2 \tau \},$ e considere $H = \{1, \sigma, \sigma^2 \}.$ 
+\begin{itemize}
+\item Encontre $N(a),$ para todo $a \in H.$
+%\[N(1) = S_3, N(\sigma) = H, N(\sigma^2) = \{1, \sigma, \sigma^2\} \] 
+\item Calcule $\mathcal{C}_{S_3}(H).$
+%\[ \mathcal{C}_{S_3}(H) = H\]
+\item Verifique que $\mathcal{C}_{S_3}(H) = \bigcap\limits_{h \in H} N(h).$
+\end{itemize}
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Prove que $\mathcal{C}_{G}(H) = \bigcap\limits_{h \in H} N(h),$ para todo grupo $G$ e $H$ subgrupo de $G.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Mostre que $\mathcal{C}_G(H)$ é subgrupo de $G.$
+\end{tasks}
+\textcolor{blue}{\bf(10)}\label{18} O centro de um grupo $G$ é definido como sendo o conjunto
+\[
+\mathcal{Z}(G) = \{ z \in G : zx = xz, \forall x \in G \}
+\]
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Calcule $\mathcal{Z}(S_3).$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Calcule $\mathcal{Z}(Q_8).$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Verifique que $\mathcal{Z}(G) = \mathcal{C}_G(G).$
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] Prove que $\mathcal{Z}(G)$ é subgrupo de $G.$
+\end{tasks}
+
+\textcolor{blue}{\bf(11)}\label{19} Seja $G$ um grupo. Define-se a ordem de $a \in G$ como sendo o menor inteiro positivo $n$ tal que $a^n = e,$ se esse número existir (casos contrário, dizemos que $a$ ordem de $a$ é infinita). Denotamos a ordem de $a$ por $o(a).$ Mostre que se $a \in G$ tem ordem finita, esse número coincide com a ordem do subgrupo de $G$ gerado por $a.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(12)}\label{20} Seja $G$ um grupo de ordem par. Mostre que $G$ contém um elemento de ordem $2.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(13)}\label{21} Mostre que se $G$ é um grupo de ordem par, então existe um número ímpar de elementos de ordem $2.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(14)}\label{22} Seja $a$ um elemento de um grupo tal que $a^n = e.$ Mostre que $o(a) \mid n.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(15)}\label{23} Seja $G$ um grupo e sejam $a,b \in G.$ Mostre que $ab$ e $ba$ têm a mesma ordem.
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(16)}\label{24} Seja $G$ um grupo e seja $a \in G$ um elemento de ordem $n.$ Se $n = km,$ mostre que $a^k$ tem ordem $m.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(17)}\label{ex3}  Seja $g$ um elemento de um grupo $G$ tal que $g^{45} = e.$ Quais são os possíveis valores para as ordens de $G?$
+%Como $g^{45} = e,$ ordem de $g$ deve ser um divisor de $45.$ Como 
+%\[
+%D(45) = \{1,3,5,9,15,45 \},
+%\]
+%as possíveis ordens de $g$ são $1,3,5,9,15$ e $45.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(18)}\label{25} Seja $G$ um grupo e seja $a \in G$  um elemento de ordem $n$. Seja  $m$ um inteiro positivo tal que $\mdc(m,n) = 1.$ Mostre que $o(a^m) = n.$ O que ocorre se $\mdc(m,n) > 1?$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(19)}\label{26} Seja $n \in \mathbb{N}^{*}.$ Definimos:
+\[
+\varphi(n) = \abs{\{ m \in \mathbb{N}^{*} : \mdc(m,n) = 1 \}}
+\]
+$\varphi$ é a chamada \textbf{função $\varphi$ de Euler} ou \textbf{função totiente de Euler}.
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Encontre $\varphi(24),\varphi(35)$ e $\varphi(97).$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Verifique que $\varphi(p) = p-1,$ onde $p$ é um número primo.
+\task[\textcolor{Floresta}{$\negrito{(c)} $}]  Mostre que o número de geradores de um grupo cíclico de ordem $n$ é $\varphi(n).$
+\end{tasks}
+Na verdade, temos que 
+\[
+\varphi(n) = n \prod\limits_{\substack{p \mbox{ primo} \\ p \mid n }} \left(1 - \frac{1}{p} \right) 
+\]
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(20)}\label{27} Vamos mostrar nesse exercício que o grupo das matrizes inversíveis $4 \times 4$ com entradas inteiras $GL_4(\mathbb{Z})$ admite um elemento de ordem $12.$%https://pdfs.semanticscholar.org/d72f/50b01413336e0c2b4f01859b5c39e01d7ad1.pdf
+%https://pdfs.semanticscholar.org/d72f/50b01413336e0c2b4f01859b5c39e01d7ad1.pdf
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] O $m$-ésimo \textbf{polinômio ciclotômico} $\varphi_n(x)$ é definido como 
+\[
+\varphi_n(x) = \prod\limits_{\xi \in mu_m(\mathbb{C}} (x - \xi),
+\]
+onde $\mu_m(\mathbb{C}) = \langle e^{\frac{2 \pi i}{m}} \rangle = \{1, e^{\frac{2 \pi i}{m}}, \ldots, e^{\frac{2 \pi i (m-1)}{m}} \}$ é o conjunto das raízes $m$-ésimas da unidade (isto é, as raízes, em $\mathbb{C},$ da equação $x^m - 1 = 0$). Mostre que $\varphi_{12}(x) = x^{4} - x^2 + 1.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Dado um polinômio mônico $p(x) = x^k + a_{k-1}p^{k-1} + \ldots + a_1x + a_0,$ dizemos que a \textbf{matriz companheira} $C$ de $p(x)$ é a matriz
+\[
+C = \left(\begin{array}{cccccc}
+0 & 0 & 0 & \cdots & 0 &-a_0 \\
+1 & 0 & 0 & \cdots & 0 &-a_1 \\
+0 & 1 & 0 & \cdots & 0 &-a_2 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & 0 & \cdots & 1 &-a_{k-1} 
+\end{array}\right)
+\]
+\begin{itemize}
+\item[\textbf{(i)}] Escreva a matriz companheira de $\varphi_{12}(x).$
+\item[\textbf{(ii)}] Seja $A$ a matriz companheira de $\varphi_m(x).$ Mostre que $A^m = I.$ Pode-se mostrar que não existe natural positivo $k < m,$ tal que $A^k = I,$ ou seja, a ordem de $A$ é $m.$
+\end{itemize}
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Considere a matriz
+\[
+B = \left(\begin{array}{cccc}
+1 & 2 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 4 & 1 & 0\\
+0 & 0 & 3 & 1\\
+\end{array}\right)
+\]
+
+\begin{itemize}
+\item[\textbf{(i)}] Verifique que $B$ é inversível, e sua inversa possui todas as entradas inteiras.
+\item[\textbf{(ii)}] Dada $C$ a matriz companheira de $\varphi_{12}(x),$ mostre que é possível obter a partir de $C$ a matriz $B$ por meio de operações elementares nas linhas e colunas.
+\item[\textbf{(iii)}] Qual é a ordem de $A = BCB^{-1}?$
+\end{itemize}
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] Conclua que 
+\[
+A =  \left(\begin{array}{cccc}
+2 & -16 & 3 & -1\\
+1 & -2 & 0 & 0\\
+4 & 5 & -3 & 1\\
+0 & 35 & -8 & 3\\
+\end{array}\right)
+\]
+é um elemento de ordem $12$ de $GL_4(\mathbb{Z})$. Na verdade, $12$ é a maior ordem finita possível para um elemento de $GL_4(\mathbb{Z}).$ As possíveis ordens para elementos desse grupo que possuem ordem finita são $2,3,4,5,6,8,10$ e $12.$
+\end{tasks}
+\textcolor{blue}{\bf(21)}\label{28} Mostre que todo subgrupo de um grupo cíclico é cíclico.
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(22)}\label{29} Sejam $G$ um grupo e sejam $a,b \in G.$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que $o(a) = o(b^{-1}ab).$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Se $G$ possui apenas um elemento $a$ de ordem $n,$ mostre que $a \in \mathcal{Z}(G)$ e que $n = 1$ ou $n = 2.$ 
+\end{tasks}
+\textcolor{blue}{\bf(23)}\label{30} Seja $G = \mathcal{M}_2(\mathbb{Z}),$ munido da multiplicação usual de matrizes. Considere
+\[
+A = \left( \begin{array}{cc} 1 & -1 \\ 0 & -1 \end{array} \right) \quad \mbox{ e } \quad B = \left( \begin{array}{cc} 1 & 0 \\ 0 & -1 \end{array} \right) 
+\]
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Verifique que $o(A) = o(B) = 2.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Verifique que $o(AB) = \infty.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Conclua que se $G$ não é abeliano, existem elementos $a, b \in G,$ tais que $o(a), o(b) < \infty,$ mas $o(ab) = \infty.$
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] Encontre outros exemplos de grupos não abelianos e elementos que satisfazem essa condição.
+\end{tasks}
+\textcolor{blue}{\bf(24)}\label{31} Seja $G$ um grupo não trivial. 
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Encontre todos os subgrupos de $G = (\mathbb{Z}_7, +).$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Prove que se $G$ só possui como subgrupos os subgrupos triviais, então $G$ é um grupo cíclico finito cuja ordem é um número primo.%Pag 10 - Livro Agozzini
+\end{tasks}
+\textcolor{blue}{\bf(25)}\label{32} Seja $G = S^{1} = \{ z \in \mathbb{C} : \abs{z} = 1 \}.$ Para cada $n \ge 1,$ consideremos o conjunto
+\[
+\mu_n(\mathbb{C}) = \langle e^{\frac{2 \pi i}{n}} \rangle = \{1, e^{\frac{2 \pi i}{n}}, \ldots, e^{\frac{2 \pi i (n-1)}{n}} \}
+\]
+formado pelas raízes $n$-ésimas da unidade (isto é, as raízes, em $\mathbb{C},$ da equação $x^n - 1 = 0$).
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Encontre $\mu_3(\mathbb{C})$ e $\mu_5(\mathbb{C}).$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Mostre que $\mu_n(\mathbb{C})$ é subgrupo de $S^1.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Conclua que existem grupos infinitos que possuem subgrupos cíclicos finitos de todas as ordens.
+\end{tasks}
+\textcolor{blue}{\bf(26)}\label{ex4} Seja $G = \langle g \rangle$ um grupo cíclico de ordem $n,$ e tome $m < n.$ Prove que $\langle g^m \rangle$ tem ordem $\frac{n}{\mdc(m,n)}.$
+%http://sites.millersville.edu/bikenaga/abstract-algebra-1/cyclic-groups/cyclic-groups.pdf
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(27)}\label{ex5} Encontre a ordem do elemento $g$ no grupo $G$ dado em cada item abaixo:
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] $g = a^{32}$ e $G = \{1, a, a^2, a^3, \ldots, a^{36}, a^{37} \}.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] $g = 18$ e $G = \mathbb{Z}_{30}.$
+\end{tasks}
+\textcolor{blue}{\bf(28)}\label{ex6} Encontre todos os elementos de ordem $101$ em $\mathbb{Z}_{2020}.$ %http://sites.millersville.edu/bikenaga/abstract-algebra-1/cyclic-groups/cyclic-groups.pdf
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(29)}\label{ex7} No grupo $G = \mathcal{U}(\mathbb{Z}_{36}),$ considere
+\[
+H = \{ \overline{x} | x \equiv 1\pmod{4} \} \quad \mbox{e} \quad K = \{ \overline{y} | y \equiv 1\pmod{4} \}.
+\]
+Mostre que $H$ e $K$ são subgrupos de $G,$ e encontre o grupo $HK.$
+%http://www.math.niu.edu/~beachy/abstract_algebra/guide/section/33soln.pdf
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(30)}\label{ex8} Seja $K$ um corpo, e tome $H$ o subconjunto de $GL_2(K)$ formado por todas as matrizes triangulares superiores invertíveis. Mostre que $H$ é um subgrupo de $GL_2(K).$
+%http://www.math.niu.edu/~beachy/abstract_algebra/guide/section/33soln.pdf - ex 23
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(31)}\label{ex8} Seja $p$ um número primo.
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Prove que $GL_2(\mathbb{Z}_p)$ possui exatamente $(p^2 - 1)(p^2 - p)$ elementos.
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Mostre que o subgrupo de $GL_n(\mathbb{Z}_p)$ consistindo de todas as matrizes triangulares superiores invertíveis possui ordem $(p - 1)^2p.$
+\end{tasks}
+%http://www.math.niu.edu/~beachy/abstract_algebra/guide/section/33soln.pdf - ex 24
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(32)}\label{ex9} Seja $G$ o subgrupo de $GL_2(\mathbb{R})$ definido por
+\[
+G = \left\{ \left[ \begin{array}{cc} m & b \\ 0 & 1 \end{array}   \right] \big|  m \neq 0 \right\}
+\]
+Sejam $A = \left[ \begin{array}{cc} 1 & 1 \\ 0 & 1 \end{array} \right]$ e $B = \left[ \begin{array}{cc} -1 & 0 \\ 0 & 1 \end{array} \right].$ Encontre os centralizadores $C(A)$ e $C(B)$, e mostre que $C(A) \cap C(B) = \mathcal{Z}(G),$ onde$\mathcal{Z}(G)$ é o centro de $G.$
+%http://www.math.niu.edu/~beachy/abstract_algebra/guide/section/33soln.pdf - ex 26
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(33)}\label{ex9} Seja $H$ o seguinte subconjunto de $GL_2(\mathbb{Z}_5):$
+\[
+H = \left\{ \left[ \begin{array}{cc} m & b \\ 0 & 1 \end{array}   \right] \in GL_2(\mathbb{Z}_5) \big|  m,b \in \mathbb{Z}_5, m = \pm 1 \right\}
+\]
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Prove que $H$ é um subgrupo de $G.$ 
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Mostre que se $A = \left( \begin{array}{cc} 1 & 1 \\ 0 & 1 \end{array} \right)$ e $B = \left( \begin{array}{cc} -1 & 0 \\ 0 & 1 \end{array} \right),$ então $BA = A^{-1}B.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Mostre que todo elemento de $H$ pode ser escrito unicamente na forma $A^iB^j,$ onde $0 \le i < 5$ e $0 \le j < 2.$ 
+\end{tasks}
+\textcolor{blue}{\bf(34)}\label{ex10} Sejam $H$ e $K$ subgrupos de um grupo $G.$ Prove que $HK$ é um subgrupo de $G$ se e somente se $KH \subset HK.$
+%http://www.math.niu.edu/~beachy/abstract_algebra/guide/section/33soln.pdf - ex 30
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(35)}\label{ex11} Considere o seguinte subonjunto de $\mathbb{Z}:$
+\[
+H = \{ 30x + 42y + 70z | x,y,z \in \mathbb{Z} \}
+\]
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Prove que $H$ é um subgrupo de $\mathbb{Z}.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Encontre um gerador para $H.$
+\end{tasks}
+%http://sites.millersville.edu/bikenaga/abstract-algebra-1/cyclic-groups/cyclic-groups.pdf -pg3
+\newpage
+\subsection{\textcolor{Floresta}{Classes laterais e Teorema de Lagrange}}
+\textcolor{blue}{\bf(1)}\label{33} Em cada caso seguinte, para $G$ grupo e $H$ subgrupo de $G,$ determine $[G : H].$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] $G = \mathbb{Z}$ o grupo aditivo dos números inteiros e $H = \langle m \rangle$ o subgrupo dos múltiplos do inteiro $m \ge 2.$ %Pag 13 - agozzini[g:h] = m
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] $G = \mathbb{Z}_{12}$ o grupo aditivo dos inteiros módulo $12$ e $H = \langle 4 \rangle = \{\overline{0},\overline{4},\overline{8}\}.$%https://math.stackexchange.com/questions/2701128/what-is-the-index-of-a-subgroup-h-in-a-group-g
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] $G = D_n = \langle \sigma, \tau | \sigma^n = \tau^2 = 1, \tau \sigma \tau^{-1} = \sigma^{-1} \rangle,$ e $H = \langle \sigma^d, \sigma^r \tau \rangle,$ onde $d \mid n$ e $0 \le r < d.$%https://groupprops.subwiki.org/wiki/Subgroup_structure_of_dihedral_groups
+\end{tasks}
+\textcolor{blue}{\bf(2)}\label{34} Seja $G$ um grupo e sejam $H$ e $K$ subgrupos de $G$ cujas ordens são relativamente primas. Mostre que $H \cap K = \{ e \}.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(3)}\label{35} Seja $G$ um grupo e sejam $a,b \in G$ tais que $ab=ba.$ Se $a$ tem ordem $m,$ $b$ tem ordem $n$ e $\mdc(m,n) = 1,$ mostre que a ordem de $ab$ é $mn.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(4)}\label{36} Seja $G$ um grupo abeliano que contém um elemento de ordem $n$ e um de ordem $m.$ Mostre que $G$ contém um elemento de ordem $\mmc(m,n).$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(5)}\label{37} Seja $G$ umm grupo e sejam $H$ e $K$ dois subgrupos de índice finito em $G.$ Mostre que $H \cap K$ é um subgrupo de índice finito em $G.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(6)}\label{38} Seja $G$ um grupo e sejam $H \le G,$ e $K \le H.$ Mostre que $K$ tem índice fiito em $G$ se e somente se $H$ tem índice finito em $G$ e $K$ tem índice finito em $H.$ Neste caso, mostre que \[[G:K] = [G : H][H : K].\]
+\newpage
+\subsection{\textcolor{Floresta}{Subgrupos normais e quocientes}}
+\textcolor{blue}{\bf(1)}\label{39} Determine se $H$ é um subgrupo normal de $G$ em cada caso seguinte:
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] $G = \mathbb{Z}_8$ e $H = \langle \overline{2} \rangle.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] $G = S_3$  e $H = S_2.$ %Não https://groupprops.subwiki.org/wiki/S2_in_S3
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] $G = M_{16} = \langle a,x \mid a^8 = x^2 = e, xax^{-1} = a^5 \rangle$ e $H = \{e, x, a^4, a^4x \}$%Não
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] $G = 2O = \langle a,b, c |a^4 = b^3 = c^2 = abc \rangle$ (grupo octaedral binário) e $H = \langle aca^{-3}, c \rangle.$%https://people.maths.bris.ac.uk/~matyd/GroupNames/1/CSU(2,3).html %https://en.wikipedia.org/wiki/Binary_octahedral_group
+\task[\textcolor{Floresta}{$\negrito{(e)} $}] $G = \mathbb{Z}_2 \times D_4,$ e $H = \mathbb{Z}_2 \times \langle \sigma \rangle.$
+\task[\textcolor{Floresta}{$\negrito{(f)} $}] $G = \mathbb{Z}_2 \times D_4,$ e $H = \mathbb{Z}_2 \times \langle \tau \rangle.$
+\task[\textcolor{Floresta}{$\negrito{(g)} $}] $G = SL_2(\mathbb{Z}_3),$ grupo das matrizes $2 \times 2$ com entradas em $\mathbb{Z}_3$ e determinante $1,$ e $H = \left\{ \left(\begin{array}{cc} \overline{1} & \overline{0}\\
+\overline{0} & \overline{1}
+\end{array} \right), 
+\left(\begin{array}{cc} \overline{1} & \overline{1}\\
+\overline{0} & \overline{1}
+\end{array} \right) ,
+\left(\begin{array}{cc} \overline{1} & \overline{2}\\
+\overline{0} & \overline{1}
+\end{array} \right) \right\}$
+%https://people.maths.bris.ac.uk/~matyd/GroupNames/1/SL(2,3).html
+\task[\textcolor{Floresta}{$\negrito{(h)} $}]$G = SL_2(\mathbb{Z}_3),$ grupo das matrizes $2 \times 2$ com entradas em $\mathbb{Z}_3$ e determinante $1,$ e $H = \langle A,B | A^4 = I, B^2 = A^2, BAB^{-1} = A^{-1} \rangle,$ onde $A = \left(\begin{array}{cc} \overline{0} & \overline{2}\\\overline{1} & \overline{0}\end{array} \right)$ e $B = \left(\begin{array}{cc} \overline{2} & \overline{1}\\\overline{1} & \overline{1}\end{array} \right).$
+\end{tasks}%H é o comutador de $G,$ e portanto é normal em $G.$https://people.maths.bris.ac.uk/~matyd/GroupNames/1/SL(2,3).html %https://people.maths.bris.ac.uk/~matyd/GroupNames/1/Q8.html $H =\left\{ \left(\begin{array}{cc} 1 & 0\\0 & 1\end{array} \right), \left(\begin{array}{cc} 0 & 2\\1 & 0\end{array} \right) ,\left(\begin{array}{cc} 2 & 0\\0 & 2\end{array} \right),\left(\begin{array}{cc} 0 & 1\\2 & 0\end{array} \right),\left(\begin{array}{cc} 2 & 1\\1 & 1\end{array} \right),\left(\begin{array}{cc} 2 & 2\\2 & 1\end{array} \right),\left(\begin{array}{cc} 1 & 2\\2 & 2\end{array} \right),\left(\begin{array}{cc} 1 & 1\\1 & 2\end{array} \right)\right\}$
+
+\textcolor{blue}{\bf(2)}\label{40} Seja $H$ um subgrupo de índice $2$ em um grupo $G.$ Mostre que $H$ é normal em $G.$ 
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(3)}\label{41} Sejam $N_1, N_2$ subgrupos normais de um grupo $G.$ Mostre que $N_1 \cap N_2$ é normal em $G.$ Mais geralmente, mostre que se $\{N_i : i \in I \}$ é uma família de subgrupos normais de $G$ então $\bigcap\limits_{i \in I} N_i$ é um subgrupo normal de $G.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(4)}\label{42} Neste exercício vamos construir um grupo não abeliano, contendo $8$ elementos, cujos subgrupos são todos normais. Considere o seguinte subconjunto de $\mathcal{M}_2(\mathbb{C}):$
+\[
+Q_8 = \{Id,-Id, I, -I, J, -J, K, -K\},
+\]
+em que
+\[
+Id = \left[\begin{array}{cc} 1 & 0 \\ 0 & 1 \end{array}\right], \quad I = \left[\begin{array}{cc} 0 & 1 \\ -1 & 0 \end{array}\right],  \quad J = \left[\begin{array}{cc} 0 & i \\ i & 0 \end{array}\right], \quad K = \left[\begin{array}{cc} i & 0 \\ 0 & -i \end{array}\right] 
+\]
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Verifique as seguintes identidades abaixo:
+\begin{itemize}
+\item $I^2 = J^2 = K^2 = -Id$
+\item $IJ = K = -JI;$
+\item $IK = -J = KI;$
+\item $JK = I = -KJ.$
+\end{itemize}
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Mostre que $Q_8$ com o produto usual de matrizes é um grupo não abeliano de ordem $8.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Encontre $I^{-1}, J^{-1}$ e $K^{-1}.$
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] Calcule as ordens de todos os elementos de $Q_8.$
+\task[\textcolor{Floresta}{$\negrito{(e)} $}] Liste todos os subgrupos de $Q_8.$
+\task[\textcolor{Floresta}{$\negrito{(f)} $}] Mostre que todos os subgrupos de $Q_8$ são normais.
+\task[\textcolor{Floresta}{$\negrito{(g)} $}] Determine o centro $\mathcal{Z}(Q_8)$ de $Q_8.$
+\end{tasks}
+\textcolor{blue}{\bf(5)}\label{43} Seja $GL_n(\mathbb{R})$ o grupo das matrizes de ordem $n$ inversíveis em $\mathbb{R},$ com a multiplicação usual. Mostre que
+\[
+SL_n(\mathbb{R}) = \{ A \in GL_n(\mathbb{R}) : \det A = 1 \}
+\]
+é um subgrupo normal de $GL_n(\mathbb{R}).$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(6)}\label{44} Seja $H$ um subgrupo de um grupo $G$ tal que o produto de duas classes laterais à direita de $H$ em $G$ é sempre uma classe lateral à direita de $H$ em $G.$ Mostre que $H$ é normal em $G.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(7)}\label{45} Seja $N$ um subgrupo normal de um grupo $G$ e seja $H$ um subgrupo de $G.$ Mostre que $NH$ é um subgrupo de $G.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(8)}\label{46}  Sejam $M$ e $N$ subgrupos normais de um grupo $G.$ Mostre que $MN$ também é normal em $G.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(9)}\label{47} Seja $N$ um subgrupo normal de um grupo $G$ tal que $[G : N] = m.$ Mostre que $a^m \in N,$ para todo $a \in G.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(10)}\label{48} Seja $G$ um grupo e seja $H$ um subgrupo de $G.$ O \textbf{normalizador} de $H$ em $G$ é definido por
+\[
+N_G(H) = \{g \in G : gHg^{-1} = H \}
+\]
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Encontre o normalizador de $H = \{1, b \}$ em $G = M_4(2) = \langle a,b | a^8 = b^2 = 1, bab = a^5 \rangle.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Encontre o normalizador de $H = \langle a \rangle$ em $G = M_4(2) = \langle a,b | a^8 = b^2 = 1, bab = a^5 \rangle.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Mostre que $N_G(H)$ é um subgrupo de $G.$ 
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] Mostre que $H$ é um subgrupo normal de $N_G(H).$ 
+\task[\textcolor{Floresta}{$\negrito{(e)} $}] Prove que se $H$ é um subgrupo normal de um subgrupo $K$ de $G,$ então $K \subseteq N_G(H).$
+\task[\textcolor{Floresta}{$\negrito{(f)} $}] Mostre que $H$ é normal em $G$ se e somente se $N_G(H) = G.$
+\end{tasks}
+\textcolor{blue}{\bf(11)}\label{49} Seja $G$ um grupo. Para $a,b \in G,$ definimos o \textbf{comutador} de $a$ e $b$ por
+\[
+[a,b] = aba^{-1}b^{-1}
+\]
+Denote por $G^{\prime}$ o subgrupo de $G$ gerado pelo conjunto $\{[a,b] : a,b \in G \}.$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Encontre $(D_5)^{\prime},$ $(S_3)^{\prime}$ e $(\mathbb{Z}_4)^{\prime}.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Mostre que $G^{\prime}$ é normal em $G.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Mostre que $G/G^{\prime}$ é abeliano.
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] Seja $N$ um subgrupo normal de $G.$ Mostre que se $G/N$ é abeliano, então $G^{\prime} \subseteq N.$
+\task[\textcolor{Floresta}{$\negrito{(e)} $}] Mostre que se $H$ é um subgrupo de $G$ tal que $G^{\prime} \subseteq H$ então $H$ é normal em $G.$
+\end{tasks}
+O subgrupo $G^{\prime}$ de $G$ definido acima chama-se subgrupo \textbf{derivado} (ou \textbf{comutador}) de $G.$ 
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(12)}\label{50} Seja $H$ um subgrupo de um grupo finito $G$ e suponha que $H$ seja o único subgrupo de $G$ de ordem $\abs{H}.$ Mostre que $H$ é normal em $G.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(13)}\label{51}  Se  $N$ e $M$ são subgrupos normais de um grupo $G$ e $N \cap M = \{e\},$ mostre que $nm = mn,$ $\forall n \in N, \forall m \in M.$
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(14)}\label{52} Seja 
+\[
+G = \left\{ \left(\begin{array}{cc} a & b \\ 0 & c \end{array}\right): a,b,c \in \mathbb{R}, ac \neq 0 \right\}
+\]
+e seja $N = \left\{ \left(\begin{array}{cc} 1 & b \\ 0 & 1 \end{array}\right) : b \in \mathbb{R} \right\}.$ Mostre que
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] $N$ é um subgrupo normal de $G.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] $G/N$ é abeliano.
+\end{tasks}
+\textcolor{blue}{\bf(15)}\label{53} Seja $G$ um grupo com centro $\mathcal{Z}(G).$ Mostre que se $G/\mathcal{Z}(G)$ é cíclico, então $G$ é abeliano. A recíproca é verdadeira? Prove ou dê contra-exemplo.
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(16)}\label{54} Seja $G$ um grupo finito e $H$ um subgrupo normal em $G$ tal que $\mdc(G, [G:H]) = 1.$ Prove que $H$ é o único subgrupo de $G$ de ordem igual a $\abs{H}.$ 
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(17)}\label{55} Seja $G$ um grupo de ordem $n^2$ com $n+1$ subgrupos de ordem $n$ tais que a intersecção de quaisquer dois desses subgrupos seja $\{e \},$ para $n \ge 2.$ 
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que $G$ é abeliano.
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Prove que $\mathbb{Z}_2 \times \mathbb{Z}_2$ e $\mathbb{Z}_3 \times \mathbb{Z}_3$ são grupos abelianos.
+\end{tasks}
+\textcolor{white}{Oi}\newline\newline
+\textcolor{blue}{\bf(18)}\label{56} Considere o grupo $G = \mathbb{Z}_q^n = \underbrace{\mathbb{Z}_q \times \mathbb{Z}_q \times \ldots \times \mathbb{Z}_q}_{n \mbox{ vezes}},$ com $q$ primo. Então, a quantidade de subgrupos de ordem $k$ de $\mathbb{Z}_q^n$ é dada por
+\[
+\binom{n}{k}_q = \frac{(q^n - 1) \cdot \ldots \cdot (q - 1)}{(q^k - 1) \cdot \ldots \cdot (q - 1) \cdot (q^{n-k}-1) \cdot \ldots \cdot (q - 1)},
+\]
+onde as expressões $\binom{n}{k}_q$ são chamadas de coeficientes gaussianos e possuem propriedades similares aos coeficientes binomiais. 
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Liste todos os subgrupos próprios de $\mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_2.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Use a fórmula acima para verificar a quantidade de subgrupos de $\mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_2.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Mostre que a quantidade de subgrupos de $\mathbb{Z}_q^n$ é
+\begin{itemize}
+    \item[\textbf{(i)}] $q+3,$ se $n =2;$%\[\sum\limits_{k=0}^2 \binom{2}{k}_q  \]
+    \item[\textbf{(ii)}] $2(q^2+q+2),$ se $n =3;$%\[\sum\limits_{k=0}^3 \binom{3}{k}_q  \]
+    \item[\textbf{(iii)}] $2(q^6+q^5+3q^4+3q^3+3q^2 +2q+3),$ se $n =5.$%\[\sum\limits_{k=0}^5 \binom{5}{k}_q  \]
+\end{itemize}
+\end{tasks}
+\newpage
+\subsection{\textcolor{Floresta}{Homomorfismos e isomorfismos}}
+\textcolor{blue}{\bf(1)}\label{57} Em cada um dos casos abaixo, verifique se a função $\varphi \colon G \to G$ é um homomorfismo de grupos. Nos casos em que são homomorfismos, determine os núcleos e imagens deles.
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] $G = \mathbb{R}^{*} = \{ x \in \mathbb{R} : x \neq 0 \}$ com operação dada pelo produto usual de números reais e $\varphi(x) = x^2,$ para todo $x \in G.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] $G = \mathbb{R}^{*}$ e $\varphi(x) = 2^x,$ para todo $x \in G.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] $G = \mathbb{R},$ com operação dada pela soma usual de números reais e $\varphi(x) = x + 1,$ para todo $x \in G.$
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] $G = \mathbb{R}$ e $\varphi(x) = 13x,$ para todo $x \in G.$
+\task[\textcolor{Floresta}{$\negrito{(e)} $}] $G$ é um grupo abeliano qualquer e $\varphi(x) = x^5,$ para todo $x \in G.$
+\end{tasks}
+
+\textcolor{blue}{\bf(2)}\label{58} Encontre um grupo que seja isomorfo a $G/H$ para cada caso abaixo:
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] $G = \mathbb{Z}_{18}$ e $H = \langle \overline{3} \rangle.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] $G = S_3$ e $H = \langle \sigma \rangle.$%https://people.maths.bris.ac.uk/~matyd/GroupNames/1/S3.html
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] $G = D_{12} = \langle \sigma, \tau |\sigma^{12} = \tau^2 = 1, \tau \sigma \tau^{ -1} = \sigma^{-1} \rangle$ e $H = \langle \sigma^3 \rangle.$%https://people.maths.bris.ac.uk/~matyd/GroupNames/1/D12.html
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] $G = C_4 \circ D_4 = \langle a,b,c | a^4 = c^2 = 1, b^2 = a^2, ab = ba, ac=ca, cbc = a^2b \rangle$ e $H = \langle c \rangle$.%https://people.maths.bris.ac.uk/~matyd/GroupNames/1/C4oD4.html
+\task[\textcolor{Floresta}{$\negrito{(e)} $}] $G = \mathbb{Z}_3 \times S_3$ e $H = G^{\prime}.$
+%https://people.maths.bris.ac.uk/~matyd/GroupNames/1/C3xS3.html
+\task[\textcolor{Floresta}{$\negrito{(f)} $}] $G = \mathbb{Z}$ e $H = n \mathbb{Z} = \{nz : z \in \mathbb{Z} \}$
+\task[\textcolor{Floresta}{$\negrito{(g)} $}] $G  = GL_n(\mathbb{R})$ e $H = SL_n(\mathbb{R})$%ago pg 22
+\task[\textcolor{Floresta}{$\negrito{(h)} $}] $G  = \mathbb{R}$ e $H = \mathbb{Z}$%ago pg 22
+\task[\textcolor{Floresta}{$\negrito{(i)} $}] $G  = \mathbb{C}$ e $H = \mathbb{R}$%ago pg 22
+\end{tasks}
+\textcolor{blue}{\bf(3)}\label{59} Seja $f \colon G_1 \to G_2$ um homomorfismo de grupos. Mostre que $f(x) = f(y)$ se e somente se $xy^{-1} \in \ker(f).$ Conclua que $f$ é injetora se e somente se $ker(f) = \{e \}.$
+\newline\newline
+\textcolor{blue}{\bf(4)}\label{60} Seja $f \colon G_1 \to G_2$ um homomorfismo de grupos. Prove que:
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Se $H \le G_1,$ então
+\[
+f(H) = \{f(h) : h \in H \}
+\]
+é subgrupo de $G_2.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Se $K \le G_2,$ então
+\[
+f^{-1}(K) = \{ x \in G_1 : f(x) \in K \}
+\]
+é subgrupo de $G_1.$
+\end{tasks}
+\textcolor{blue}{\bf(5)}\label{61} Sejam $G_1, G_2$ e $G_3$ grupos e sejam $\varphi \colon G_1 \to G_2$ e $\psi \colon G_2 \to G_3$ homomorfismos.
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que a função composta $\psi \circ \varphi \colon G_1 \to G_3$ é um homomorfismo.
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Mostre que se $\varphi$ e $\psi$ forem isomorfismos, então $\psi \colon \varphi$ também será um isomorfismo.
+\end{tasks}
+\textcolor{blue}{\bf(6)}\label{62} Sejam $\zeta = e^{2 \pi i \sqrt{2}} \in \mathbb{C}^{*}$ e $H = \langle \zeta \rangle.$ 
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que $H$ é um subgrupo cíclico infinito.
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Considere a função:
+\[
+\fullfunction{\varphi}{\mathbb{C}^{*}/H}{\mathbb{R}^{*}_{+}}{zH}{\varphi(zH) = \abs{z}}
+\]
+\begin{itemize}
+    \item[\textbf{(i)}] Mostre que $\varphi$ é um homomorfismo de grupos.
+    \item[\textbf{(ii)}] Determine o núcleo e a imagem de $\varphi.$
+\end{itemize}
+\end{tasks}
+\textcolor{blue}{\bf(7)}\label{63} Seja $G$ um grupo. Por \textbf{automorfismo} de $G,$ entende-se um isomorfismo de $G$ em $G.$ Seja $\mbox{Aut}(G)$ o conjunto de todos os automorfismos de $G.$ 
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que $\mbox{Aut}(G)$ é um grupo com a operação binária dada pela composição de funções.
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Seja $g \in G$ e defina
+\[
+\fullfunction{\varphi_g}{G}{G}{a}{\varphi(a) = gag^{-1}}
+\]
+Mostre que $\varphi_g \in \mbox{Aut}(G),$ para todo $g \in G.$ O automorfismo $\varphi_g$ chama-se \textbf{automorfismo interno} definido por $g.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Seja $\mbox{Inn}(G)$ o subconjunto de $\mbox{Aut}(G)$ formado por todos os automorfismos internos de $G.$ Mostre que $\mbox{Inn}(G)$ é um subgrupo normal de $\mbox{Aut}(G).$ 
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] Mostre que $\mbox{Inn}(G) \cong G/ \mathcal{Z}(G).$ (Sugestão: considere o homomorfismo $\phi \colon G \to \mbox{Aut}(G)$ dado por $\phi(g) = \varphi_g$)
+\task[\textcolor{Floresta}{$\negrito{(e)} $}] Determine o grupo de automorfismos de um grupo cíclico de ordem finita.
+\task[\textcolor{Floresta}{$\negrito{(f)} $}] Determine o grupo de automorfismos de um grupo cíclico de ordem infinita.
+\task[\textcolor{Floresta}{$\negrito{(g)} $}] Determine o grupo de automorfismos de $S_3.$
+\end{tasks}
+
+\textcolor{blue}{\bf(8)} \label{ex5} Prove que o grupo de Heisenberg módulo 2, dado por
+\[He(\mathbb{Z}_2) = \left\{ \left( \begin{array}{ccc} 1 & a & c \\ 0 & 1 & b \\ 0 & 0 & 1 \end{array} \right) : a,b,c \in \mathbb{Z}_2 \right\},\]
+é isomorfo ao grupo diedral $D_4.$
+\newpage
+\subsection{\textcolor{Floresta}{Grupos de Permutações}}
+\textcolor{blue}{\bf(1)}\label{64} Podemos descrever o grupo $S_n$ com dois geradores, $\sigma$ e $\tau,$ onde temos
+\[
+S_n = \langle \sigma, \tau |\sigma^n = \tau^2 = 1, \tau \sigma  = \sigma^{n-1} \tau \rangle
+\]
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Descreva os elementos de $S_3.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Encontre $0 \le m, n \le 4$ tais que $\sigma^{2020}\tau^{2019}\sigma^{2018}\tau^{2017}\sigma^{2016} = \sigma^n \tau^m \in S_5.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Escreva os elementos de $S_4$ e suas respectivas ordens baseado na representação dada acima.
+\end{tasks}
+\textcolor{blue}{\bf(2)}\label{65} Seja $H$ um subgrupo de $S_n.$ Mostre que $H \subseteq A_n$ ou $[H : H \cap A_n] = 2.$
+\newline\newline
+\textcolor{blue}{\bf(3)}\label{66} Podemos representar um $n$-ciclo por $\sigma = (i_1, i_2, \ldots, i_n).$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Qual é a ordem de um $n$-ciclo?
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Qual é a ordem de um produto de $r$ ciclos disjuntos de ordens $n_1, n_2, \ldots, n_r?$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Para quais inteiros positivos $m$ um $m$-ciclo é uma permutação par?
+\end{tasks}
+\textcolor{blue}{\bf(4)}\label{67} Seja $p$ um número primo.Mostre que todo elemento de ordem $p$ em $S_p$ é um $p$-ciclo. Mostre que $S_p$ não possui elemento de ordem $kp,$ para $k \ge 2.$ 
+\newline
+\newline
+\textcolor{blue}{\bf(5)}\label{68} Sejam $t$ e $n$ inteiros positivos e $p$ um primo. Mostre que o grupo $S_n$ possui elementos de ordem $p^t$ se, e somente se, $n \ge p^t.$
+\newline\newline
+%https://artofproblemsolving.com/community/c6h473647p2651848
+\textcolor{blue}{\bf(6)}\label{69} Mostre que as possíveis ordens dos elementos do grupo $S_7$ são $1,2,3,4,5,6,7,10$ e $12.$
+
+A título de curiosidade, vale a pena citar o seguinte Teorema de Landau sobre o crescimento assintótico das ordens em elementos de $S_n:$
+\begin{teo}[Landau]
+Se $\mathcal{G}(n)$ é a maior ordem possível para um elemento de $S_n,$ então
+\[
+\lim\limits_{n \to \infty} \frac{\ln \mathcal{G}(n)}{\sqrt{n \ln n}} = 1
+\]
+\end{teo}
+\textcolor{white}{oi}\newline
+\textcolor{blue}{\bf(7)}\label{70} Vamos ver como se comportam os geradores de $S_n.$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que $S_n$ é gerado por $\left(\begin{array}{cc} 1 & 2 \end{array}\right),\left(\begin{array}{cc} 1 & 3 \end{array}\right),$ $\ldots, \left(\begin{array}{cc} 1 & n-1 \end{array}, \begin{array}{cc} 1 & n \end{array}\right).$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Mostre que $S_n$ é gerado por $\left(\begin{array}{cc} 1 & 2 \end{array}\right)$ e $\left(\begin{array}{cccc} 1 & 2 & \cdots & n \end{array}\right)$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Mostre que $A_n$ é gerado pelos $3$-ciclos de $S_n,$ se $n \ge 3.$
+\end{tasks}
+\textcolor{blue}{\bf(8)}\label{71} Seja $G$ um subgrupo de $S_5$ gerado pelo ciclo $\left(\begin{array}{ccccc} 1 & 2 & 3& 4 &5 \end{array}\right)$ e pelo elemento $\left(\begin{array}{cc} 1 & 5 \end{array}\right)\left(\begin{array}{cc} 2 & 4 \end{array}\right).$ Prove que $G \cong D_5,$ onde $D_5$ é o grupo diedral de ordem $10.$%https://math.stackexchange.com/questions/340937/let-g-be-the-subgroup-of-s-5-generated-by-the-cycle-12345-and-the-elemen?rq=1
+\newline
+\newline
+\textcolor{blue}{\bf(9)}\label{72} Seja $\varphi \colon D_4 \to C_{24}$ um homomorfismo. Mostre que para todo $\alpha \in D_4,$ temos que $\varphi(\alpha^2) = e.$
+%https://math.stackexchange.com/questions/2326207/let-f-d-4-rightarrow-c-24-be-a-homomorphism-show-that-for-all-a-in-d-4?rq=1
+\newline
+\newline
+\textcolor{blue}{\bf(10)}\label{73} Seja $\sigma \in S_n$ o $r$-ciclo $\begin{array}{cccc} i_1 & i_2 & \ldots & i_r \end{array}$ e seja $\alpha \in S_n.$ 
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que
+\[
+\alpha \sigma \alpha^{-1} = \left(\begin{array}{cccc} \alpha(i_1) & \alpha(i_2) & \ldots & \alpha(i_r) \end{array}\right).\]
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Se $\sigma, \tau$ são dois $r$-ciclos, mostre que existe $\alpha \in S_n$ tal que $\alpha \sigma \alpha^{-1} = \tau.$ 
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Prove que duas permutações são conjugadas se e somente se elas têm a mesma estrutura cíclica.
+\end{tasks}
+\textcolor{blue}{\bf(11)}\label{74} Mostre que $A_4$ não contém subgrupos de ordem $6$ (e portanto, não vale a recíproca do Teorema de Lagrange).
+\newline
+\newline
+\textcolor{blue}{\bf(12)}\label{75} Uma matriz de permutação é uma matriz obtida a partir da matriz identidade $n \times n$ permutando-se suas colunas. Denote por $P_n$ o conjunto de todas as matrizes de permutação $n \times n.$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que $P_n$ forma um grupo com a multiplicação usual de matrizes.
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Mostre que a função
+\[
+\fullfunction{\theta}{S_n}{P_n}{\sigma}{\theta(\sigma)},
+\]
+em que $\theta(\sigma)$ denota a mattriz cuja $i$-ésima coluna coincide com a $\sigma(i)$-ésima coluna da matriz identidade, é um isomorfismo.
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Prove que $\mbox{sgn}(\sigma) = \det(\theta(\sigma)).$
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] Ficou confuso sobre o que esta questão quer dizer? Considere as matrizes
+\[
+\sigma = \left[ \begin{array}{ccc}0 & 0 & 1 \\ 1 & 0 & 0 \\ 0 & 1 & 0 \end{array}\right] \quad \mbox{e} \quad \tau = \left[ \begin{array}{ccc}0 & 1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 1 \end{array}\right]
+\]
+Verifique $\sigma^3 = \tau^2 = I_3,$ onde $I_3$ denota a matriz identidade $3 \times 3,$ e verifique que $\sigma$ e $\tau$ satisfazem as condições da presentação de $S_3$ apresentada na questão 1. Ou seja, temos uma representação matricial para o grupo de permutações $S_3.$
+\end{tasks}
+\textcolor{blue}{\bf(13)}\label{76} Mostre que $D_n$ é isomorfo ao subgrupo de $S_n$ gerado pelas permutações
+\[
+\left( \begin{array}{cccccc}
+1 & 2 & 3 &\cdots & n-1 & n \\
+2 & 3 & 4 &\cdots & n & 1
+\end{array}\right) \quad \mbox{e} \quad \left( \begin{array}{cccccc}
+1 & 2 & 3 & \cdots & n-1 & n \\
+1 & n & n-1 & \cdots & 3 & 2
+\end{array}\right)
+\]
+\textcolor{blue}{\bf(14)}\label{77} Determine todos os subgrupos normais de $S_4.$
+\newline
+\newline
+\textcolor{blue}{\bf(15)}\label{78}  Ecnontre um grupo $G$ que contenha subgrupos $H$ e $K$ tais que $K$ seja normal em $H,$ $H$ seja normal em $G,$ mas $K$ não seja normal em $G.$
+\newline
+\newline
+\textcolor{blue}{\bf(16)}\label{79} Seja $n = 3$ ou $n \ge 5.$ Mostre que $\{ e \},$ $A_n$ e $S_n$ são os únicos subgrupos normais de $S_n.$ (em particular, $A_n$ é o único subgrupo de $S_n$ de índice $2.$)
+\newline
+\newline
+\textcolor{blue}{\bf(17)}\label{80} Prove que o número de subgrupos de $D_n$ é $\sigma(n) + \tau(n),$ onde $\tau(n)$ representa a quantidade de divisores positivos de $n$ e $\sigma(n)$ representa a soma dos divisores de $n.$
+%https://math.stackexchange.com/questions/779351/prove-that-the-number-of-subgroups-in-d-n-tau-n-sigma-n?rq=1
+\subsection{\textcolor{Floresta}{Produto Direto}}
+\textcolor{blue}{\bf(1)}\label{81} Para cada produto direto discriminado abaixo, assinale a alternativa que apresenta um grupo isomorfo correspondente:
+\begin{itemize}
+\item[\textcolor{Floresta}{$\negrito{(a)} $}] $\mathbb{Z}_2 \times \mathbb{Z}_2$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](4)
+\task[\textcolor{violet}{$\negrito{(\alpha)} $}] $\mathbb{Z}_2$
+\task[\textcolor{violet}{$\negrito{(\beta)} $}] $\mathbb{Z}_4$
+\task[\textcolor{violet}{$\negrito{(\gamma)} $}] $V_4$  %= \langle a,b | a^2 = b^2 = (ab)^2 = e \rangle.$
+\task[\textcolor{violet}{$\negrito{(\delta)} $}] $S_3$
+\end{tasks}
+
+\item[\textcolor{Floresta}{$\negrito{(b)} $}] $\mathbb{Z}_2 \times S_3$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](4)
+\task[\textcolor{violet}{$\negrito{(\alpha)} $}] $\mathbb{Z}_{12}$
+\task[\textcolor{violet}{$\negrito{(\beta)} $}] $D_6$
+\task[\textcolor{violet}{$\negrito{(\gamma)} $}] $A_4$ 
+\task[\textcolor{violet}{$\negrito{(\delta)} $}] $GL_2(\mathbb{Z}_2)$
+\end{tasks}
+\item[\textcolor{Floresta}{$\negrito{(c)} $}] $S_3 \times D_4$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](4)
+\task[\textcolor{violet}{$\negrito{(\alpha)} $}] $\mbox{Aut}(D_{12})$
+\task[\textcolor{violet}{$\negrito{(\beta)} $}] $D_{24}$
+\task[\textcolor{violet}{$\negrito{(\gamma)} $}] $\mathbb{Z}_{48}$ 
+\task[\textcolor{violet}{$\negrito{(\delta)} $}] $GL_2(\mathbb{Z}_3)$
+\end{tasks}
+\item[\textcolor{Floresta}{$\negrito{(d)} $}] $\mathbb{Z}_3 \times \mathbb{Z}_9$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](4)
+\task[\textcolor{violet}{$\negrito{(\alpha)} $}] $\mathbb{Z}_{27}$
+\task[\textcolor{violet}{$\negrito{(\beta)} $}] $He(\mathbb{Z}_3)$
+%https://en.wikipedia.org/wiki/Heisenberg_group#Discrete_Heisenberg_group
+\task[\textcolor{violet}{$\negrito{(\gamma)} $}] $\mathbb{Z}_{9}$ 
+\task[\textcolor{violet}{$\negrito{(\delta)} $}] $\mathbb{Z}_{3}$
+\end{tasks}
+\end{itemize}
+
+\textcolor{blue}{\bf(2)}\label{82} Sejam $G_1, G_2, G_3$ grupos. Mostre que $G_1 \times G_2 \cong G_2 \times G_1$ e que $G_1 \times (G_2 \times G_3) \cong (G_1 \times G_2) \times G_3.$
+\newline
+\newline
+\textcolor{blue}{\bf(3)}\label{83} Sejam $G_1, \ldots, G_n$ grupos e seja $a = (a_1, \ldots, a_n)$ um elemento do produto direto $G_1 \times \ldots \times G_n.$ Suponha que, para cada $i = 1, \ldots, n,$ o elemento $a_i$ tenha ordem finita $r_i$ no grupo $G_i.$ Mostre que a ordem de $a$ em $G$ é igual a $\mmc(r_1, \ldots, r_n).$
+\newline\newline
+\textcolor{blue}{\bf(4)}\label{84} Considere
+\[
+\mathcal{S}_k = \prod\limits_{i=2}^k S_i
+\]
+Encontre a ordem do elemento $a = \left(\sigma \tau^2 \sigma^{0}, \sigma^2 \tau^3 \sigma^{-1}, \sigma^2 \tau^4 \sigma^{-2}, \ldots, \sigma^{\left\lfloor \frac{k+1}{2}\right\rfloor} \tau^k \sigma^{-\left\lfloor \frac{k-1}{2}\right\rfloor}\right) \in \mathcal{S}_k.$
+\newline\newline
+\textcolor{blue}{\bf(5)}\label{85} \begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Seja $G$ um grupo e sejam $H$ e $K$ subgrupos normais de $G$ tais que $HK = G$ e $H \cap K = \{e_G \}.$ Mostre que $G \cong H \times K.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Sejam $G_1$ e $G_2$ dois grupos e seja $G = G_1 \times G_2$ o produto direto deles. Considere os seguintes subconjuntos de $G:$
+\[
+H = \{ (a_1, e_2) : a_1 \in G_1 \} \quad \mbox{e} \quad K = \{(e_1, a_2) : a_2 \in G_2 \}
+\]
+onde $e_i$ denota o elemento identidade do grupo $G_i.$ Mostre que $H$ e $K$ são subgrupos normais de $G$ tais que $HK = G$ e $H \cap K = \{e_G \}.$
+\end{tasks}
+\textcolor{blue}{\bf(6)}\label{86} Sejam $G_1, G_2$ grupos, seja $N_1$ um subgrupo normal de $G_1$ e seja $N_2$ um subgrupo normal de $G_2.$ Mostre que $N_1 \times N_2$ é um subgrupo normal de $G_1 \times G_2$ e que
+\[
+\frac{G_1 \times G_2}{N_1 \times N_2} \cong \frac{G_1}{N_1} \times \frac{G_2}{N_2}
+\]
+\newline\newline
+\textcolor{blue}{\bf(7)}\label{87} Seja $G$ um grupo e sejam $H_1, \ldots, H_n$ subgrupos normais de $G$ tais que $G = H_1\ldots H_n$ e $H_i \cap H_1 \ldots H_{i-1} = \{e \},$ para todo $i = 2, \ldots, n.$ Mostre que $G$ é isomorfo ao produto direto de $H_1, \ldots, H_n.$ Dizemos, neste caso, que $G$ é produto direto interno de $H_1, \ldots, H_n.$
+\newline\newline
+\textcolor{blue}{\bf(8)}\label{88} Seja $G$ um grupo e sejam $H_1, \ldots, H_n$ subgrupos de $G.$ Mostre que $G$ é produto direto interno de $H_1, \ldots, H_n$ se, e somente se
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] $h_ih_j = h_jh_i, \ \forall \ h_i \in H_i$ e $h_j \in H_j,$ com $i \neq j,$ e
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Todo elemento de $g \in G$ se escreve de maneira única na forma
+\[
+g = h_1 \cdots h_n,
+\]
+com $h_i \in H_i,$ $i = 1, \ldots, n.$ 
+\end{tasks}
+\textcolor{blue}{\bf(9)}\label{89} Para todo $n \ge 1,$ denotaremos por $C_n$ o grupo cíclico de ordem $n.$ Mostre que $C_n \times C_m$ é cíclico se e somente se $\mdc(m,n) = 1$ e que, neste caso, $C_n \times C_m \cong C_{mn}.$
+\newline\newline
+\textcolor{blue}{\bf(10)}\label{90} Verifique que $C_4 \times C_6 \cong C_{12}.$ De fato, $C_m \times C_n \cong C_{\mmc(m,n)}.$
+\newline\newline
+\textcolor{blue}{\bf(11)}\label{91} Dizemos que um grupo $G$ é o produto semidireto (interno) de $N$ por $H$ se $G$ contém subgrupos $N$ e $H$ tais que
+\begin{itemize}
+    \item[\textbf{(i)}] $N \lhd G;$
+     \item[\textbf{(ii)}] $NH = G;$
+      \item[\textbf{(iii)}] $N \cap H = \{ e \}.$
+\end{itemize}
+Resolva cada um dos itens abaixo:
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que se $G$ é o produto semidireto interno de $N$ por $H,$ então os elementos de $G$ podem ser expressos de maneira única na forma $nh,$ com $n \in N$ e $h \in H.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Seja $G$ um produto semidireto de $N$ por $H.$ Mostre que
+\[
+\fullfunction{\theta}{H}{\mbox{Aut}(N)}{h}{\theta_h},
+\]
+com $\theta_h(n) = hnh^{-1}, \ \forall n \in N,$ é um homomorfismo.
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Sejam $N$ e $H$ dois grupos e seja $\theta \colon H \to \mbox{Aut}(N)$ um homomorfismo. Defina a seguinte operação binária no conjunto $N \times K = \{ (n,k) : n \in N, h \in H \}:$
+\[
+(n_1, h_1) \cdot (n_2,h_2) = (n_1 \theta_{h_1}(n_2), h_1h_2)
+\]
+Mostre que $N \times H$ com essa operação binária forma um grupo, chamado produto semidireto (externo) de $N$ por $H$ e denotado por $N \rtimes_{\theta} H.$
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] Mostre que
+\[
+N^{*} = \{ (n,e) \in N \rtimes_{\theta} H : n \in N \}
+\]
+é um subgrupo normal de $N \rtimes_{\theta} H$ e que $N \rtimes_{\theta} H$ é o produto semidireto interno de $N^{*}$ por  \[
+H^{*} = \{ (e,h) \in N \rtimes_{\theta} H : h \in H \}
+\]
+\task[\textcolor{Floresta}{$\negrito{(e)} $}] Mostre que se $G$ é o produto semidireto interno de $N$ por $H,$ então $G \cong N \rtimes_{\theta} H,$ onde $\theta$ é o homomorfismo do item (b).
+\task[\textcolor{Floresta}{$\negrito{(f)} $}] Mostre que o grupo diedral $D_n$ é um produto semidireto de um grupo cíclico de ordem $n$ por um grupo cíclico de ordem $2.$
+\end{tasks}
+\textcolor{blue}{\bf(12)}\label{92} Prove que $S_3 \cong \mathbb{Z}_3 \rtimes_{\theta} \mathbb{Z}_2,$ onde 
+\[
+\fullfunction{\theta}{\mathbb{Z}_2}{\mbox{Aut}(\mathbb{Z}_3)}{x}{\theta_x},
+\]
+onde $\theta_{\overline{0}} = 1_{\mathbb{Z}_3}$ e $\theta_{\overline{1}} = (x \mapsto -x).$
+\newpage
+\subsection{\textcolor{Floresta}{Grupos Abelianos Finitos}}
+
+\textcolor{blue}{\bf(1)}\label{93} Descreva todos os grupos abelianos de ordem $2^3 \cdot 3^4 \cdot 5.$
+\newline\newline
+
+\textcolor{blue}{\bf(2)}\label{94} Mostre que um grupo abeliano finito não é cíclico se e somente se ele contiver um subgrupo isomorfo a $\mathbb{Z}_p \times \mathbb{Z}_p$ para algum primo $p$ positivo.
+\newline\newline
+\textcolor{blue}{\bf(3)}\label{95} Verifique que $\mathbb{Z}_6 \times \mathbb{Z}_2$ é um grupo abeliano finito que não é cíclico.
+\newline\newline
+\textcolor{blue}{\bf(4)}\label{96}  Mostre que $D_{91}$, com ordem $182,$ não contém subgrupos cíclicos de ordem $14.$
+%https://math.stackexchange.com/questions/1222221/show-that-dihedral-group-of-order-182-doesnt-contain-cyclic-subgroup-of-order-1?rq=1
+% O grupo diedral $D_{n}$ contém um subgrupo $C_n$ de ordem $n$. Todos os outros elementos são involuções, isto é, possuem ordem $2.$ Portanto, qualquer subgrupo cíclico de $D_{n}$ ou é de ordem $2$ ou de ordem dividindo $n$. Logo, como $14$ não divide $91,$ segue que $D_{91}$ não possui subgrupos cíclicos de ordem $14.$
+\newline\newline
+\textcolor{blue}{\bf(5)}\label{97} Mostre que se a ordem de um grupo abeliano não for divisível por um quadrado então o grupo é cíclico.
+\newline\newline
+\textcolor{blue}{\bf(6)}\label{98} Sejam $G_1, G_2, G_3$ grupos abelianos finitos. Mostre que, se
+\[
+G_1 \times G_2 \cong G_1 \times G_3,
+\]
+então $G_2 \cong G_3.$
+\newline\newline
+\textcolor{blue}{\bf(7)}\label{99} Seja $G$ um grupo e $\mathcal{Z}(G)$ o centro de $G.$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que se $G / \mathcal{Z}(G)$ for cíclico, então $G$ será abeliano.
+
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Mostre que se $G$ tem ordem $p^2,$ onde $p$ é um número primo, então $G$ é abeliano.
+
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Suponha que $G$ não seja abeliano e que $\abs{G} = p^3,$ onde $p$ é um número primo. Mostre que $\mathcal{Z}(G) = G^{\prime}$ e que $G / \mathcal{Z}(G) \cong C_p \times C_p,$ onde $C_p$ denota o grupo cíclico de ordem $p.$
+ \end{tasks}
+ \newpage
+ \subsection{\textcolor{Floresta}{Ações de Grupo}}
+ \textcolor{blue}{\bf(1)}\label{100} Seja $G$ um grupo de ordem $p^k,$ onde $p$ é um número primo e $k > 0.$ Mostre que se $H$ é um subgrupo de ordem $p^{k-1},$ então $H$ é normal em $G.$
+ \newline\newline
+\textcolor{blue}{\bf(2)}\label{101} Seja $G$ um $p$-grupo finito, onde $p$ é um número primo positivo. Seja $H$ um subgrupo normal de $G$ tal que $H \neq \{ e \}.$ Mostre que $H \cap \mathcal{Z}(G) \neq \{ e \}.$
+ \newline\newline
+\textcolor{blue}{\bf(3)}\label{102} Seja $G$ um grupo agindo num conjunto $X.$ Dizemos que a ação de $G$ em $X$ é \emph{livre} se $\mbox{Stab}(x) = \{ e_G \},$ para todo $x \in X.$ Mostre que se a ação de $G$ em $X$ é livre, então $\abs{\mathcal{O}(x)} = \abs{G},$ para todo $x \in X.$
+ \newline\newline
+\textcolor{blue}{\bf(4)}\label{103} Seja $G$ um grupo que age em um conjunto $S.$ Para cada $g \in G,$ considere o seguinte subconjunto de $S:$
+\[
+S^g = \{ x \in S \colon g \cdot x = x \}
+\]
+Mostre que o número de órbitas distintas da ação de $G$ em $S$ é dado por
+\[
+\frac{1}{\abs{G}} \sum\limits_{g \in G} \abs{S^g}.
+\]
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Soluções}
+
+\subsection{\textcolor{Floresta}{Grupos de Permutações}}
+\textcolor{blue}{\bf(1)} Podemos descrever o grupo $D_n$ com dois geradores, $\sigma$ e $\tau,$ onde temos
+\[
+D_n = \langle \sigma, \tau |\sigma^n = \tau^2 = 1, \tau \sigma  = \sigma^{n-1} \tau \rangle
+\]
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Descreva os elementos de $D_3.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Encontre $0 \le m, n \le 4$ tais que $\sigma^{2020}\tau^{2019}\sigma^{2018}\tau^{2017}\sigma^{2016} = \sigma^n \tau^m \in D_5.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Escreva os elementos de $D_4$ e suas respectivas ordens baseado na representação dada acima.
+\end{tasks}
+\textcolor{red}{Solução:}
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Baseado na representação dada no enunciado, temos que
+\[
+S_3 = \{1, \sigma, \sigma^2, \tau, \sigma \tau, \sigma^2 \tau \}
+\]
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Em $S_5,$ temos que $\sigma^5 = 1,$ e $\tau \sigma = \sigma^{4} \tau.$ Desse modo,
+\[\sigma^{2020}\textcolor{green}{\tau^{2019}\sigma^{2018}}\textcolor{blue}{\tau^{2017}\sigma^{2016}} =\]
+\[\sigma^{2020}\textcolor{green}{\tau (\tau^{2018} \sigma^{2018})}\textcolor{blue}{\tau (\tau^{2016} \sigma^{2016})} 
+=\]
+
+
+Encontre $0 \le m, n \le 4$ tais que $\sigma^{2020}\tau^{2019}\sigma^{2018}\tau^{2017}\sigma^{2016} = \sigma^n \tau^m \in S_5.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Escreva os elementos de $S_4$ e suas respectivas ordens baseado na representação dada acima.
+\end{tasks}
+
+
+\textcolor{blue}{\bf(2)} Seja $H$ um subgrupo de $S_n.$ Mostre que $H \subseteq A_n$ ou $[H : H \cap A_n] = 2.$
+\newline\newline
+\textcolor{blue}{\bf(3)} Podemos representar um $n$-ciclo por $\sigma = (i_1, i_2, \ldots, i_n).$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Qual é a ordem de um $n$-ciclo?
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Qual é a ordem de um produto de $r$ ciclos disjuntos de ordens $n_1, n_2, \ldots, n_r?$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Para quais inteiros positivos $m$ um $m$-ciclo é uma permutação par?
+\end{tasks}
+\textcolor{blue}{\bf(4)} Seja $p$ um número primo.Mostre que todo elemento de ordem $p$ em $S_p$ é um $p$-ciclo. Mostre que $S_p$ não possui elemento de ordem $kp,$ para $k \ge 2.$ 
+\newline
+\newline
+\textcolor{blue}{\bf(5)} Sejam $t$ e $n$ inteiros positivos e $p$ um primo. Mostre que o grupo $S_n$ possui elementos de ordem $p^t$ se, e somente se, $n \ge p^t.$
+\newline\newline
+%https://artofproblemsolving.com/community/c6h473647p2651848
+\textcolor{blue}{\bf(6)} Mostre que as possíveis ordens dos elementos do grupo $S_7$ são $1,2,3,4,5,6,7,10$ e $12.$
+\newline
+\textcolor{blue}{\bf(7)} Vamos ver como se comportam os geradores de $S_n.$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que $S_n$ é gerado por $\left(\begin{array}{cc} 1 & 2 \end{array}\right),\left(\begin{array}{cc} 1 & 3 \end{array}\right),$ $\ldots, \left(\begin{array}{cc} 1 & n-1 \end{array}, \begin{array}{cc} 1 & n \end{array}\right).$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Mostre que $S_n$ é gerado por $\left(\begin{array}{cc} 1 & 2 \end{array}\right)$ e $\left(\begin{array}{cccc} 1 & 2 & \cdots & n \end{array}\right)$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Mostre que $A_n$ é gerado pelos $3$-ciclos de $S_n,$ se $n \ge 3.$
+\end{tasks}
+\textcolor{blue}{\bf(8)} Seja $G$ um subgrupo de $S_5$ gerado pelo ciclo $\begin{array}{ccccc} 1 & 2 & 3& 4 &5 \end{array}$ e pelo elemento $\left(\begin{array}{cc} 1 & 5 \end{array}\right)\left(\begin{array}{cc} 2 & 4 \end{array}\right).$ Prove que $G \cong D_5,$ onde $D_5$ é o grupo diedral de ordem $10.$%https://math.stackexchange.com/questions/340937/let-g-be-the-subgroup-of-s-5-generated-by-the-cycle-12345-and-the-elemen?rq=1
+\newline
+\newline
+\textcolor{blue}{\bf(9)} Seja $\varphi \colon D_4 \to C_{24}$ um homomorfismo. Mostre que para todo $\alpha \in D_4,$ temos que $\varphi(\alpha^2) = e.$
+%https://math.stackexchange.com/questions/2326207/let-f-d-4-rightarrow-c-24-be-a-homomorphism-show-that-for-all-a-in-d-4?rq=1
+\newline
+\newline
+\textcolor{blue}{\bf(10)} Seja $\sigma \in S_n$ o $r$-ciclo $\begin{array}{cccc} i_1 & i_2 & \ldots & i_r \end{array}$ e seja $\alpha \in S_n.$ 
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que
+\[
+\alpha \sigma \alpha^{-1} = \left(\begin{array}{cccc} \alpha(i_1) & \alpha(i_2) & \ldots & \alpha(i_r) \end{array}\right).\]
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Se $\sigma, \tau$ são dois $r$-ciclos, mostre que existe $\alpha \in S_n$ tal que $\alpha \sigma \alpha^{-1} = \tau.$ 
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Prove que duas permutações são conjugadas se e somente se elas têm a mesma estrutura cíclica.
+\end{tasks}
+\textcolor{blue}{\bf(11)} Mostre que $A_4$ não contém subgrupos de ordem $6$ (e portanto, não vale a recíproca do Teorema de Lagrange).
+\newline
+\newline
+\textcolor{blue}{\bf(12)} Uma matriz de permutação é uma matriz obtida a partir da matriz identidade $n \times n$ permutando-se suas colunas. Denote por $P_n$ o conjunto de todas as matrizes de permutação $n \times n.$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que $P_n$ forma um grupo com a multiplicação usual de matrizes.
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Mostre que a função
+\[
+\fullfunction{\theta}{S_n}{P_n}{\sigma}{\theta(\sigma)},
+\]
+em que $\theta(\sigma)$ denota a mattriz cuja $i$-ésima coluna coincide com a $\sigma(i)$-ésima coluna da matriz identidade, é um isomorfismo.
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Prove que $\mbox{sgn}(\sigma) = \det(\theta(\sigma)).$
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] Ficou confuso sobre o que esta questão quer dizer? Considere as matrizes
+\[
+\sigma = \left[ \begin{array}{ccc}0 & 0 & 1 \\ 1 & 0 & 0 \\ 0 & 1 & 0 \end{array}\right] \quad \mbox{e} \quad \tau = \left[ \begin{array}{ccc}0 & 1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 1 \end{array}\right]
+\]
+Verifique $\sigma^3 = \tau^2 = I_3,$ onde $I_3$ denota a matriz identidade $3 \times 3,$ e verifique que $\sigma$ e $\tau$ satisfazem as condições da presentação de $S_3$ apresentada na questão 1. Ou seja, temos uma representação matricial para o grupo de permutações $S_3.$
+\end{tasks}
+\textcolor{blue}{\bf(13)} Mostre que $D_n$ é isomorfo ao subgrupo de $S_n$ gerado pelas permutações
+\[
+\left( \begin{array}{cccccc}
+1 & 2 & 3 &\cdots & n-1 & n \\
+2 & 3 & 4 &\cdots & n & 1
+\end{array}\right) \quad \mbox{e} \quad \left( \begin{array}{cccccc}
+1 & 2 & 3 & \cdots & n-1 & n \\
+1 & n & n-1 & \cdots & 3 & 2
+\end{array}\right)
+\]
+\textcolor{blue}{\bf(14)} Determine todos os subgrupos normais de $S_4.$
+\newline
+\newline
+\textcolor{blue}{\bf(15)}  Ecnontre um grupo $G$ que contenha subgrupos $H$ e $K$ tais que $K$ seja normal em $H,$ $H$ seja normal em $G,$ mas $K$ não seja normal em $G.$
+\newline
+\newline
+\textcolor{blue}{\bf(16)} Seja $n = 3$ ou $n \ge 5.$ Mostre que $\{ e \},$ $A_n$ e $S_n$ são os únicos subgrupos normais de $S_n.$ (em particular, $A_n$ é o único subgrupo de $S_n$ de índice $2.$)
+\newline
+\newline
+\textcolor{blue}{\bf(17)} Prove que o número de subgrupos de $D_n$ é $\sigma(n) + \tau(n),$ onde $\tau(n)$ representa a quantidade de divisores positivos de $n$ e $\sigma(n)$ representa a soma dos divisores de $n.$
+%https://math.stackexchange.com/questions/779351/prove-that-the-number-of-subgroups-in-d-n-tau-n-sigma-n?rq=1
+\subsection{\textcolor{Floresta}{Produto Direto}}
+
+\textcolor{blue}{\bf(18)} Sejam $G_1, G_2, G_3$ grupos. Mostre que $G_1 \times G_2 \cong G_2 \times G_1$ e que $G_1 \times (G_2 \times G_3) \cong (G_1 \times G_2) \times G_3.$
+\newline
+\newline
+\textcolor{blue}{\bf(19)} Sejam $G_1, \ldots, G_n$ grupos e seja $a = (a_1, \ldots, a_n)$ um elemento do produto direto $G_1 \times \ldots \times G_n.$ Suponha que, para cada $i = 1, \ldots, n,$ o elemento $a_i$ tenha ordem finita $r_i$ no grupo $G_i.$ Mostre que a ordem de $a$ em $G$ é igual a $\mmc(r_1, \ldots, r_n).$
+\newline\newline
+\textcolor{blue}{\bf(20)} Considere
+\[
+\mathcal{S}_k = \prod\limits_{i=2}^k S_i
+\]
+Encontre a ordem do elemento $a = \left(\sigma \tau^2 \sigma^{0}, \sigma^2 \tau^3 \sigma^{-1}, \sigma^2 \tau^4 \sigma^{-2}, \ldots, \sigma^{\left\lfloor \frac{k+1}{2}\right\rfloor} \tau^k \sigma^{-\left\lfloor \frac{k-1}{2}\right\rfloor}\right) \in \mathcal{S}_k.$
+\newline\newline
+\textcolor{blue}{\bf(21)} \begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Seja $G$ um grupo e sejam $H$ e $K$ subgrupos normais de $G$ tais que $HK = G$ e $H \cap K = \{e_G \}.$ Mostre que $G \cong H \times K.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Sejam $G_1$ e $G_2$ dois grupos e seja $G = G_1 \times G_2$ o produto direto deles. Considere os seguintes subconjuntos de $G:$
+\[
+H = \{ (a_1, e_2) : a_1 \in G_1 \} \quad \mbox{e} \quad K = \{(e_1, a_2) : a_2 \in G_2 \}
+\]
+onde $e_i$ denota o elemento identidade do grupo $G_i.$ Mostre que $H$ e $K$ são subgrupos normais de $G$ tais que $HK = G$ e $H \cap K = \{e_G \}.$
+\end{tasks}
+\textcolor{blue}{\bf(22)} Sejam $G_1, G_2$ grupos, seja $N_1$ um subgrupo normal de $G_1$ e seja $N_2$ um subgrupo normal de $G_2.$ Mostre que $N_1 \times N_2$ é um subgrupo normal de $G_1 \times G_2$ e que
+\[
+\frac{G_1 \times G_2}{N_1 \times N_2} \cong \frac{G_1}{N_1} \times \frac{G_2}{N_2}
+\]
+\newline\newline
+\textcolor{blue}{\bf(23)} Seja $G$ um grupo e sejam $H_1, \ldots, H_n$ subgrupos normais de $G$ tais que $G = H_1\ldots H_n$ e $H_i \cap H_1 \ldots H_{i-1} = \{e \},$ para todo $i = 2, \ldots, n.$ Mostre que $G$ é isomorfo ao produto direto de $H_1, \ldots, H_n.$ Dizemos, neste caso, que $G$ é produto direto interno de $H_1, \ldots, H_n.$
+\newline\newline
+\textcolor{blue}{\bf(24)} Seja $G$ um grupo e sejam $H_1, \ldots, H_n$ subgrupos de $G.$ Mostre que $G$ é produto direto interno de $H_1, \ldots, H_n$ se, e somente se
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] $h_ih_j = h_jh_i, \ \forall \ h_i \in H_i$ e $h_j \in H_j,$ com $i \neq j,$ e
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Todo elemento de $g \in G$ se escreve de maneira única na forma
+\[
+g = h_1 \cdots h_n,
+\]
+com $h_i \in H_i,$ $i = 1, \ldots, n.$ 
+\end{tasks}
+\textcolor{blue}{\bf(25)} Para todo $n \ge 1,$ denotaremos por $C_n$ o grupo cíclico de ordem $n.$ Mostre que $C_n \times C_m$ é cíclico se e somente se $\mdc(m,n) = 1$ e que, neste caso, $C_n \times C_m \cong C_{mn}.$
+\newline\newline
+\textcolor{blue}{\bf(26)} Verifique que $C_4 \times C_6 \cong C_{12}.$ De fato, $C_m \times C_n \cong C_{\mmc(m,n)}.$
+\newline\newline
+\textcolor{blue}{\bf(27)} Dizemos que um grupo $G$ é o produto semidireto (interno) de $N$ por $H$ se $G$ contém subgrupos $N$ e $H$ tais que
+\begin{itemize}
+    \item[\textbf{(i)}] $N \lhd G;$
+     \item[\textbf{(ii)}] $NH = G;$
+      \item[\textbf{(iii)}] $N \cap H = \{ e \}.$
+\end{itemize}
+Resolva cada um dos itens abaixo:
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que se $G$ é o produto semidireto interno de $N$ por $H,$ então os elementos de $G$ podem ser expressos de maneira única na forma $nh,$ com $n \in N$ e $h \in H.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Seja $G$ um produto semidireto de $N$ por $H.$ Mostre que
+\[
+\fullfunction{\theta}{H}{\mbox{Aut}(N)}{h}{\theta_h},
+\]
+com $\theta_h(n) = hnh^{-1}, \ \forall n \in N,$ é um homomorfismo.
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Sejam $N$ e $H$ dois grupos e seja $\theta \colon H \to \mbox{Aut}(N)$ um homomorfismo. Defina a seguinte operação binária no conjunto $N \times K = \{ (n,k) : n \in N, h \in H \}:$
+\[
+(n_1, h_1) \cdot (n_2,h_2) = (n_1 \theta_{h_1}(n_2), h_1h_2)
+\]
+Mostre que $N \times H$ com essa operação binária forma um grupo, chamado produto semidireto (externo) de $N$ por $H$ e denotado por $N \rtimes_{\theta} H.$
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] Mostre que
+\[
+N^{*} = \{ (n,e) \in N \rtimes_{\theta} H : n \in N \}
+\]
+é um subgrupo normal de $N \rtimes_{\theta} H$ e que $N \rtimes_{\theta} H$ é o produto semidireto interno de $N^{*}$ por  \[
+H^{*} = \{ (e,h) \in N \rtimes_{\theta} H : h \in H \}
+\]
+\task[\textcolor{Floresta}{$\negrito{(e)} $}] Mostre que se $G$ é o produto semidireto interno de $N$ por $H,$ então $G \cong N \rtimes_{\theta} H,$ onde $\theta$ é o homomorfismo do item (b).
+\task[\textcolor{Floresta}{$\negrito{(f)} $}] Mostre que o grupo diedral $D_n$ é um produto semidireto de um grupo cíclico de ordem $n$ por um grupo cíclico de ordem $2.$
+\end{tasks}
+\textcolor{blue}{\bf(28)} Prove que $S_3 \cong \mathbb{Z}_3 \rtimes_{\theta} \mathbb{Z}_2,$ onde 
+\[
+\fullfunction{\theta}{\mathbb{Z}_2}{\mbox{Aut}(\mathbb{Z}_3)}{x}{\theta_x},
+\]
+onde $\theta_{\overline{0}} = 1_{\mathbb{Z}_3}$ e $\theta_{\overline{1}} = (x \mapsto -x).$
+
+\subsection{\textcolor{Floresta}{Grupos Abelianos Finitos}}
+
+\textcolor{blue}{\bf(29)} Descreva todos os grupos abelianos de ordem $2^3 \cdot 3^4 \cdot 5.$
+\newline\newline
+
+\textcolor{blue}{\bf(30)} Mostre que um grupo abeliano finito não é cíclico se e somente se ele contiver um subgrupo isomorfo a $\mathbb{Z}_p \times \mathbb{Z}_p$ para algum primo $p$ positivo.
+\newline\newline
+\textcolor{blue}{\bf(31)} Verifique que $\mathbb{Z}_6 \times \mathbb{Z}_2$ é um grupo abeliano finito que não é cíclico.
+\newline\newline
+\textcolor{blue}{\bf(32)} Mostre que $D_{91}$, com ordem $182,$ não contém subgrupos cíclicos de ordem $14.$
+%https://math.stackexchange.com/questions/1222221/show-that-dihedral-group-of-order-182-doesnt-contain-cyclic-subgroup-of-order-1?rq=1
+% O grupo diedral $D_{n}$ contém um subgrupo $C_n$ de ordem $n$. Todos os outros elementos são involuções, isto é, possuem ordem $2.$ Portanto, qualquer subgrupo cíclico de $D_{n}$ ou é de ordem $2$ ou de ordem dividindo $n$. Logo, como $14$ não divide $91,$ segue que $D_{91}$ não possui subgrupos cíclicos de ordem $14.$
+\newline\newline
+\textcolor{blue}{\bf(33)} Mostre que se a ordem de um grupo abeliano não for divisível por um quadrado então o grupo é cíclico.
+\newline\newline
+\textcolor{blue}{\bf(34)} Sejam $G_1, G_2, G_3$ grupos abelianos finitos. Mostre que, se
+\[
+G_1 \times G_2 \cong G_1 \times G_3,
+\]
+então $G_2 \cong G_3.$
+\newline\newline
+\textcolor{blue}{\bf(35)} Seja $G$ um grupo e $\mathcal{Z}(G)$ o centro de $G.$
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que se $G / \mathcal{Z}(G)$ for cíclico, então $G$ será abeliano.
+
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Mostre que se $G$ tem ordem $p^2,$ onde $p$ é um número primo, então $G$ é abeliano.
+
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Suponha que $G$ não seja abeliano e que $\abs{G} = p^3,$ onde $p$ é um número primo. Mostre que $\mathcal{Z}(G) = G^{\prime}$ e que $G / \mathcal{Z}(G) \cong C_p \times C_p,$ onde $C_p$ denota o grupo cíclico de ordem $p.$
+ \end{tasks}
+ \subsection{\textcolor{Floresta}{Ações de Grupo}}
+ \textcolor{blue}{\bf(36)} Seja $G$ um grupo de ordem $p^k,$ onde $p$ é um número primo e $k > 0.$ Mostre que se $H$ é um subgrupo de ordem $p^{k-1},$ então $H$ é normal em $G.$
+ \newline\newline
+\textcolor{blue}{\bf(37)} Seja $G$ um $p$-grupo finito, onde $p$ é um número primo positivo. Seja $H$ um subgrupo normal de $G$ tal que $H \neq \{ e \}.$ Mostre que $H \cap \mathcal{Z}(G) \neq \{ e \}.$
+ \newline\newline
+\textcolor{blue}{\bf(38)} Seja $G$ um grupo agindo num conjunto $X.$ Dizemos que a ação de $G$ em $X$ é \emph{livre} se $\mbox{Stab}(x) = \{ e_G \},$ para todo $x \in X.$ Mostre que se a ação de $G$ em $X$ é livre, então $\abs{\mathcal{O}(x)} = \abs{G},$ para todo $x \in X.$
+ \newline\newline
+\textcolor{blue}{\bf(39)} Seja $G$ um grupo que age em um conjunto $S.$ Para cada $g \in G,$ considere o seguinte subconjunto de $S:$
+\[
+S^g = \{ x \in S \colon g \cdot x = x \}
+\]
+Mostre que o número de órbitas distintas da ação de $G$ em $S$ é dado por
+\[
+\frac{1}{\abs{G}} \sum\limits_{g \in G} \abs{S^g}.
+\]
+\end{document}
+%https://math.stackexchange.com/questions/340937/let-g-be-the-subgroup-of-s-5-generated-by-the-cycle-12345-and-the-elemen?rq=1
+%https://math.stackexchange.com/questions/2326207/let-f-d-4-rightarrow-c-24-be-a-homomorphism-show-that-for-all-a-in-d-4?rq=1
+SetClassGroupBounds("GRH"); 
+K := QuadraticField(9);
+ClassNumber(K);
+Q := PolynomialRing(GF(2), 2);
+Q;
+K := QuadraticField();
+G := GaloisGroup(K);
+G;
+\begin{CJK}{UTF8}{min}
+露の世は 露の世ながら さりながら当時では老人と呼べる50歳代半ばでようやく授かったわが子への愛とその突然死を伝えた「露の世」のくだりは、その日記体句文集「おらが春」のクライマックスとなっています。
+
+５月には数え二歳の誕生を迎えて詠んだ句に、
+「這へ笑へ二つになるぞけさからは」と喜びを謳歌したばかり。
+
+それが、翌6月にはもはや草葉の陰へと、その露の朝日に立ちどころに消えるごとく、儚くも身罷ってしまったとは。
+
+人の世は朝露の如く無常なのだと、悔みを述べ慰問するあの人、この人。さは「さりながら」…それは確かにそうなのだけれども。
+いかに「あきらめ顔しても、思い切りがたきは、恩愛のきづな也けり。」と、わが心中は耐えきれず切々と泣き崩れるばかり。わが子「さと」女を思う「大切」はやがて「あなた任せ」の境地へと通じていくものでしょう。
+\end{CJK}
