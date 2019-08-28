@@ -9,6 +9,7 @@
 \documentclass[12pt, a4paper]{article}
 \usepackage[bottom=2cm,top=3cm,left=3cm,right=2cm]{geometry}
 \usepackage[utf8]{inputenc}
+\usepackage[dvipsnames]{xcolor}
 \usepackage{CJKutf8}
 \usepackage{mathtext}
 \usepackage{graphicx}
@@ -40,7 +41,7 @@
 \usepackage{CJKutf8} %Pacote para escrever em japonês \begin{CJK}{UTF8}{min} \end{CJK}
 \usepackage[portuguese]{babel}
 \usepackage{multicol}
-% \usepackage{colorspace}
+%\usepackage{colorspace}
 \usepackage{graphicx, color}
 \newcommand{\mmc}{{\rm mmc}}
 \newcommand{\mdc}{{\rm mdc}}
@@ -52,6 +53,7 @@
 \newcommand{\arcsen}{{\rm arcsen}}
 \newcommand{\negrito}[1]{\mbox{\boldmath{$#1$}}} 
 \usepackage{pifont}
+\newcommand{\sol}{\textbf{\textcolor{red}{Solução:}} }
 \newcommand{\heart}{\ensuremath\heartsuit}
 \newcommand{\diamonde}{\ensuremath\diamondsuit}
 \newtheorem{defi}{Definição}
@@ -124,6 +126,8 @@
 \task[\textcolor{Floresta}{$\negrito{(h)} $}] $G = SL_2(\mathbb{R}) = \{ A \in \mathcal{M}_n(\mathbb{R}) : \det(A)= 1 \}$ e $\star$ a multiplicação usual de matrizes. Em geral, $SL_n(F)$ é chamado \textbf{grupo linear especial de ordem $n$ sobre $F.$}
 \task[\textcolor{Floresta}{$\negrito{(i)} $}] $G = O_2(\mathbb{R}) = \{ A \in \mathcal{M}_n(\mathbb{R}) : AA^T = A^TA = I \}$ e $\star$ a multiplicação usual de matrizes. Em geral, $O_n(F)$ é chamado \textbf{grupo ortogonal de ordem $n$ sobre $F.$}
 \task[\textcolor{Floresta}{$\negrito{(j)} $}] $G = He(\mathbb{Z}_3) = \left\{ \left( \begin{array}{ccc} 1 & a & c \\ 0 & 1 & b \\ 0 & 0 & 1 \end{array} \right) : a,b,c \in \mathbb{Z}_3 \right\}$ e $\star$ o produto usual de matrizes. $ He(\mathbb{Z}_3)$ é chamado \textbf{grupo de Heisenberg módulo $3$.}
+\task[\textcolor{Floresta}{$\negrito{(k)} $}] $G = M_4(2) = \langle a,b | a^8 = b^2 = 1, bab = a^5 \rangle$ e $\star$ o produto usual. $ M_4(2)$ é chamado \textbf{grupo maximal-cíclio modular.}%https://en.wikipedia.org/wiki/Quasidihedral_group
+
 \end{tasks}
 \textcolor{blue}{\bf(2)}\label{2} Seja $G$ um grupo. Mostre que se $(ab)^2 = a^2b^2,$ para quaisquer $a,b \in G,$ então $G$ é abeliano.
 \textcolor{white}{Oi}\newline\newline
@@ -212,7 +216,7 @@ N(a) = \{ x \in G : xa = ax \}
 \end{tasks}
 \textcolor{blue}{\bf(9)}\label{17} Seja $G$ um grupo e seja $H$ um subgrupo de $G.$ Considere
 \[
-\mathcal{C}_G(H) = \{x \in G : xh = hx, \forall h in H \}
+\mathcal{C}_G(H) = \{x \in G : xh = hx, \forall h \in H \}
 \]
 $\mathcal{C}_G(H)$ é chamado centralizador de $H$ em $G.$
 \begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
@@ -279,7 +283,7 @@ Na verdade, temos que
 \begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
 \task[\textcolor{Floresta}{$\negrito{(a)} $}] O $m$-ésimo \textbf{polinômio ciclotômico} $\varphi_n(x)$ é definido como 
 \[
-\varphi_n(x) = \prod\limits_{\xi \in mu_m(\mathbb{C}} (x - \xi),
+\varphi_n(x) = \prod\limits_{\xi \in \mu_m(\mathbb{C})} (x - \xi),
 \]
 onde $\mu_m(\mathbb{C}) = \langle e^{\frac{2 \pi i}{m}} \rangle = \{1, e^{\frac{2 \pi i}{m}}, \ldots, e^{\frac{2 \pi i (m-1)}{m}} \}$ é o conjunto das raízes $m$-ésimas da unidade (isto é, as raízes, em $\mathbb{C},$ da equação $x^m - 1 = 0$). Mostre que $\varphi_{12}(x) = x^{4} - x^2 + 1.$
 \task[\textcolor{Floresta}{$\negrito{(b)} $}] Dado um polinômio mônico $p(x) = x^k + a_{k-1}p^{k-1} + \ldots + a_1x + a_0,$ dizemos que a \textbf{matriz companheira} $C$ de $p(x)$ é a matriz
@@ -516,9 +520,16 @@ Denote por $G^{\prime}$ o subgrupo de $G$ gerado pelo conjunto $\{[a,b] : a,b \i
 \end{tasks}
 O subgrupo $G^{\prime}$ de $G$ definido acima chama-se subgrupo \textbf{derivado} (ou \textbf{comutador}) de $G.$ 
 \textcolor{white}{Oi}\newline\newline
-\textcolor{blue}{\bf(12)}\label{50} Seja $H$ um subgrupo de um grupo finito $G$ e suponha que $H$ seja o único subgrupo de $G$ de ordem $\abs{H}.$ Mostre que $H$ é normal em $G.$
+\textcolor{blue}{\bf(12)}\label{50} Seja $H$ um subgrupo de um grupo finito $G$ e suponha que $H$ seja o único subgrupo de $G$ de ordem $\abs{H}.$ Mostre que $H$ é normal em $G.$\\ \\
+\sol Por um exercício anterior, vimos que $gHG^{-1} \le G,$ para todo $g \in G$ e $\abs{gHg^{-1}} = \abs{H}.$ COmo $H$ é o único subgrupo de $G$ com ordem $\abs{H},$ temos $gHg^{-1} = H.$ Logo, $H \lhd G.$
 \textcolor{white}{Oi}\newline\newline
-\textcolor{blue}{\bf(13)}\label{51}  Se  $N$ e $M$ são subgrupos normais de um grupo $G$ e $N \cap M = \{e\},$ mostre que $nm = mn,$ $\forall n \in N, \forall m \in M.$
+\textcolor{blue}{\bf(13)}\label{51}  Se  $N$ e $M$ são subgrupos normais de um grupo $G$ e $N \cap M = \{e\},$ mostre que $nm = mn,$ $\forall n \in N, \forall m \in M.$\\ \\
+\sol Como $N \lhd G,$ temos que
+\[
+mnm^{-1} \in N
+\]
+Portanto, $mnm^{-1}n^{-1} \in N.$
+Como $M \lhd G,$ temos também $mnm^{-1}n^{-1} \in M.$ Logo, \[mnm^{-1}n^{-1} \in M \cap N = \{ e \} \Rightarrow mnm^{-1}n^{-1}  = e \Rightarrow mn = nm.\]
 \textcolor{white}{Oi}\newline\newline
 \textcolor{blue}{\bf(14)}\label{52} Seja 
 \[
@@ -898,6 +909,7 @@ Mostre que o número de órbitas distintas da ação de $G$ em $S$ é dado por
 \task[\textcolor{Floresta}{$\negrito{(h)} $}] $G = SL_2(\mathbb{R}) = \{ A \in \mathcal{M}_n(\mathbb{R}) : \det(A)= 1 \}$ e $\star$ a multiplicação usual de matrizes. Em geral, $SL_n(F)$ é chamado \textbf{grupo linear especial de ordem $n$ sobre $F.$}
 \task[\textcolor{Floresta}{$\negrito{(i)} $}] $G = O_2(\mathbb{R}) = \{ A \in \mathcal{M}_n(\mathbb{R}) : AA^T = A^TA = I \}$ e $\star$ a multiplicação usual de matrizes. Em geral, $O_n(F)$ é chamado \textbf{grupo ortogonal de ordem $n$ sobre $F.$}
 \task[\textcolor{Floresta}{$\negrito{(j)} $}] $G = He(\mathbb{Z}_3) = \left\{ \left( \begin{array}{ccc} 1 & a & c \\ 0 & 1 & b \\ 0 & 0 & 1 \end{array} \right) : a,b,c \in \mathbb{Z}_3 \right\}$ e $\star$ o produto usual de matrizes. $ He(\mathbb{Z}_3)$ é chamado \textbf{grupo de Heisenberg módulo $3$.}
+\task[\textcolor{Floresta}{$\negrito{(k)} $}] $G = M_4(2) = \langle a,b | a^8 = b^2 = 1, bab = a^5 \rangle$ e $\star$ o produto usual. $ M_4(2)$ é chamado \textbf{grupo maximal-cíclio modular.}%https://en.wikipedia.org/wiki/Quasidihedral_group
 \end{tasks}
 
 \textbf{\textcolor{red}{Solução:}} 
@@ -917,10 +929,34 @@ Além disso, $\overline{-a}$ é o oposto de $\overline{a},$ pois
 Portanto, $(\mathbb{Z}_8, +)$ é um grupo.
 \task[\textcolor{Floresta}{$\negrito{(b)} $}] Primeiramente, precisamos verificar se $S^1$ é fechado pelo produto usual em $\mathbb{C},$ ou seja, se $zw \in S^1$ para todo $z, w \in S^1.$ Sejam $z = a + bi$ e $w = c + di,$ com $a^2 + b^2 = c^2 + d^2 = 1.$ Então:
 \[
-z \cdot w = (a+bi)(c+di) =  
+z \cdot w = (a+bi)(c+di) =  (ac-bd) + (ad+bc)i
 \]
+
+Pela identidade de Brahmagupta-Fibonacci, sabemos que
+\[
+(a^2 + b^2)(c^2 + d^2) = (ac-bd)^2 + (ad+bc)^2.
+\]
+Portanto, segue que
+\[
+(ac-bd)^2 + (ad+bc)^2 = (a^2 + b^2)(c^2 + d^2) = 1 \Rightarrow zw \in S^1
+\]
+Como $S^1 \subset \mathbb{C},$ a associatividade decorre diretamente da associatividade da multiplicação de $\mathbb{C}.$ Temos que $1 \in S^1$ é o elemento neutro de $S^1.$ Além disso, para cada $z = a + bi \in S^1$ diferente de $1,$ tomando $z^{-1} = \frac{1}{a^2 + b^2}(a - bi),$ temos que
+\[
+\left(\frac{a}{a^2 + b^2}\right)^2 + \left(\frac{b}{a^2 + b^2}\right)^2 = \frac{a^2 + b^2}{(a^2 + b^2)^2} = \frac{1}{a^2 + b^2} = 1,
+\]
+pois $a^2 + b^2 = 1,$ já que $z \in S^1.$ Daí, $z^{-1} \in S^1,$ e
+\[
+z^{-1}z = zz^{-1} = (a+bi)\left(\frac{1}{a^2 + b^2}(a - bi)\right) = \frac{1}{a^2 + b^2}(a+bi)(a-bi) = \frac{a^2 + b^2}{a^2 + b^2} = 1.
+\]
+Logo, todo elemento de $S^1$ diferente de $1$ possui inverso.
+Portanto, concluímos que $(S^1, \cdot)$ é um grupo.
 \end{tasks}
-\textcolor{blue}{\bf(2)}\label{2} Seja $G$ um grupo. Mostre que se $(ab)^2 = a^2b^2,$ para quaisquer $a,b \in G,$ então $G$ é abeliano.
+\textcolor{blue}{\bf(2)}\label{2} Seja $G$ um grupo. Mostre que se $(ab)^2 = a^2b^2,$ para quaisquer $a,b \in G,$ então $G$ é abeliano.\\ \\
+\textbf{\textcolor{red}{Solução:}} Se $(ab)^2 = a^2b^2,$ então:
+\[
+\textcolor{green}{(ab)^2} = a^2b^2 \Rightarrow \textcolor{green}{abab} = a^2b^2 \Rightarrow \textcolor{red}{a^{-1}} abab  \textcolor{red}{b^{-1}}= \textcolor{red}{a^{-1}}a^2b^2 \textcolor{red}{b^{-1}} \Rightarrow \boxed{ba = ab}.
+\]
+Portanto, $G$ é abeliano.
 \textcolor{white}{Oi}\newline\newline
 \textcolor{blue}{\bf(3)}\label{3} Vamos tentar generalizar a questão 1.
 \begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
@@ -928,7 +964,29 @@ z \cdot w = (a+bi)(c+di) =
 
 \task[\textcolor{Floresta}{$\negrito{(b)} $}] Vale o mesmo resultado se $(ab)^i = a^ib^i,$ para apenas dois inteiros consecutivos $i?$ Prove ou dê contraexemplo.
 \end{tasks}
-\textcolor{white}{Oi}\newline\newline
+\textbf{\textcolor{red}{Solução:}}
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Suponha que $(ab)^i = a^ib^i,$ para $i = n-1,n$ e $n+1.$ Observe que
+\[
+(ab)^n = a(ba)^{n-1}b
+\]
+Mas também temos:
+\[
+(ab)^n = a^nb^n = a\textcolor{red}{(a^{n-1}b^{n-1})}b = a\textcolor{red}{(ab)^{n-1}}b 
+\]
+Logo, \[a(ba)^{n-1}b = a(ab)^{n-1}b \Rightarrow (ab)^{n-1} = (ba)^{n-1}\]
+
+Usando $(ab)^{n+1} = a^{n+1}b^{n+1},$ obtemos, de modo análogo, \[(ab)^n = (ba)^n \]
+Portanto,
+\[
+(ab)^n = (ba)^n \Rightarrow ab(ab)^{n-1} = ba(ba)^{n-1} \Rightarrow \boxed{ab = ba}
+\]
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Não vale. Seja $G$ um grupo, $\abs{G} = n.$ Então \[ a^nb^n = e = (ab)^n \]
+\[a^{n+1}b^{n+1} = ab = (ab)^{n+1},
+\]
+mas nem todo grupo finito é abeliano (por exemplo, $S_3$).
+\end{tasks}
+%\textcolor{white}{Oi}\newline\newline
 \textcolor{blue}{\bf(4)}\label{4} Seja $G$ um conjunto não vazio com uma operação binária associativa. 
 
 \begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
@@ -945,6 +1003,26 @@ z \cdot w = (a+bi)(c+di) =
 \item[\textbf{(iii)}] Conclua que $(S_3, \circ)$ é grupo, mas $(\mathbb{Z}_3, \cdot)$ não o é.
 \end{itemize}
 \end{tasks} 
+\textbf{\textcolor{red}{Solução:}}
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] \textbf{(i)} $\Rightarrow$ \textbf{(ii)}: Ok \\ \textbf{(ii)} $\Rightarrow$ \textbf{(iii)}: Seja $a \in G.$ Então $\exists e \in G$ tal que $ae = a.$ Vamos mostrar que $be = b, \ \forall b \in G.$ Para $b \in G,$ existe $c \in G$ tal que $ca = b.$ Então:
+\[
+\textcolor{violet}{b}e = \textcolor{violet}{ca}e = ca = b
+\] 
+A outra é imediata.\\
+\textbf{(iii)} $\Rightarrow$ \textbf{(i)}: Resta mostrar que $ea = a$ e $ba = e$. Seja $c \in G$ tal que $bc = e.$ Então\[
+ba = ba\textcolor{green}{e} = ba\textcolor{green}{bc} = bec = bc = e\]
+Além disso, \[ea = a\textcolor{blue}{ba} = a \textcolor{blue}{e} = a.\]
+\task[\textcolor{Floresta}{$\negrito{(b)} $}]
+\begin{itemize}
+\item[\textbf{(i)}] A tabela abaixo mostra as soluções possíveis para as equações $bx = a$ e $yb = a,$ para cada escolha de $a,b \in S_3:$
+\begin{tabular}{|c|c|c|c|}
+\hline
+$1$ & $1$ & $1$ & $1$ \\ \hline
+
+\end{tabular}
+\end{itemize}
+\end{tasks}
 \textcolor{white}{Oi}\newline\newline
 \textcolor{blue}{\bf(5)}\label{5} Considere um grupo $G$. Dizemos que um elemento $a \in G$ é idempotente se, $a^2 = e.$
 \begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
@@ -975,7 +1053,16 @@ z \cdot w = (a+bi)(c+di) =
 \begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
 \task[\textcolor{Floresta}{$\negrito{(a)} $}] $G = \mathbb{Q}(\sqrt{2}, i)$ com a multiplicação usual, e $H  = \mathbb{Q}(\sqrt{2}).$
 \end{tasks}
-\textcolor{blue}{\bf(2)}\label{10} Seja $G$ um grupo e seja $S$ um subconjunto de $G.$ Mostre que $S$ é um subgrupo de $G$ se e somente se $S \neq \emptyset$ e, para todos $a,b \in G,$ se $a,b \in S,$ então $ab^{-1} \in S.$
+\textcolor{blue}{\bf(2)}\label{10} Seja $G$ um grupo e seja $S$ um subconjunto de $G.$ Mostre que $S$ é um subgrupo de $G$ se e somente se $S \neq \emptyset$ e, para todos $a,b \in G,$ se $a,b \in S,$ então $ab^{-1} \in S.$ \\ \\
+\textbf{\textcolor{red}{Solução:}} $(\Rightarrow )$ Seja $S \le G.$ Claramente, temos que $S \neq \emptyset,$ pois $e \in G.$ Além disso, sendo um grupo, para $b \in S,$ temos que $b^{-1} \in S.$ Daí, segue que para todos $a,b \in S,$ temos que $ab^{-1} \in S.$ \\
+$(\Leftarrow )$ Considere $S \neq \emptyset$ tal que para todos $a,b \in G,$ se $a,b \in S,$ então $ab^{-1} \in S.$ Verifiquemos que $S$ é um subgrupo de $G:$
+\begin{enumerate}
+    \item $e = aa^{-1} \in S;$
+    \item Se $a \in S,$ então \[a^{-1} = ea^{-1} \in S;\]
+    \item Se $a,b \in S,$ então
+    \[  a\textcolor{brown}{b} = a\textcolor{brown}{(b^{-1})^{-1}} \in S.\]
+\end{enumerate}
+Portanto, $S$ é subgrupo de $G.$
 \textcolor{white}{Oi}\newline\newline
 \textcolor{blue}{\bf(3)}\label{11} Seja $G = S_4.$ Mostre que 
 \[
@@ -988,13 +1075,64 @@ V = \{ id, (1 2)(3 4), (1 3)(2 4), (1 4)(2 3)\}
 \task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que $\bigcap\limits_{i \in I} H_i$ é um subgrupo de $G.$
 \task[\textcolor{Floresta}{$\negrito{(b)} $}] É verdade que $\bigcup\limits_{i \in I} H_i$ sempre é um subgrupo de $G?$ Prove ou dê contraexemplo.
 \end{tasks}
-\textcolor{blue}{\bf(5)}\label{13} Seja $G$ um grupo e sejam $H$ e $K$ subgrupos de $G.$ Mostre que $H \cup K$ é um subgrupo de $G$ se e somente se $H \subseteq K$ ou $K \subseteq H.$
+\textbf{\textcolor{red}{Solução:}} \begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Note que:
+\begin{enumerate}
+    \item $e \in H_i, \forall i,$ pois $H_i \le G.$ Logo, \[e \in \bigcap\limits_{i \in I} H_i.\]
+    \item Sejam $a,b \in \bigcap\limits_{i \in I} H_i,$ isto é, $a,b \in H_i, \forall i.$ 
+    Como $H_i \le G,$ temos $ab^{-1} \in H_i, \forall i.$ Logo, \[ab^{-1} \in \bigcap\limits_{i \in I} H_i.\]Pelo exercício 2, temos que $\bigcap\limits_{i \in I} H_i \le G.$
+\end{enumerate}
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] 
+\end{tasks}
+\textcolor{blue}{\bf(5)}\label{13} Seja $G$ um grupo e sejam $H$ e $K$ subgrupos de $G.$ Mostre que $H \cup K$ é um subgrupo de $G$ se e somente se $H \subseteq K$ ou $K \subseteq H.$\\ \\
+\textbf{\textcolor{red}{Solução:}} $(\Leftarrow )$ Se $H \subseteq K$ então $H \cup K = K$ é subgrupo de $G.$ Idem se $K \subseteq H.$\\
+$(\Rightarrow)$ Suponha que $H \nsubseteq K$ nem $K \nsubseteq H.$ Então existem $h \in H \setminus K$ e $k \in K \setminus H.$
+
+Temos $h, k \in H \cup K,$ mas $hk \notin H \cup K$ (se $hk \in H,$ por exemplo, teríamos $hk = h^{\prime} \Rightarrow k = h^{-1}h^{\prime} \in H,$ contradição).
 \textcolor{white}{Oi}\newline\newline
-\textcolor{blue}{\bf(6)}\label{14} Seja $G$ um grupo e $H$ um  subconjunto bnão vazio finito de $G$ tal que $HH = H.$ Prove que $H$ é um subgrupo de $G$. E se $H$ não for finito?
+\textcolor{blue}{\bf(6)}\label{14} Seja $G$ um grupo e $H$ um  subconjunto bnão vazio finito de $G$ tal que $HH = H.$ Prove que $H$ é um subgrupo de $G$. E se $H$ não for finito? \\ \\
+\textbf{\textcolor{red}{Solução:}} Seja $a \in H.$ Temos $aH \subseteq H,$ por hipótese. A aplicação
+\[
+\fullfunction{\varphi}{H}{aH \subseteq H}{h}{ah}
+\]
+é injetora.
+
+Como $H$ é finito, então
+\[
+\fullfunction{\varphi}{H}{H}{h}{ah}
+\]
+é sobrejetora.
+Em particular, existe $h \in H$ tal que $ah = a,$ isto é, $e \in H.$ Portanto, existe $h_1 \in H$ tal que $ah_1 = e,$ isto é, $a^{-1} \in H.$
+
+Assim, $H$ é subgrupo de $G.$
+
+Se $H$ é infinito, o resultado pode não valer. Por exemplo, tomando $G = (\mathbb{Z}, +)$ e 
+\[
+H = \mathbb{Z}_{+} = \{ n \in \mathbb{Z} | n \ge 0 \},
+\]
+temos $HH = H$ (aqui, $HH = \mathbb{Z}_{+} + \mathbb{Z}_{+}$) mas $H$ não é subgrupo de $G.$
 \textcolor{white}{Oi}\newline\newline
 \textcolor{blue}{\bf(7)}\label{15} Seja $G$ um grupo. Dados $H$ um subgrupo de $G$ e $a \in G,$ mostre que $aHa^{-1} = \{aha^{ -1} : h \in H \}$ é um subgrupo de $G.$
 
-Se $H$ é finito, qual a ordem de $aHa^{-1}?$
+Se $H$ é finito, qual a ordem de $aHa^{-1}?$\\ \\
+\textbf{\textcolor{red}{Solução:}} No mesmo espírito do exercício 2, mostremos que $e \in aHa^{-1}$ e que $xy^{-1} \in aHa^{-1} \ \forall x,y \in aHa^{-1}.$ Temos:
+\begin{itemize}
+    \item $e = aea^{-1} \in aHa^{-1};$
+    \item Se $x,y \in aHa^{-1},$ então $x = ah_1a^{-1}$ e $y = ah_2a^{-1},$ para $h_1, h_2 \in H.$ Desse modo:
+    \[
+    \textcolor{blue}{x}\textcolor{green}{y^{-1}} =     \textcolor{blue}{ah_1a^{-1}}\textcolor{green}{(ah_2a^{-1})^{-1}} = ah_1a^{-1} ah_2^{-1}a^{-1} = a\underbrace{h_1h_2^{-1}}_{\in H} a^{-1} \in aHa^{-1} 
+    \]
+\end{itemize}
+Portanto, $aHa^{-1}$ é subgrupo de $G.$
+
+Para encontrar a ordem de $aHa^{-1},$ note que a aplicação
+\[
+\fullfunction{\varphi}{H}{aHa^{-1}}{h}{aha^{-1}}
+\]
+é bijetora. Dessa forma, se $H$ é finito,então
+\[
+\abs{H} = \abs{aHa^{-1}}
+\]
 \textcolor{white}{Oi}\newline\newline
 \textcolor{blue}{\bf(8)}\label{16} Seja $a$ um elemento de um grupo $G.$ O normalizador de $a$ em $G$ é dado por
 \[
@@ -1007,7 +1145,7 @@ N(a) = \{ x \in G : xa = ax \}
 \end{tasks}
 \textcolor{blue}{\bf(9)}\label{17} Seja $G$ um grupo e seja $H$ um subgrupo de $G.$ Considere
 \[
-\mathcal{C}_G(H) = \{x \in G : xh = hx, \forall h in H \}
+\mathcal{C}_G(H) = \{x \in G : xh = hx, \forall h \in H \}
 \]
 $\mathcal{C}_G(H)$ é chamado centralizador de $H$ em $G.$
 \begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
@@ -1022,6 +1160,32 @@ $\mathcal{C}_G(H)$ é chamado centralizador de $H$ em $G.$
 \task[\textcolor{Floresta}{$\negrito{(b)} $}] Prove que $\mathcal{C}_{G}(H) = \bigcap\limits_{h \in H} N(h),$ para todo grupo $G$ e $H$ subgrupo de $G.$
 \task[\textcolor{Floresta}{$\negrito{(c)} $}] Mostre que $\mathcal{C}_G(H)$ é subgrupo de $G.$
 \end{tasks}
+\textbf{\textcolor{red}{Solução:}}
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] 
+\begin{itemize}
+\item Temos que \[N(1) = S_3, N(\sigma) = H \ \mbox{e} \ N(\sigma^2) = \{1, \sigma, \sigma^2\}. \] 
+\item Temos que \[ \mathcal{C}_{S_3}(H) = H\]
+\item Dos itens anteriores,
+\[
+\bigcap\limits_{h \in H} N(h) = N(1) \cap N(\sigma) \cap N(\sigma^2) = S_3 \cap H \cap H = H = \mathcal{C}_{S_3}(H).
+\]
+\end{itemize}
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Prove que $\mathcal{C}_{G}(H) = \bigcap\limits_{h \in H} N(h),$ para todo grupo $G$ e $H$ subgrupo de $G.$
+Se $x \in \bigcap\limits_{h \in H} N(h),$ então $x \in N(h)$ para todo $h \in H.$ Logo, segue que $xh = hx \forall h \in H.$ Daí, $x \in \mathcal{C}_G(H).$ Assim, $\bigcap\limits_{h \in H} N(h) \subseteq \mathcal{C}_G(H).$
+
+Se $x \in \mathcal{C}_G(H),$ então $xh = hx \forall h \in H.$ Logo, $x \in N(H)$ para todo $h \in H.$ Consequentemente, $x \in \bigcap\limits_{h \in H} N(h).$ Daí, $\mathcal{C}_G(H) \subseteq \bigcap\limits_{h \in H} N(h).$
+
+Concluímos que 
+\[
+\boxed{\mathcal{C}_{G}(H) = \bigcap\limits_{h \in H} N(h)}
+\]
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Da questão 8, sabemos que $N(a)$ é um subgrupo de $G$ para todo $a \in G.$ Como a intersecção de uma família de subgrupos é subgrupo, então,
+\[\mathcal{C}_{G}(H) = \bigcap\limits_{h \in H} N(h)
+\]
+é subgrupo de $G.$
+\end{tasks}
+
 \textcolor{blue}{\bf(10)}\label{18} O centro de um grupo $G$ é definido como sendo o conjunto
 \[
 \mathcal{Z}(G) = \{ z \in G : zx = xz, \forall x \in G \}
@@ -1032,27 +1196,105 @@ $\mathcal{C}_G(H)$ é chamado centralizador de $H$ em $G.$
 \task[\textcolor{Floresta}{$\negrito{(c)} $}] Verifique que $\mathcal{Z}(G) = \mathcal{C}_G(G).$
 \task[\textcolor{Floresta}{$\negrito{(d)} $}] Prove que $\mathcal{Z}(G)$ é subgrupo de $G.$
 \end{tasks}
+\textbf{\textcolor{red}{Solução:}}
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Como $N(\sigma) = \{1, \sigma, \sigma^2 \}$ e $N(\tau) = \{1, \tau\},$ temos que
+\[
+\{ e \} = N(\sigma) \cap N(\tau) \supseteq \mathcal{Z}(S_3).
+\]
+Portanto, segue que $\mathcal{Z}(S_3) = \{e\}.$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Temos que
+\[
+N(j) = \{1,-1,j,-j\}, N(i) = \{1,-1,i,-i\}
+\]
+Logo, $N(i) \cap N(j) = \{1,-1\} \supseteq \mathcal{Z}(Q_8).$
+Também temos que $ \{1,-1\} \subseteq \mathcal{Z}(Q_8).$ Logo, $\mathcal{Z}(Q_8) = \{1, -1 \}.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Da definição, temos diretamente que
+\[
+\mathcal{C}_G(G) = \{x \in G : xh = hx, \forall h \in G \} = \mathcal{Z}(G).
+\]
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] Do item anterior e da questão anterior, temos que 
+\[
+\mathcal{Z}(G) = \mathcal{C}_G(G) = \bigcap\limits_{g \in G} N(g)
+\]
+é subgrupo de $G,$ já que $mathcal{C}_G(G)$ e $N(g)$ também o são.
+\end{tasks}
+\textcolor{blue}{\bf(11)}\label{19} Seja $G$ um grupo. Define-se a ordem de $a \in G$ como sendo o menor inteiro positivo $n$ tal que $a^n = e,$ se esse número existir (casos contrário, dizemos que $a$ ordem de $a$ é infinita). Denotamos a ordem de $a$ por $o(a).$ Mostre que se $a \in G$ tem ordem finita, esse número coincide com a ordem do subgrupo de $G$ gerado por $a.$\\ \\ 
+\textbf{\textcolor{red}{Solução:}} Seja $n = o(a).$ Então os elementos $e, a, a^2, \ldots, a^{n-1}$ são todos distintos (se $0 \le i < j \le n-1$ são tal que $a^i = a^j,$ então $a^{j-i} = e,$ o que gera uma contradição, pois $0 < j-i < n$)
 
-\textcolor{blue}{\bf(11)}\label{19} Seja $G$ um grupo. Define-se a ordem de $a \in G$ como sendo o menor inteiro positivo $n$ tal que $a^n = e,$ se esse número existir (casos contrário, dizemos que $a$ ordem de $a$ é infinita). Denotamos a ordem de $a$ por $o(a).$ Mostre que se $a \in G$ tem ordem finita, esse número coincide com a ordem do subgrupo de $G$ gerado por $a.$
+Além disso, pelo Algoritmo da Divisão de Euclides, para cada $m \in \mathbb{Z}, \exists q,r \in \mathbb{Z},$ com $0 \le r \le n-1$ tal que
+\[
+m = qn + r
+\]
+Então
+\[
+a^{\textcolor{red}{m}} =a^{\textcolor{red}{qn + r}} = (a^n)^q \cdot a^r = e^q \cdot a^r = e \cdot a^r = a^r
+\]
+Portanto,
+\[
+\langle a \rangle = \{e,a,a^2, \ldots, a^{n-1}\}
+\]
+e
+\[
+\abs{\langle a \rangle} = \abs{\{e,a,a^2, \ldots, a^{n-1}\}} = n,
+\]
+que é exatamente a ordem de $a.$
+
 \textcolor{white}{Oi}\newline\newline
-\textcolor{blue}{\bf(12)}\label{20} Seja $G$ um grupo de ordem par. Mostre que $G$ contém um elemento de ordem $2.$
+\textcolor{blue}{\bf(12)}\label{20} Seja $G$ um grupo de ordem par. Mostre que $G$ contém um elemento de ordem $2.$\\ \\ 
+\textbf{\textcolor{red}{Solução:}} Suponha que não existe um elemento par de ordem $2$ em $G.$ Então, para todo $g \in G,$ com $g \neq e,$ temos $g \neq g^{-1}.$ Portanto,
+\[
+G = \{e, g_1, g_1^{-1}, g_2, g_2^{-1}, \ldots, g_k, g_k^{-1} \}
+\]
+teria $2k+1$ elementos, um absurdo, já que por hipótese a ordem de $G$ é par.
 \textcolor{white}{Oi}\newline\newline
-\textcolor{blue}{\bf(13)}\label{21} Mostre que se $G$ é um grupo de ordem par, então existe um número ímpar de elementos de ordem $2.$
+\textcolor{blue}{\bf(13)}\label{21} Mostre que se $G$ é um grupo de ordem par, então existe um número ímpar de elementos de ordem $2.$\\ \\ 
+\textbf{\textcolor{red}{Solução:}} Se $g \in G$ é tal que $g^2 \neq e,$ então $g \neq g^{-1}.$
+
+Como $g$ tem ordem par, a quantidade de elementos $g \in G$ tal que $g^2 \neq e$ é par.
+
+Sobra uma quantidade par de elementos $h$ tal que $h^2 = e.$
+Sabemos que $e$ é um deles. Sobra então uma quantidade ímpar de elementos de ordem $2.$
+
 \textcolor{white}{Oi}\newline\newline
-\textcolor{blue}{\bf(14)}\label{22} Seja $a$ um elemento de um grupo tal que $a^n = e.$ Mostre que $o(a) \mid n.$
+\textcolor{blue}{\bf(14)}\label{22} Seja $a$ um elemento de um grupo tal que $a^n = e.$ Mostre que $o(a) \mid n.$\\ \\ 
+
+\textbf{\textcolor{red}{Solução:}} Escreva $n = q o(a) + r,$ com $0 \le r \le o(a).$ Temos
+\[
+e = a^{\textcolor{red}{n}} = a^{\textcolor{red}{ q o(a) + r}} = \underbrace{\left((a)^{o(a)}\right)^{q}}_{=e} a^r = a^r
+\]
+Portanto, $r = 0.$
 \textcolor{white}{Oi}\newline\newline
-\textcolor{blue}{\bf(15)}\label{23} Seja $G$ um grupo e sejam $a,b \in G.$ Mostre que $ab$ e $ba$ têm a mesma ordem.
+\textcolor{blue}{\bf(15)}\label{23} Seja $G$ um grupo e sejam $a,b \in G.$ Mostre que $ab$ e $ba$ têm a mesma ordem.\\ \\ 
+\textbf{\textcolor{red}{Solução:}} Seja $o(ab) = n,$ então $(ba)^n = \textcolor{green}{a^{-1}a}(ba)^n = a^{-1}(ab)^n a = e.$
+Logo, $o(ba) \mid n.$ Analogamente, mostra-se que $o(ab) \mid o(ba).$
 \textcolor{white}{Oi}\newline\newline
-\textcolor{blue}{\bf(16)}\label{24} Seja $G$ um grupo e seja $a \in G$ um elemento de ordem $n.$ Se $n = km,$ mostre que $a^k$ tem ordem $m.$
+\textcolor{blue}{\bf(16)}\label{24} Seja $G$ um grupo e seja $a \in G$ um elemento de ordem $n.$ Se $n = km,$ mostre que $a^k$ tem ordem $m.$\\ \\ 
+\textbf{\textcolor{red}{Solução:}} Temos
+\[(a^k)^m = a^{\textcolor{red}{km}} = a^{\textcolor{red}{n}} = e.
+\]
+Logo, $o(a^k) \le m.$
+
+Se $0 < m^{\prime} < m,$ então $0 \le km^{\prime} < km = n,$ e portanto, $(a^k)^{m^{\prime}} \neq e.$ Assim, $o(a^k) \ge m.$ 
+
+Concluímos assim que $o(a^k) = m.$
 \textcolor{white}{Oi}\newline\newline
-\textcolor{blue}{\bf(17)}\label{ex3}  Seja $g$ um elemento de um grupo $G$ tal que $g^{45} = e.$ Quais são os possíveis valores para as ordens de $G?$
-%Como $g^{45} = e,$ ordem de $g$ deve ser um divisor de $45.$ Como 
-%\[
-%D(45) = \{1,3,5,9,15,45 \},
-%\]
-%as possíveis ordens de $g$ são $1,3,5,9,15$ e $45.$
+\textcolor{blue}{\bf(17)}\label{ex3}  Seja $g$ um elemento de um grupo $G$ tal que $g^{45} = e.$ Quais são os possíveis valores para as ordens de $G?$\\ \\ 
+\textbf{\textcolor{red}{Solução:}} Como $g^{45} = e,$ ordem de $g$ deve ser um divisor de $45.$ Como 
+\[D(45) = \{1,3,5,9,15,45 \},\]
+as possíveis ordens de $g$ são $1,3,5,9,15$ e $45.$
 \textcolor{white}{Oi}\newline\newline
-\textcolor{blue}{\bf(18)}\label{25} Seja $G$ um grupo e seja $a \in G$  um elemento de ordem $n$. Seja  $m$ um inteiro positivo tal que $\mdc(m,n) = 1.$ Mostre que $o(a^m) = n.$ O que ocorre se $\mdc(m,n) > 1?$
+\textcolor{blue}{\bf(18)}\label{25} Seja $G$ um grupo e seja $a \in G$  um elemento de ordem $n$. Seja  $m$ um inteiro positivo tal que $\mdc(m,n) = 1.$ Mostre que $o(a^m) = n.$ %O que ocorre se $\mdc(m,n) > 1?$
+\\ \\ 
+\textbf{\textcolor{red}{Solução:}} Se $k = o(a^m),$ então
+\[
+a^{mk} = (a^m)^k = e.
+\]
+Logo, $n \mid mk.$ Como $\mdc(m,n) = 1,$ então $n \mid k.$ Além disso,
+\[
+(a^m)^n = (a^n)^m = e.
+\]
+Logo, $k \mid n.$ Portanto, $k=n.$
 \textcolor{white}{Oi}\newline\newline
 \textcolor{blue}{\bf(19)}\label{26} Seja $n \in \mathbb{N}^{*}.$ Definimos:
 \[
@@ -1068,13 +1310,35 @@ Na verdade, temos que
 \[
 \varphi(n) = n \prod\limits_{\substack{p \mbox{ primo} \\ p \mid n }} \left(1 - \frac{1}{p} \right) 
 \]
-\textcolor{white}{Oi}\newline\newline
+\textbf{\textcolor{red}{Solução:}} \begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}]
+\task[\textcolor{Floresta}{$\negrito{(b)} $}]
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Seja $G = \langle a \rangle,$ com $\abs{G} = n.$ Então, $o(a) = n.$ Temos então que
+\[
+G = \{ e,a, a^2, \ldots, a^{n-1} \}
+\]
+Se $n = 1,$ então $G = \{ e \} = \langle e \rangle,$ e o número de geradores é $1 = \varphi(1).$
+
+Se $n > 1,$ então $e$ não é gerador de $G.$ Dado $m,$ com $1 \le m < n,$ seja $d = \mdc(m,n).$ 
+
+Se $d = 1,$ então, pelo exercício anterior (exercício 18), $o(a^m) = n.$ Logo, $a^m$ é gerador de $G.$ 
+
+Se $d > 1,$ então $m = m^{\prime} d$ e $n = n^{\prime} d$ e $a^d$ tem ordem $n^{\prime},$ pelo exercício anterior ao anterior (exercício 17). Portanto
+\[
+(a^{\textcolor{Emerald}{m}})^{n^{\prime}} = (a^{\textcolor{Emerald}{m^{\prime}d}})^{n^{\prime}} = a^{m^{\prime}\textcolor{RawSienna}{dn^{\prime}}} = (a^{\textcolor{RawSienna}{dn^{\prime}}})^{m^{\prime}} = e \Rightarrow o(a^m) \le n^{\prime} < n \Rightarrow a^m \mbox{ não gera } G
+\]
+Logo, $a^m$ só gera $G$ se $\mdc(m,n) = 1.$ O total de geradores portanto é
+\[
+\abs{\{1 \le m \le n | \mdc(m,n) = 1 \}} = \varphi(n)
+\]
+Portanto, o número de geradores de $G$ é $\varphi(n).$
+\end{tasks}
 \textcolor{blue}{\bf(20)}\label{27} Vamos mostrar nesse exercício que o grupo das matrizes inversíveis $4 \times 4$ com entradas inteiras $GL_4(\mathbb{Z})$ admite um elemento de ordem $12.$%https://pdfs.semanticscholar.org/d72f/50b01413336e0c2b4f01859b5c39e01d7ad1.pdf
 %https://pdfs.semanticscholar.org/d72f/50b01413336e0c2b4f01859b5c39e01d7ad1.pdf
 \begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
 \task[\textcolor{Floresta}{$\negrito{(a)} $}] O $m$-ésimo \textbf{polinômio ciclotômico} $\varphi_n(x)$ é definido como 
 \[
-\varphi_n(x) = \prod\limits_{\xi \in mu_m(\mathbb{C}} (x - \xi),
+\varphi_n(x) = \prod\limits_{\xi \in \mu_m(\mathbb{C})} (x - \xi),
 \]
 onde $\mu_m(\mathbb{C}) = \langle e^{\frac{2 \pi i}{m}} \rangle = \{1, e^{\frac{2 \pi i}{m}}, \ldots, e^{\frac{2 \pi i (m-1)}{m}} \}$ é o conjunto das raízes $m$-ésimas da unidade (isto é, as raízes, em $\mathbb{C},$ da equação $x^m - 1 = 0$). Mostre que $\varphi_{12}(x) = x^{4} - x^2 + 1.$
 \task[\textcolor{Floresta}{$\negrito{(b)} $}] Dado um polinômio mônico $p(x) = x^k + a_{k-1}p^{k-1} + \ldots + a_1x + a_0,$ dizemos que a \textbf{matriz companheira} $C$ de $p(x)$ é a matriz
@@ -1117,12 +1381,52 @@ A =  \left(\begin{array}{cccc}
 \]
 é um elemento de ordem $12$ de $GL_4(\mathbb{Z})$. Na verdade, $12$ é a maior ordem finita possível para um elemento de $GL_4(\mathbb{Z}).$ As possíveis ordens para elementos desse grupo que possuem ordem finita são $2,3,4,5,6,8,10$ e $12.$
 \end{tasks}
-\textcolor{blue}{\bf(21)}\label{28} Mostre que todo subgrupo de um grupo cíclico é cíclico.
+\textcolor{blue}{\bf(21)}\label{28} Mostre que todo subgrupo de um grupo cíclico é cíclico.\\ \\
+\textbf{\textcolor{red}{Solução:}} Seja $G$ um grupo cíclico. Então $G = \langle a \rangle,$ para algum $a \in G.$ 
+
+Seja $H \le G.$ Se $H = \{ e \},$ então $H = \langle e \rangle,$ e portanto $H$ é cíclico.
+
+Se $H \neq \{ e \},$ considere\[
+m = \min \{ \abs{k} : k \in \mathbb{Z}^{+}, a^k \in H, k \neq 0 \}
+\]
+Note que $m$ existe e é maior do que $0.$ Temos então que $\langle a^m \rangle \subseteq H.$
+
+ Para a outra inclusão, seja $h \in H.$ Como $H \le G = \langle a \rangle,$ $\exists n \in \mathbb{Z}$ tal que $h = a^n.$ Escreva
+ \[
+ n = mq+r, \mbox{ com }q,r \in \mathbb{Z} \mbox{ e } 0 \le r < m.
+ \]
+ Temos que
+ \[
+ H \ni h = a^{\textcolor{Cerulean}{n}} =   a^{\textcolor{Cerulean}{mq+r}} = \underbrace{(a^m)^q}_{\in H} \cdot a^r \Rightarrow a^r \in H \Rightarrow r = 0 \mbox{ (pois m é minimal)}
+ \]
+ $\therefore \ h \in \langle a^m \rangle.$ Daí, $H \subseteq \langle a^m \rangle.$
+ 
+ Logo, $H = \langle a^m \rangle$ é cíclico.
+ 
 \textcolor{white}{Oi}\newline\newline
 \textcolor{blue}{\bf(22)}\label{29} Sejam $G$ um grupo e sejam $a,b \in G.$
 \begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
 \task[\textcolor{Floresta}{$\negrito{(a)} $}] Mostre que $o(a) = o(b^{-1}ab).$
 \task[\textcolor{Floresta}{$\negrito{(b)} $}] Se $G$ possui apenas um elemento $a$ de ordem $n,$ mostre que $a \in \mathcal{Z}(G)$ e que $n = 1$ ou $n = 2.$ 
+\end{tasks}
+\textbf{\textcolor{red}{Solução:}}
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Temos
+\[
+a^n = e \Leftrightarrow (b^{-1}ab)^n = b^{-1}\textcolor{Fuchsia}{a^n}b =  b^{-1}\textcolor{Fuchsia}{e}b = e.
+\]
+Logo, $o(a) = o(b^{-1}ab).$
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Como  $o(a) = o(b^{-1}ab),$ para todo $b \in G,$ temos
+\[
+a =b^{-1}ab \ \forall b \in G \Rightarrow ba = ab \ \forall b \in G
+\]
+Logo, $a \in \mathcal{Z}(G).$
+
+Além disso, $o(a) = o(a^{-1}).$ Assim, 
+\[
+a = a^{ -1} \Rightarrow a^2 = e
+\]
+Portanto, $o(a) \mid 2.$ Daí, $o(a) = 1$ ou $o(a) = 2.$
 \end{tasks}
 \textcolor{blue}{\bf(23)}\label{30} Seja $G = \mathcal{M}_2(\mathbb{Z}),$ munido da multiplicação usual de matrizes. Considere
 \[
@@ -1133,6 +1437,51 @@ A = \left( \begin{array}{cc} 1 & -1 \\ 0 & -1 \end{array} \right) \quad \mbox{ e
 \task[\textcolor{Floresta}{$\negrito{(b)} $}] Verifique que $o(AB) = \infty.$
 \task[\textcolor{Floresta}{$\negrito{(c)} $}] Conclua que se $G$ não é abeliano, existem elementos $a, b \in G,$ tais que $o(a), o(b) < \infty,$ mas $o(ab) = \infty.$
 \task[\textcolor{Floresta}{$\negrito{(d)} $}] Encontre outros exemplos de grupos não abelianos e elementos que satisfazem essa condição.
+
+\task[\textcolor{Floresta}{$\negrito{(e)} $}] Mostre que os elementos de ordem finita em qualquer grupo abeliano formam um subgrupo, denominado \emph{subgrupo de torção} do grupo dado.
+\end{tasks}
+\textbf{\textcolor{red}{Solução:}}
+\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Temos que
+\[
+A \cdot A =  \left( \begin{array}{cc} 1 & -1 \\ 0 & -1 \end{array} \right)  \left( \begin{array}{cc} 1 & -1 \\ 0 & -1 \end{array} \right) =  \left( \begin{array}{cc} 1 & 0 \\ 0 & 1 \end{array} \right) \Rightarrow o(A) = 2
+\]
+\[
+B \cdot B =  \left( \begin{array}{cc} 1 & 0 \\ 0 & -1 \end{array} \right)   \left( \begin{array}{cc} 1 & 0 \\ 0 & -1 \end{array} \right)=  \left( \begin{array}{cc} 1 & 0 \\ 0 & 1 \end{array} \right) \Rightarrow o(B) = 2
+\]
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Temos
+\[
+AB =  \left( \begin{array}{cc} 1 & -1 \\ 0 & -1 \end{array} \right) \left( \begin{array}{cc} 1 & 0 \\ 0 & -1 \end{array} \right) = \left( \begin{array}{cc} 1 & 1 \\ 0 & 1\end{array} \right)
+\]
+Pode-se verificar (utilizando indução, por exemplo) que
+\[
+(AB)^n = \left( \begin{array}{cc} 1 & 1 \\ 0 & 1\end{array} \right)^n = \left( \begin{array}{cc} 1 & n \\ 0 & 1\end{array} \right) \neq I_2, \forall \ n \ge 1
+\]
+Portanto, segue que $o(AB) = \infty.$
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Sendo o grupo $G = \mathcal{M}_2(\mathbb{Z})$ não abeliano, temos que as matrizes $A$ e $B$ possuem ordem finita (pelo item (a)), mas a ordem de seu produto não é finita. (pelo item (b)). Em geral, se $G$ não é abeliano, temos que
+\[
+o(a), o(b) < \infty \nRightarrow o(ab) < \infty
+\]
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] Existem inúmeros exemplos possíveis. Citamos abaixo dois:
+\begin{itemize}
+    \item Seja
+    \[
+    S_{\mathbb{Z}} = \{ f \colon \mathbb{Z} \to \mathbb{Z} \mbox{ bijetora} \}
+    \]
+    Tomemos $\sigma, \tau \in S_{\mathbb{Z}},$ dadas por
+    \[
+    \fullfunction{\sigma}{\mathbb{Z}}{\mathbb{Z}}{x}{-x} \quad \mbox{e} \quad     \fullfunction{\tau}{\mathbb{Z}}{\mathbb{Z}}{x}{-x+1}
+    \]
+    
+    Observe que $\sigma$ e $\tau$ têm ordem $2.$ Apesar disso, a função
+    \[
+    \fullfunction{\tau \circ \sigma }{\mathbb{Z}}{\mathbb{Z}}{x}{x+1}
+    \]
+    tem ordem infinita.
+    
+    \item Pegue dois hiperplanos paralelos em $\mathbb{R}^n.$ Reflexões em cada um deles é uma isometria de ordem $2$. A composição delas é uma translação (tem ordem infinita). Como analogia prática, é como se colocássemos 2 espelhos, um de frente para o outro.
+\end{itemize}
+\task[\textcolor{Floresta}{$\negrito{(e)} $}] Seja $\mathcal{O}(G)$ o conjunto dos elementos de ordem finita em $G.$ 
 \end{tasks}
 \textcolor{blue}{\bf(24)}\label{31} Seja $G$ um grupo não trivial. 
 \begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
@@ -1246,7 +1595,18 @@ H = \{ 30x + 42y + 70z | x,y,z \in \mathbb{Z} \}
 
 \textcolor{blue}{\bf(2)}\label{40} Seja $H$ um subgrupo de índice $2$ em um grupo $G.$ Mostre que $H$ é normal em $G.$ 
 \textcolor{white}{Oi}\newline\newline
-\textcolor{blue}{\bf(3)}\label{41} Sejam $N_1, N_2$ subgrupos normais de um grupo $G.$ Mostre que $N_1 \cap N_2$ é normal em $G.$ Mais geralmente, mostre que se $\{N_i : i \in I \}$ é uma família de subgrupos normais de $G$ então $\bigcap\limits_{i \in I} N_i$ é um subgrupo normal de $G.$
+\textcolor{blue}{\bf(3)}\label{41} Sejam $N_1, N_2$ subgrupos normais de um grupo $G.$ Mostre que $N_1 \cap N_2$ é normal em $G.$ Mais geralmente, mostre que se $\{N_i : i \in I \}$ é uma família de subgrupos normais de $G$ então $\bigcap\limits_{i \in I} N_i$ é um subgrupo normal de $G.$\\ \\
+\sol Seja $\{ N_i : i \in I \}$ uma família de subgrupos normais de $G.$ Já vimos que $\bigcap\limits_{i \in I} N_i$ é subgrupo de $G.$
+
+Além disso, para todo $g \in G,$ temos
+\[
+gN_ig^{-1} = N_i, \mbox{ pois } N_i \lhd G.
+\]
+Portanto,
+\[
+g \left(\bigcap\limits_{i \in I} N_i \right) g^{-1} \subseteq \bigcap\limits_{i \in I} N_i.
+\]
+Logo, $\bigcap\limits_{i \in I} N_i \lhd G.$
 \textcolor{white}{Oi}\newline\newline
 \textcolor{blue}{\bf(4)}\label{42} Neste exercício vamos construir um grupo não abeliano, contendo $8$ elementos, cujos subgrupos são todos normais. Considere o seguinte subconjunto de $\mathcal{M}_2(\mathbb{C}):$
 \[
@@ -1271,19 +1631,110 @@ Id = \left[\begin{array}{cc} 1 & 0 \\ 0 & 1 \end{array}\right], \quad I = \left[
 \task[\textcolor{Floresta}{$\negrito{(f)} $}] Mostre que todos os subgrupos de $Q_8$ são normais.
 \task[\textcolor{Floresta}{$\negrito{(g)} $}] Determine o centro $\mathcal{Z}(Q_8)$ de $Q_8.$
 \end{tasks}
+\sol \begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1)
+\task[\textcolor{Floresta}{$\negrito{(a)} $}] Trivial.
+\task[\textcolor{Floresta}{$\negrito{(b)} $}] Observe que a multiplicação de matrizes é associativa. Além disso, $Q_8Q_8=Q_8,$ e $Q_8$ é finito, o que implica que $Q_8$ é subgrupo.
+
+Notemos também das identidades do item (a) que
+\[
+IJ = -JI \neq JI.
+\]
+Portanto, $Q_8$ é um grupo não abeliano.
+\task[\textcolor{Floresta}{$\negrito{(c)} $}] Um cálculo direto nos revela que $I^{-1} = -I,$ $J^{-1} = -J$ e $K^{-1} = -K.$
+\task[\textcolor{Floresta}{$\negrito{(d)} $}] Os elementos de $Q_8$ e suas respectivas ordens estão determinados na tabela abaixo:
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+     Elemento & Ordem \\ \hline
+     $\pm I$ & $4$ \\   \hline
+          $\pm J$ & $4$ \\   \hline
+               $\pm K$ & $4$ \\   \hline
+                    $- Id$ & $2$ \\   \hline
+                                $Id$ & $1$ \\  \hline
+\end{tabular}
+\end{center}
+\task[\textcolor{Floresta}{$\negrito{(e)} $}] Os seis subgrupos de $Q_8$ são:
+\begin{enumerate}
+    \item $\langle I \rangle = \{ \pm Id, \pm I \}$
+    \item $\langle J \rangle = \{ \pm Id, \pm J \}$
+    \item $\langle K \rangle = \{ \pm Id, \pm K \}$
+    \item $\langle Id \rangle = \{ Id \}$
+    \item $\langle -Id \rangle - \{ \pm Id \}$
+    \item $Q_8$
+\end{enumerate}
+\task[\textcolor{Floresta}{$\negrito{(f)} $}] Observe que $\langle I \rangle$, $\langle J \rangle$ e $\langle K \rangle$ possuem índice $2$ em $Q_8,$ logo são normais em $Q_8.$ $\langle Id \rangle$ e $Q_8$ são trivialmente normais. Além disso $\langle -Id \rangle \subseteq \mathcal{Z}(Q_8),$ e portanto $\langle -Id \rangle$ é normal em $Q_8.$
+\task[\textcolor{Floresta}{$\negrito{(g)} $}] Como notado no item anterior, temos que $\langle -Id \rangle \subseteq \mathcal{Z}(Q_8).$ De fato, temos que $\langle -Id \rangle = \mathcal{Z}(Q_8).$
+\end{tasks}
 \textcolor{blue}{\bf(5)}\label{43} Seja $GL_n(\mathbb{R})$ o grupo das matrizes de ordem $n$ inversíveis em $\mathbb{R},$ com a multiplicação usual. Mostre que
 \[
 SL_n(\mathbb{R}) = \{ A \in GL_n(\mathbb{R}) : \det A = 1 \}
 \]
-é um subgrupo normal de $GL_n(\mathbb{R}).$
+é um subgrupo normal de $GL_n(\mathbb{R}).$\\ \\
+\sol Verifiquemos primeiramente que $SL_n(\mathbb{R}) \le GL_n(\mathbb{R}):$
+\begin{itemize}
+    \item Temos que $Id \in SL_n(\mathbb{R});$
+    \item Para $A, B \in SL_n(\mathbb{R}),$ temos pelo Teorema de Binet que
+    \[
+    \det(A)\det(B) = \det(AB) = 1 \Rightarrow AB \in SL_n(\mathbb{R});
+    \]
+    \item Para $A \in SL_n(\mathbb{R}),$ vê-se que
+    \[
+    \det(A^{-1})= (\det(A))^{-1} = 1 \Rightarrow A^{-1} \in SL_n(\mathbb{R}).\]
+\end{itemize}
+
+Mostremos agora que  $SL_n(\mathbb{R})$ é normal, ou seja, que  $SL_n(\mathbb{R}) \lhd GL_n(\mathbb{R}).$ Para isso, precisamos mostrar que para todo $g \in GL_n(\mathbb{R}),$ as classes laterais à esquerda e à direita coincidem, ou seja, $gSL_n(\mathbb{R}) = SL_n(\mathbb{R})g,$ o que equivale a verificar que $gSL_n(\mathbb{R})g^{-1} = SL_n(\mathbb{R}).$
+
+Se $B \in GL_n(\mathbb{R})$ e $A \in SL_n(\mathbb{R}),$ então
+\[
+\det(BAB^{-1}) = \det(B) \det(A) \det(B^{-1}) = 1 \Rightarrow BAB^{-1} \in SL_n(\mathbb{R}).
+\]
+Logo, $SL_n(\mathbb{R})$ é normal em $GL_n(\mathbb{R}).$
 \textcolor{white}{Oi}\newline\newline
-\textcolor{blue}{\bf(6)}\label{44} Seja $H$ um subgrupo de um grupo $G$ tal que o produto de duas classes laterais à direita de $H$ em $G$ é sempre uma classe lateral à direita de $H$ em $G.$ Mostre que $H$ é normal em $G.$
+\textcolor{blue}{\bf(6)}\label{44} Seja $H$ um subgrupo de um grupo $G$ tal que o produto de duas classes laterais à direita de $H$ em $G$ é sempre uma classe lateral à direita de $H$ em $G.$ Mostre que $H$ é normal em $G.$\\ \\ 
+\sol Sejam $x,y \in G.$ Por hipótese, existe $z \in G$ tal que
+\[
+HxHy = Hz
+\]
+Como $xy \in HxHy,$ temos $Hxy = Hz,$ isto é, 
+\[
+HxHy = \textcolor{PineGreen}{Hz} \Rightarrow HxHy = \textcolor{PineGreen}{Hxy}.
+\]
+Para $x = g$ e $y = g^{-1},$ temos
+\[
+gHg^{-1} = \textcolor{Blue}{eg}\textcolor{Green}{Hg^{-1}} \subseteq \textcolor{Blue}{Hg}\textcolor{Green}{Hg^{-1}} = Hgg^{-1} = H.
+\]
+Concluímos que $gHg^{-1} = H \ \forall g \in G.$ Portanto, $H \lhd G.$
 \textcolor{white}{Oi}\newline\newline
 \textcolor{blue}{\bf(7)}\label{45} Seja $N$ um subgrupo normal de um grupo $G$ e seja $H$ um subgrupo de $G.$ Mostre que $NH$ é um subgrupo de $G.$
+\sol Temos que $NH \le G$ se e somente se $NH = HN.$
+
+Como $N \lhd G,$ temos 
+\[gN = Ng, \forall g \in G.\]
+Em particular, tomando $g \in H,$ obtemos que $HN = NH.$
 \textcolor{white}{Oi}\newline\newline
-\textcolor{blue}{\bf(8)}\label{46}  Sejam $M$ e $N$ subgrupos normais de um grupo $G.$ Mostre que $MN$ também é normal em $G.$
+\textcolor{blue}{\bf(8)}\label{46}  Sejam $M$ e $N$ subgrupos normais de um grupo $G.$ Mostre que $MN$ também é normal em $G.$\\ \\
+\sol Sejam $n \in N, m \in M$ e $g \in G.$ 
+Como $M, N \lhd G,$ lembramos que
+\[
+gNg^{-1} = N, \forall g \in G \quad \mbox{e} \quad gMg^{-1} = M, \forall g \in G
+\]
+Então
+\[
+gnmg^{-1} = gn\textcolor{Mulberry}{gg^{-1}}mg^{-1} = \textcolor{Bittersweet}{\underbrace{gng^{-1}}_{\in N}} \textcolor{CadetBlue}{\underbrace{gmg^{-1}}_{\in M}} \in \textcolor{Bittersweet}{N}\textcolor{CadetBlue}{M}.
+\]
+Portanto, $NM \lhd G.$
 \textcolor{white}{Oi}\newline\newline
-\textcolor{blue}{\bf(9)}\label{47} Seja $N$ um subgrupo normal de um grupo $G$ tal que $[G : N] = m.$ Mostre que $a^m \in N,$ para todo $a \in G.$
+\textcolor{blue}{\bf(9)}\label{47} Seja $N$ um subgrupo normal de um grupo $G$ tal que $[G : N] = m.$ Mostre que $a^m \in N,$ para todo $a \in G.$\\ \\
+\sol Como $N \lhd G,$ então $G/N$ é um grupo. Temos
+\[
+\abs{G/N} = [G: N] = m.
+\]
+Logo, para todo $g \in G,$
+\[
+g^mN = (gN)^m = N.
+\]
+Portanto $g^m \in N, \ \forall g \in G.$ 
+
 \textcolor{white}{Oi}\newline\newline
 \textcolor{blue}{\bf(10)}\label{48} Seja $G$ um grupo e seja $H$ um subgrupo de $G.$ O \textbf{normalizador} de $H$ em $G$ é definido por
 \[
